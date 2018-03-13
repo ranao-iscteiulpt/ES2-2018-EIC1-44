@@ -4,13 +4,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 
 public class Frame {
 
 	private JFrame frame;
+	private LoginPanel loginPanel;
+	private RegisterPanel registerPanel;
 
 	public Frame() {
 		frame = new JFrame();
@@ -20,36 +19,54 @@ public class Frame {
 		return frame;
 	}
 
-	public void open() {
-		frame.setSize(600, 600);
+	public void openLogin() {
+		frame.setSize(350, 200);
+		//frame.setSize(320, 250);
 		frame.setTitle("Engenharia de Software II");
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
 		int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
 		frame.setLocation(x, y);
+
+		// JMenuBar menu = new JMenuBar();
+		// JMenu file = new JMenu("File");
+		// menu.add(file);
+		// JMenu view = new JMenu("View");
+		// menu.add(file);
+		// menu.add(view);
+		// JMenuItem load=new JMenuItem("Load XML");
+		// JMenuItem save=new JMenuItem("Save");
+		// JMenuItem newProblem=new JMenuItem("New Problem");
+		// JMenuItem graph=new JMenuItem("Graph");
+		// JMenuItem email=new JMenuItem("Emails");
+		// JMenuItem problemsList=new JMenuItem("Problems List to Solve");
+		// file.add(load);
+		// file.add(save);
+		// file.add(newProblem);
+		// view.add(graph);
+		// view.add(email);
+		// view.add(problemsList);
+		//
+		// frame.setJMenuBar(menu);
+		//
+		loginPanel = new LoginPanel();
+		loginPanel.logon();
 		
-		 JMenuBar menu = new JMenuBar();
-	     JMenu file = new JMenu("File");
-	     menu.add(file);            
-	     JMenu view = new JMenu("View");
-	     menu.add(file);
-	     menu.add(view);
-	     JMenuItem load=new JMenuItem("Load XML");
-	     JMenuItem save=new JMenuItem("Save");
-	     JMenuItem newProblem=new JMenuItem("New Problem");
-	     JMenuItem graph=new JMenuItem("Graph");
-	     JMenuItem email=new JMenuItem("Emails");
-	     JMenuItem listaProblemas=new JMenuItem("Problems List to Solve");
-	     file.add(load);
-	     file.add(save);
-	     file.add(newProblem);
-	     view.add(graph);
-	     view.add(email);
-	     view.add(listaProblemas);
-	     
-	     frame.setJMenuBar(menu);  
+		registerPanel= new RegisterPanel();
+		registerPanel.signUp();
 		
+//		if(loginPanel.isRegButtonPressed())	{
+//			frame.add(registerPanel.getRegister());
+//		}
+//		else	{
+//			frame.remove(registerPanel.getRegister());
+//			frame.add(loginPanel.getLogin());
+//		}
+		frame.add(loginPanel.getLogin());
 		
+		//frame.add(registerPanel.getRegister());// frame.setSize(320, 250);
+		// frame.pack();
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
