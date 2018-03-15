@@ -7,26 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
-public class UserFrame {
+public class MainPanel extends JPanel {
 
 	private JFrame frame;
 
-	public UserFrame() {
-		frame = new JFrame();
+	public MainPanel(JFrame frame) {
+		this.frame = frame;
 	}
 
-	public JFrame getFrame() {
-		return frame;
-	}
-
-	public void openLogin() {
-		frame.setSize(500, 400);
-		frame.setTitle("Engenharia de Software II");
-		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-		int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-		frame.setLocation(x, y);
+	public void mainPanel() {
 
 		JMenuBar menu = new JMenuBar();
 		JMenu file = new JMenu("File");

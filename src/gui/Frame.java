@@ -8,26 +8,20 @@ import javax.swing.JFrame;
 public class Frame {
 
 	private JFrame frame;
-	private LoginPanel loginPanel;
+	//private LoginPanel loginPanel;
 	private RegisterPanel registerPanel;
 
 	public Frame() {
-		frame = new JFrame();
+		
+		frame = new JFrame("Engenharia de Software II");
+	
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		addComponents();
 	}
 
-	public JFrame getFrame() {
-		return frame;
-	}
-
-	public void openLogin() {
-		frame.setSize(350, 200);
-		//frame.setSize(320, 250);
-		frame.setTitle("Engenharia de Software II");
-		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-		int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-		frame.setLocation(x, y);
-
+	private void addComponents() {
+		
 		// JMenuBar menu = new JMenuBar();
 		// JMenu file = new JMenu("File");
 		// menu.add(file);
@@ -49,11 +43,14 @@ public class Frame {
 		//
 		// frame.setJMenuBar(menu);
 		//
-		loginPanel = new LoginPanel();
-		loginPanel.logon();
 		
-		registerPanel= new RegisterPanel();
-		registerPanel.signUp();
+		LoginPanel loginPanel = new LoginPanel(frame);
+		loginPanel.login();
+		
+		//frame.add(loginPanel);
+		
+//		registerPanel= new RegisterPanel();
+//		registerPanel.signUp();
 		
 //		if(loginPanel.isRegButtonPressed())	{
 //			frame.add(registerPanel.getRegister());
@@ -62,12 +59,21 @@ public class Frame {
 //			frame.remove(registerPanel.getRegister());
 //			frame.add(loginPanel.getLogin());
 //		}
-		frame.add(loginPanel.getLogin());
+		//frame.add(loginPanel.getLogin());
 		
 		//frame.add(registerPanel.getRegister());// frame.setSize(320, 250);
 		// frame.pack();
+		
+	}
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void init() {
+		
+		frame.setSize(500, 400);
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+	}
+	
+	public JFrame getFrame() {
+		return frame;
 	}
 }
