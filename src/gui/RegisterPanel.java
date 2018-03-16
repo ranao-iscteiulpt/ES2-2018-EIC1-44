@@ -16,17 +16,6 @@ import javax.swing.JTextField;
 
 public class RegisterPanel extends JPanel{
 	
-//	private JPanel register;
-//	private SignUp s=new SignUp(); 
-
-//	public RegisterPanel() {
-//		register = new JPanel();
-//	}
-
-//	public JPanel getRegister() {
-//		return register;
-//	}
-	
 	private JFrame frame;
 	private JPanel LoginPanel;
 	
@@ -104,20 +93,6 @@ public class RegisterPanel extends JPanel{
 				
 				RegisterPanel.this.setVisible(false);
 				LoginPanel.setVisible(true);
-//				String username=userText.getText();
-//				String pass=passwordText.getText();
-//				String email=emailText.getText();
-//				User u=new User(username, pass, email);
-//				if(!passwordText.getText().equals(passConfirmText.getText()))	{
-//					JOptionPane.showMessageDialog(registerButton, "The passwords not match :(");
-//				}
-//				else	{
-//					s.getUsersRegister().add(u);
-//					JOptionPane.showMessageDialog(registerButton, "Registration Sucessfull :)");
-//					Frame frame=new Frame();
-//					frame.openLogin();
-//				}
-//				
 			}
 		});
 		

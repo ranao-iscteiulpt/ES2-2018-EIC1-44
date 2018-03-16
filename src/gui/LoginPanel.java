@@ -16,17 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class LoginPanel extends JPanel{
-	
-//	private JPanel login;
-//	private SignUp logOn = new SignUp();
-
-//	public JPanel getLogin() {
-//		return login;
-//	}
-//
-//	public SignUp getLogOn() {
-//		return logOn;
-//	}
 
 	private JFrame frame;
 	
@@ -80,23 +69,6 @@ public class LoginPanel extends JPanel{
 				
 				MainPanel mainPanel = new MainPanel(frame);
 				mainPanel.mainPanel();
-//				boolean userFounded=false;
-//				String username = userText.getText();
-//				String pass = passText.getText();
-//				ArrayList<User>users=logOn.getUsersRegister();
-//				for(User i:users)	{
-//					if(i.getUsername().equals(username)&&i.getPassword().equals(pass))	{
-//						userFounded=true;
-//					}
-//				}
-//				if(!userFounded)	{
-//					JOptionPane.showMessageDialog(logButton, "LogIn Sucesfully :)");
-//					UserFrame frame=new UserFrame();
-//					frame.openLogin();
-//				}
-//				else	{
-//					JOptionPane.showMessageDialog(logButton, "Something is wrong :(");
-//				}
 			}
 		});
 
@@ -117,8 +89,7 @@ public class LoginPanel extends JPanel{
 		registerButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				SignUpFrame frame=new SignUpFrame();
-//				frame.openLogin();
+
 				LoginPanel.this.setVisible(false);
 				
 				RegisterPanel registerPanel = new RegisterPanel(frame, LoginPanel.this);
