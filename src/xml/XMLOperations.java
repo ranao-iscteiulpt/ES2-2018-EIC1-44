@@ -40,9 +40,13 @@ public class XMLOperations {
 			rootElement.appendChild(problem);
 
 			// set attribute 
-			Attr attr = doc.createAttribute("name");
-			attr.setValue(title);
-			problem.setAttributeNode(attr);
+//			Attr attr = doc.createAttribute("name");
+//			attr.setValue(title);
+//			problem.setAttributeNode(attr);
+			
+			Element nameElement = doc.createElement("name");
+			nameElement.appendChild(doc.createTextNode(title));
+			problem.appendChild(nameElement);
 
 			Element descriptionElement = doc.createElement("description");
 			descriptionElement.appendChild(doc.createTextNode(description));
@@ -99,17 +103,17 @@ public class XMLOperations {
 
 	}
 
-	public String[] readXML () {
+	public Node[] readXML (File xmlFile) {
 
-		String[] xmlContent = new String[100];
+		Node[] xmlContent = new Node[100];
 
 		try {
 
-			File fXmlFile = new File("a(2018-03-12) (11-40-36).xml");
+			//File fXmlFile = new File("a(2018-03-12) (11-40-36).xml");
 
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(fXmlFile);
+			Document doc = dBuilder.parse(xmlFile);
 
 			doc.getDocumentElement().normalize();
 
@@ -129,10 +133,11 @@ public class XMLOperations {
 
 				for (int i =0 ; i < nNode.getChildNodes().getLength(); i++) {
 					System.out.println("teste "+ nNode.getChildNodes().item(i).getTextContent());	
-					xmlContent[i] = nNode.getChildNodes().item(i).getTextContent().toString();
+					xmlContent[i] = nNode.getChildNodes().item(i);
+					System.out.println(xmlContent[i].getNodeName());
 				}
 
-				System.out.println("Aqui"+xmlContent[0]);
+				//System.out.println("Aqui" +xmlContent[0]);
 
 			}
 		} catch (Exception e) {
