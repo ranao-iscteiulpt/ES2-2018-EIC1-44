@@ -26,7 +26,7 @@ public class Frame {
 
 	public void init() {
 		
-		frame.setSize(500, 400);
+		frame.setSize(580, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
