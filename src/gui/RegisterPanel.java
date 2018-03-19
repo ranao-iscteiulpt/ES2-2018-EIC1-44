@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,10 +15,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import funcionalities.Login;
+import funcionalities.Register;
+
 public class RegisterPanel extends JPanel{
 	
 	private JFrame frame;
 	private JPanel LoginPanel;
+	private Register register;
 	
 	public RegisterPanel(JFrame frame, JPanel LoginPanel){
 		this.frame = frame;
@@ -91,10 +96,41 @@ public class RegisterPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				RegisterPanel.this.setVisible(false);
-				LoginPanel.setVisible(true);
+				if(passwordText.getText().equals(passConfirmText.getText()) && !userText.getText().equals("") && !emailText.getText().equals("") && !passwordText.getText().equals("") && !passConfirmText.getText().equals("")){
+
+					register = new Register(userText.getText(), emailText.getText(), passwordText.getText());
+					register.newRegister();
+					
+					JOptionPane.showMessageDialog(null, "Registo com sucesso");
+					
+					RegisterPanel.this.setVisible(false);
+					LoginPanel.setVisible(true);
+				}
+				
+				else{
+					
+					if(userText.getText().equals(""))
+						JOptionPane.showMessageDialog(null, "Não inseriste nome de utilizador");
+					else{
+						
+						if(emailText.getText().equals(""))
+							JOptionPane.showMessageDialog(null, "Não inseriste email");
+						else{
+							if(passwordText.getText().equals("") || passConfirmText.getText().equals(""))
+								JOptionPane.showMessageDialog(null, "Não inseriste password ou não confirmaste password!");
+							else{
+								if(!(passwordText.getText().equals(passConfirmText.getText())))
+									JOptionPane.showMessageDialog(null, "Passwords nao são iguais!");
+							}
+						}
+					}
+				}
 			}
 		});
 		
+	}
+	
+	public ArrayList<User> getUsers(){
+		return register.getUsers();
 	}
 }

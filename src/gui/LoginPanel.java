@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 import javax.swing.JButton;
@@ -15,9 +17,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import funcionalities.Login;
+
 public class LoginPanel extends JPanel{
 
 	private JFrame frame;
+	private RegisterPanel registerPanel;
+	private Login login;
 	
 	public LoginPanel(JFrame frame) {
 		this.frame = frame;
@@ -65,10 +71,15 @@ public class LoginPanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				LoginPanel.this.setVisible(false);
+				login = new Login(userText.getText(), passText.getText(), registerPanel.getUsers());
+				login.confirmLogin();
 				
-				MainPanel mainPanel = new MainPanel(frame);
-				mainPanel.mainPanel();
+				if(login.getLogin() == true){
+					JOptionPane.showMessageDialog(null, "Login com sucesso");
+					LoginPanel.this.setVisible(false);
+					MainPanel mainPanel = new MainPanel(frame);
+					mainPanel.mainPanel();
+				}
 			}
 		});
 
@@ -92,13 +103,9 @@ public class LoginPanel extends JPanel{
 
 				LoginPanel.this.setVisible(false);
 				
-				RegisterPanel registerPanel = new RegisterPanel(frame, LoginPanel.this);
+				registerPanel = new RegisterPanel(frame, LoginPanel.this);
 				registerPanel.register();
-				
 			}
 		});
-	
-
-
 	}	
 }
