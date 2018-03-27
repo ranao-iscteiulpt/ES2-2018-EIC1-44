@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class SignUpFrame {
 
 	private JFrame frame;
-	private RegisterPanel registerPanel;
+	private RegisterPanelold registerPanel;
 
 	public SignUpFrame() {
 		frame = new JFrame();
@@ -26,7 +26,7 @@ public class SignUpFrame {
 		int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
 		frame.setLocation(x, y);
 
-		registerPanel = new RegisterPanel();
+		registerPanel = new RegisterPanelold();
 		registerPanel.signUp();
 
 		frame.add(registerPanel.getRegister());

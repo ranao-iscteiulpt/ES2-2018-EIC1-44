@@ -67,13 +67,18 @@ public class XMLOperations {
 				Element variableType = doc.createElement("type");
 				variableType.appendChild(doc.createTextNode(model.getValueAt(i, 1).toString()));
 				
-				Element variableValue = doc.createElement("value");
-				variableValue.appendChild(doc.createTextNode(model.getValueAt(i, 2).toString()));
+				Element variableMinValue = doc.createElement("minimumValue");
+				variableMinValue.appendChild(doc.createTextNode(model.getValueAt(i, 2).toString()));
+				
+				Element variableMaxValue = doc.createElement("maximumValue");
+				variableMaxValue.appendChild(doc.createTextNode(model.getValueAt(i, 3).toString()));
+				
 				
 				
 				variableElement.appendChild(variableName); //adicionar elemento ao parent
 				variableElement.appendChild(variableType);
-				variableElement.appendChild(variableValue);
+				variableElement.appendChild(variableMinValue);
+				variableElement.appendChild(variableMaxValue);
 			}			
 
 			Element invalidValues = doc.createElement("invalidValues");
