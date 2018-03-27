@@ -51,7 +51,9 @@ public class EmailPanel extends javax.swing.JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				email.sendEmail();
+				email.sendEmail(subjectTF.getText(),messageTF.getText());
+				subjectTF.setText("");
+				messageTF.setText("");
 				
 			}
 		});
