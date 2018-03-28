@@ -21,12 +21,12 @@ public class Frame {
 	private void addComponents() {
 		
 		LoginPanel loginPanel = new LoginPanel(frame);
-		loginPanel.login();		
+		//loginPanel.login();		
 	}
 
 	public void init() {
 		
-		frame.setSize(500, 400);
+		//frame.setSize(580, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
