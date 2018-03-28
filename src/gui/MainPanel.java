@@ -27,6 +27,8 @@ public class MainPanel extends JPanel {
 	}
 
 	public void mainPanel() {
+		frame.setSize(641, 668);
+		frame.setLocationRelativeTo(null);
 		
 		setLayout(new BorderLayout());
 		
@@ -54,6 +56,7 @@ public class MainPanel extends JPanel {
 		JMenuItem loadGraph = new JMenuItem("Load Graph");
 
 		JMenuItem email = new JMenuItem("Emails");
+
 		JMenuItem problemsList = new JMenuItem("Problems List to Solve");
 
 		JMenuItem newProblem = new JMenuItem("New Problem");
@@ -70,6 +73,16 @@ public class MainPanel extends JPanel {
 		});
 
 		JMenuItem sendEmail = new JMenuItem("Send Email");
+		
+		sendEmail.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmailPanel emailPanel = new EmailPanel();
+				form.create(emailPanel);
+				
+			}
+		});
 
 		file.add(loadXml);
 		file.add(loadGraph);
