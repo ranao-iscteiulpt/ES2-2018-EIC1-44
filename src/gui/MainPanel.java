@@ -27,7 +27,7 @@ public class MainPanel extends JPanel {
 	}
 
 	public void mainPanel() {
-		frame.setSize(641, 668);
+		frame.setSize(681, 688);
 		frame.setLocationRelativeTo(null);
 		
 		setLayout(new BorderLayout());

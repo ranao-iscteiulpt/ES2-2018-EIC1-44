@@ -46,10 +46,10 @@ public class RegisterPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         emailTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        passwordTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        confirmpasswordTF = new javax.swing.JTextField();
         registerButton = new javax.swing.JButton();
+        passwordTF = new javax.swing.JPasswordField();
+        confirmPasswordTF = new javax.swing.JPasswordField();
 
         jLabel1.setText("Username");
 
@@ -61,11 +61,11 @@ public class RegisterPanel extends javax.swing.JPanel {
 
         registerButton.setText("Registar");
         
-		registerButton.addActionListener(new ActionListener() {
+        registerButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if(passwordTF.getText().equals(confirmpasswordTF.getText()) && !userNameTF.getText().equals("") && !emailTF.getText().equals("") && !passwordTF.getText().equals("") && !confirmpasswordTF.getText().equals("")){
+				if(passwordTF.getText().equals(confirmPasswordTF.getText()) && !userNameTF.getText().equals("") && !emailTF.getText().equals("") && !passwordTF.getText().equals("") && !confirmPasswordTF.getText().equals("")){
 
 					register = new Register(userNameTF.getText(), emailTF.getText(), passwordTF.getText());
 					register.newRegister();
@@ -85,10 +85,10 @@ public class RegisterPanel extends javax.swing.JPanel {
 						if(emailTF.getText().equals(""))
 							JOptionPane.showMessageDialog(null, "Não inseriste email");
 						else{
-							if(passwordTF.getText().equals("") || confirmpasswordTF.getText().equals(""))
+							if(passwordTF.getText().equals("") || confirmPasswordTF.getText().equals(""))
 								JOptionPane.showMessageDialog(null, "Não inseriste password ou não confirmaste password!");
 							else{
-								if(!(passwordTF.getText().equals(confirmpasswordTF.getText())))
+								if(!(passwordTF.getText().equals(confirmPasswordTF.getText())))
 									JOptionPane.showMessageDialog(null, "Passwords nao são iguais!");
 							}
 						}
@@ -114,10 +114,10 @@ public class RegisterPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmpasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -142,8 +142,8 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmpasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addComponent(confirmPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -155,13 +155,13 @@ public class RegisterPanel extends javax.swing.JPanel {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField confirmpasswordTF;
+    private javax.swing.JPasswordField confirmPasswordTF;
     private javax.swing.JTextField emailTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField passwordTF;
+    private javax.swing.JPasswordField passwordTF;
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField userNameTF;
     // End of variables declaration//GEN-END:variables

@@ -33,10 +33,10 @@
                   </Group>
               </Group>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="passwordTF" min="-2" pref="190" max="-2" attributes="0"/>
-                  <Component id="confirmpasswordTF" min="-2" pref="190" max="-2" attributes="0"/>
                   <Component id="emailTF" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                   <Component id="userNameTF" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Component id="passwordTF" min="-2" pref="190" max="-2" attributes="0"/>
+                  <Component id="confirmPasswordTF" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
@@ -68,9 +68,9 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="confirmpasswordTF" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="confirmPasswordTF" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Component id="registerButton" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -97,19 +97,19 @@
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="passwordTF">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm Password"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="confirmpasswordTF">
-    </Component>
     <Component class="javax.swing.JButton" name="registerButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="passwordTF">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="confirmPasswordTF">
     </Component>
   </SubComponents>
 </Form>
