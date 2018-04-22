@@ -5,14 +5,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+import javax.swing.filechooser.FileSystemView;
 
 import funcionalities.Form;
 
@@ -20,6 +23,7 @@ public class MainPanel extends JPanel {
 
 	private JFrame frame;
 	private Form form = new Form(this);
+	private File selectedFile;
 
 	public MainPanel(JFrame frame) {
 		this.frame = frame;
@@ -47,8 +51,20 @@ public class MainPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				XMLLoadPanel xmlPanel = new XMLLoadPanel();
-				form.create(xmlPanel);
+				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+				 int returnValue = jfc.showOpenDialog(null);
+				 // int returnValue = jfc.showSaveDialog(null);
+
+				 if (returnValue == JFileChooser.APPROVE_OPTION) {
+					 selectedFile = jfc.getSelectedFile(); 
+					 OpenXMLPanel xmlPanel = new OpenXMLPanel(jfc.getSelectedFile());
+					 form.create(xmlPanel);
+				 }
+				
+				 
+//				XMLLoadPanel xmlPanel = new XMLLoadPanel();
+//				form.create(xmlPanel);
 			}
 		});
 

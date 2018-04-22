@@ -110,7 +110,7 @@ public class XMLOperations {
 
 	public Node[] readXML (File xmlFile) {
 
-		Node[] xmlContent = new Node[100];
+		Node[] xmlContent = new Node[30];
 
 		try {
 
@@ -122,11 +122,11 @@ public class XMLOperations {
 
 			doc.getDocumentElement().normalize();
 
-			System.out.println("\nRoot element :" + doc.getDocumentElement().getNodeName());
+			//System.out.println("\nRoot element : " + doc.getDocumentElement().getNodeName());
 
 			NodeList nList = doc.getElementsByTagName("problem");
 
-			System.out.println("----------------------------");
+			//System.out.println("----------------------------");
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 
@@ -137,9 +137,9 @@ public class XMLOperations {
 				//System.out.println("Name: " +nNode.getAttributes().item(temp).getTextContent() );
 
 				for (int i =0 ; i < nNode.getChildNodes().getLength(); i++) {
-					System.out.println("teste "+ nNode.getChildNodes().item(i).getTextContent());	
+			//		System.out.println(" "+ nNode.getChildNodes().item(i).getTextContent());	
 					xmlContent[i] = nNode.getChildNodes().item(i);
-					System.out.println(xmlContent[i].getNodeName());
+				//	System.out.println(xmlContent[i].getNodeName());
 				}
 
 				//System.out.println("Aqui" +xmlContent[0]);
