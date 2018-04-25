@@ -59,7 +59,7 @@ public class RegisterPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Confirm Password");
 
-        registerButton.setText("Registar");
+        registerButton.setText("Register");
         
         registerButton.addActionListener(new ActionListener() {
 			@Override
@@ -70,7 +70,7 @@ public class RegisterPanel extends javax.swing.JPanel {
 					register = new Register(userNameTF.getText(), emailTF.getText(), passwordTF.getText());
 					register.newRegister();
 					
-					JOptionPane.showMessageDialog(null, "Registo com sucesso");
+					JOptionPane.showMessageDialog(null, "Register sucessfully!");
 					
 					RegisterPanel.this.setVisible(false);
 					loginPanel.setVisible(true);
@@ -79,17 +79,17 @@ public class RegisterPanel extends javax.swing.JPanel {
 				else{
 					
 					if(userNameTF.getText().equals(""))
-						JOptionPane.showMessageDialog(null, "Não inseriste nome de utilizador");
+						JOptionPane.showMessageDialog(null, "You didn´t enter the username!");
 					else{
 						
 						if(emailTF.getText().equals(""))
-							JOptionPane.showMessageDialog(null, "Não inseriste email");
+							JOptionPane.showMessageDialog(null, "You didn´t enter the email!");
 						else{
 							if(passwordTF.getText().equals("") || confirmPasswordTF.getText().equals(""))
-								JOptionPane.showMessageDialog(null, "Não inseriste password ou não confirmaste password!");
+								JOptionPane.showMessageDialog(null, "You didn´t enter or confirm  the password!");
 							else{
 								if(!(passwordTF.getText().equals(confirmPasswordTF.getText())))
-									JOptionPane.showMessageDialog(null, "Passwords nao são iguais!");
+									JOptionPane.showMessageDialog(null, "Passwords aren´t equals!");
 							}
 						}
 					}
@@ -148,11 +148,6 @@ public class RegisterPanel extends javax.swing.JPanel {
                 .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    
-	public ArrayList<User> getUsers(){
-		return register.getUsers();
-	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField confirmPasswordTF;

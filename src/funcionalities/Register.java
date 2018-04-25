@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JTextField;
 
+import files.TEXTOperations;
 import gui.User;
 
 public class Register {
@@ -11,7 +12,7 @@ public class Register {
 	private String userText;
 	private String emailText;
 	private String passwordText;
-	private ArrayList<User> users = new ArrayList<>();
+	private TEXTOperations tOperations = new TEXTOperations();
 	
 	public Register(String userText, String emailText, String passwordText){
 		
@@ -21,10 +22,7 @@ public class Register {
 	}
 	
 	public void newRegister(){
-		users.add(new User(userText, passwordText, emailText));
-	}
-	
-	public ArrayList<User> getUsers(){
-		return users;
+
+		tOperations.createRegister(userText, passwordText, emailText);
 	}	
 }

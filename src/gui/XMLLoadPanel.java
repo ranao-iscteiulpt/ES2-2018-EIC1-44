@@ -8,8 +8,6 @@ import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 
-import xml.XMLOperations;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -19,6 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
 import org.w3c.dom.Node;
+
+import files.XMLOperations;
+
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;

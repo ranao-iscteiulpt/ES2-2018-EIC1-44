@@ -1,4 +1,4 @@
-package gui;
+/*package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -34,4 +34,4 @@ public class SignUpFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-}
+}*/

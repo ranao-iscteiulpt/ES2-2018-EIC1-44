@@ -16,7 +16,7 @@ import javax.swing.filechooser.FileSystemView;
 import org.omg.PortableInterceptor.DISCARDING;
 import org.w3c.dom.Node;
 
-import xml.XMLOperations;
+import files.XMLOperations;
 
 /**
  *

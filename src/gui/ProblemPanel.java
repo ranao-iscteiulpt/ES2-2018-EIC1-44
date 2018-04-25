@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import xml.XMLOperations;
+import files.XMLOperations;
 
 /**
  *
