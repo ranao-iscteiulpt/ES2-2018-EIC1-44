@@ -43,6 +43,9 @@ public class MainPanel extends JPanel {
 		menu.add(view);
 		JMenu actions = new JMenu("Actions");
 		menu.add(actions);
+		JMenu help = new JMenu("Help");
+		menu.add(help);
+
 
 		JMenuItem loadXml = new JMenuItem("Load XML");
 
@@ -90,6 +93,7 @@ public class MainPanel extends JPanel {
 
 		JMenuItem sendEmail = new JMenuItem("Send Email");
 		
+		
 		sendEmail.addActionListener(new ActionListener() {
 			
 			@Override
@@ -99,7 +103,18 @@ public class MainPanel extends JPanel {
 				
 			}
 		});
+		
+		JMenuItem faq = new JMenuItem("FAQ");
 
+		faq.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FaqPanel faqPanel = new FaqPanel();
+				form.create(faqPanel);
+			}
+		});
+		
 		file.add(loadXml);
 		file.add(loadGraph);
 
@@ -109,6 +124,8 @@ public class MainPanel extends JPanel {
 		actions.add(newProblem);
 		actions.add(sendEmail);
 
+		help.add(faq);
+		
 		frame.setJMenuBar(menu);
 		frame.add(this,BorderLayout.CENTER);
 
