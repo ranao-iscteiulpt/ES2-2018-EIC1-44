@@ -115,6 +115,18 @@ public class MainPanel extends JPanel {
 			}
 		});
 		
+		JMenuItem optimization = new JMenuItem("Optimization");
+		optimization.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OptimizationPanel optimizatinPanel = new OptimizationPanel();
+				form.create(optimizatinPanel);
+			}
+		});
+		
+		
+		
 		file.add(loadXml);
 		file.add(loadGraph);
 
@@ -123,6 +135,7 @@ public class MainPanel extends JPanel {
 
 		actions.add(newProblem);
 		actions.add(sendEmail);
+		actions.add(optimization);
 
 		help.add(faq);
 		
