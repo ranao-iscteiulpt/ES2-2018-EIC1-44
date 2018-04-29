@@ -73,8 +73,7 @@ public class XMLOperations {
 				Element variableMaxValue = doc.createElement("maximumValue");
 				variableMaxValue.appendChild(doc.createTextNode(model.getValueAt(i, 3).toString()));
 				
-				
-				
+							
 				variableElement.appendChild(variableName); //adicionar elemento ao parent
 				variableElement.appendChild(variableType);
 				variableElement.appendChild(variableMinValue);
