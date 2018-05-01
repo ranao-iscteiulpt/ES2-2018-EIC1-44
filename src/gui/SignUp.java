@@ -2,6 +2,8 @@ package gui;
 
 import java.util.ArrayList;
 
+import objects.User;
+
 public class SignUp {
 	
 	private ArrayList<User> usersRegister=new ArrayList<User>();

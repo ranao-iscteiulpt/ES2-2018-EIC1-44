@@ -18,7 +18,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="waitTimeLabel" max="32767" attributes="0"/>
@@ -27,67 +27,83 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="invalidValueTF" min="-2" pref="106" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="waitTimeTF" min="-2" pref="54" max="-2" attributes="0"/>
+                              <Component id="waitTime" min="-2" pref="54" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="timeComboBox" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="nameTF" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="invalidValue" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                          <Component id="name" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="358" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="variableMaxLabel" min="-2" pref="85" max="-2" attributes="0"/>
-                                      <Component id="variableMinLabel" min="-2" pref="85" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="variableMinValueTF" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="variableMaxValueTF" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="variableNameLabel" min="-2" pref="85" max="-2" attributes="0"/>
-                                      <Component id="variableTyleLabel" min="-2" pref="85" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="variableTypeTF" min="-2" pref="127" max="-2" attributes="0"/>
-                                      <Component id="variableNameTF" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="addVariableButton" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="sendButton" alignment="1" min="-2" pref="90" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel8" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jScrollPane1" min="-2" pref="358" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="variableMaxLabel" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <Component id="variableMinLabel" min="-2" pref="85" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="variableMinValue" min="-2" pref="127" max="-2" attributes="0"/>
+                                              <Component id="variableMaxValue" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="variableNameLabel" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="variableName" min="-2" pref="127" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="generateVariablesButton" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="variableTyleLabel" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="variableType" min="-2" pref="127" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="Quantity" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="variableQuantity" min="-2" pref="127" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="doneButton" alignment="1" min="-2" pref="90" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel8" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="panelTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="panelTitle" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nameLabel" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="nameTF" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="name" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="waitTimeLabel" min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="waitTimeTF" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="waitTime" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="timeComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -98,33 +114,38 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="invalidValueTF" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="invalidValue" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="variableNameLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="variableNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="variableNameLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="variableName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="variableQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Quantity" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="variableType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="variableTyleLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="variableMinValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="variableMinLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="variableMaxLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="variableMaxValue" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="variableTyleLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="variableTypeTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="variableMinLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="variableMinValueTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="variableMaxLabel" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="variableMaxValueTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="addVariableButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="generateVariablesButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="195" max="-2" attributes="0"/>
               </Group>
@@ -132,8 +153,8 @@
               <Component id="jLabel8" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
-              <Component id="sendButton" min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Component id="doneButton" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -158,24 +179,19 @@
         <Property name="text" type="java.lang.String" value="Wait Time"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="waitTimeTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="waitTimeTFActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="waitTime">
     </Component>
     <Component class="javax.swing.JComboBox" name="timeComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="minutes"/>
-            <StringItem index="1" value="hours"/>
-            <StringItem index="2" value="days"/>
+          <StringArray count="4">
+            <StringItem index="0" value="seconds"/>
+            <StringItem index="1" value="minutes"/>
+            <StringItem index="2" value="hours"/>
+            <StringItem index="3" value="days"/>
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeComboBoxActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -186,18 +202,12 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Invalid Value"/>
+        <Property name="text" type="java.lang.String" value="Invalid Values"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nameTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTFActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="name">
     </Component>
-    <Component class="javax.swing.JTextField" name="invalidValueTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="invalidValueTFActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="invalidValue">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -225,47 +235,33 @@
         <Property name="text" type="java.lang.String" value="Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="variableNameTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="variableNameTFActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="variableName">
     </Component>
     <Component class="javax.swing.JLabel" name="variableMinLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Min Value"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="variableMinValueTF">
+    <Component class="javax.swing.JTextField" name="variableMinValue">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="variableMinValueTFActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="variableMaxLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Max Value"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="variableMaxValueTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="variableMaxValueTFActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="variableTypeTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="variableTypeTFActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="variableMaxValue">
     </Component>
     <Component class="javax.swing.JLabel" name="variableTyleLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Type"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="addVariableButton">
+    <Component class="javax.swing.JButton" name="generateVariablesButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add"/>
+        <Property name="text" type="java.lang.String" value="Generate Variables"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -275,7 +271,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="descriptionTA">
+        <Component class="javax.swing.JTextArea" name="description">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -292,10 +288,39 @@
         <Property name="text" type="java.lang.String" value="Description"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="sendButton">
+    <Component class="javax.swing.JButton" name="doneButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Send"/>
+        <Property name="text" type="java.lang.String" value="Done"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="variableType">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="integer"/>
+            <StringItem index="1" value="string"/>
+            <StringItem index="2" value="binary"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Quantity">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quantity"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="variableQuantity">
+    </Component>
+    <Component class="javax.swing.JLabel" name="panelTitle">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="New Problem"/>
       </Properties>
     </Component>
   </SubComponents>

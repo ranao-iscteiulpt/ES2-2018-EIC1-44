@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 import files.TEXTOperations;
-import gui.User;
+import objects.User;
 
 public class Register {
 

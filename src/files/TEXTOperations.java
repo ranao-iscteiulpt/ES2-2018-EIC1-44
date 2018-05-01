@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import gui.User;
+import objects.User;
 
 public class TEXTOperations {
 	
