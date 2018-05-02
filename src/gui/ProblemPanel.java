@@ -99,7 +99,7 @@ public class ProblemPanel extends javax.swing.JPanel {
         doneButton.setText("Done");
         doneButton.setToolTipText("");
 
-        variableType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "integer", "string", "binary" }));
+        variableType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "integer", "double", "binary" }));
 
         Quantity.setText("Quantity");
 
