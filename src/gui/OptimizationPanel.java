@@ -18,6 +18,7 @@ import funcionalities.Optimization;
 import jMetal.AntiSpamFilterAutomaticConfiguration;
 import jMetal.OptimizationProcess;
 import objects.Problem;
+import objects.Variable;
 
 /**
  *
@@ -71,7 +72,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
         algorithmLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         algorithmLabel.setText("Algorithm");
 
-        algorithmCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //algorithmCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         variablesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +119,13 @@ public class OptimizationPanel extends javax.swing.JPanel {
 
 		for (File f: fileList) {
 			problemCB.addItem(f.getName());
+			//metodoTemporario();
 		}
+		
+		for(String algorithm : optimizationProcess.getAlgorithmsDouble()) {
+			algorithmCB.addItem(algorithm);
+		}
+				
 		
 		optimizeButton.addActionListener(new ActionListener() {
 
@@ -166,6 +173,8 @@ public class OptimizationPanel extends javax.swing.JPanel {
 								if(n.getChildNodes().item(i).getNodeName().equals("maximumValue"))
 									variableMaximumValue = n.getChildNodes().item(i).getTextContent();
 							}
+							variable = new Variable(variableName,variableType,Integer.parseInt(variableMinimumValue),Integer.parseInt(variableMaximumValue));
+							variableList.add(variable);
 						}
 
 						if(n.getNodeName().equals("invalidValues"))
@@ -173,12 +182,14 @@ public class OptimizationPanel extends javax.swing.JPanel {
 
 					}
 					
-					problem = new Problem(name, description, Integer.parseInt(waitTime), Integer.parseInt(invalidValue), variableCounter);
+					problem = new Problem(name, description, Integer.parseInt(waitTime), Integer.parseInt(invalidValue), variableCounter, variableList);
 					antiSpamFilter.init(problem);
 					
 				} catch (Exception e1) {
 					// TODO: handle exception
 				}
+				
+				System.out.println( problem.getDescription() );
 			}
 		});
 
@@ -268,6 +279,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
                         .addGap(114, 114, 114))))
         );
     }// </editor-fold>//GEN-END:initComponents
+	
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -293,5 +305,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 	private AntiSpamFilterAutomaticConfiguration antiSpamFilter = new AntiSpamFilterAutomaticConfiguration();
 	private Problem problem;
 	private OptimizationProcess optimizationProcess = new OptimizationProcess();
+	private Variable variable;
+	private ArrayList<Variable> variableList = new ArrayList<Variable>();
 
 }

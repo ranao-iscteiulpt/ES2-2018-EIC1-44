@@ -9,7 +9,7 @@ public class OptimizationProcess {
 	String[] AlgorithsForIntegerProblemType = new String[]{"NSGAII","SMSEMOA","MOCell","PAES","RandomSearch"};
 	String[] AlgorithsForBinaryProblemType = new String[]{"NSGAII","SMSEMOA","MOCell","MOCH","PAES","RandomSearch","SPEA2"};	
 
-	public static void main(String[] args) {
+	public void init() {
 		try {
 
 /* Deverão ser comentadas ou retiradas de comentário as linhas 
@@ -29,4 +29,8 @@ public class OptimizationProcess {
 			e.printStackTrace();
 		}
 	} 
+	
+	public String[] getAlgorithmsDouble() {
+		return AlgorithsForDoubleProblemType;
+	}
 }
