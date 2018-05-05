@@ -5,8 +5,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
+
+import objects.Problem;
+import objects.Variable;
 
 /* Implementação de um problema do tipo Double que executa o .jar externo
    Kursawe.jar e pode ser usado como um dos problema de teste indicados 
@@ -14,23 +20,28 @@ import org.uma.jmetal.solution.DoubleSolution;
 
 @SuppressWarnings("serial")
 public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
+	
+	private Problem problem;
 		
-	  public MyProblemDoubleExternalViaJAR() {
+	  public MyProblemDoubleExternalViaJAR(Problem problem, String variableType, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) {
 	    // 10 variables (anti-spam filter rules) by default 
-	    this(10);
+	    this(problem.getVariableCounter());
+	    this.problem = problem;
 	  }
 
 	  public MyProblemDoubleExternalViaJAR(Integer numberOfVariables) {
 	    setNumberOfVariables(numberOfVariables);
-	    setNumberOfObjectives(2);
+	    setNumberOfObjectives(2); //tem a haver com as variaveis da optimizacao panel
 	    setName("MyProblemDoubleExternalViaJAR");
 
 	    List<Double> lowerLimit = new ArrayList<>(getNumberOfVariables()) ;
 	    List<Double> upperLimit = new ArrayList<>(getNumberOfVariables()) ;
 
 	    for (int i = 0; i < getNumberOfVariables(); i++) {
-	      lowerLimit.add(-5.0);
-	      upperLimit.add(5.0);
+	      lowerLimit.add( ((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
+	      upperLimit.add(((Variable) problem.getVariableList().get(i)).getMaxValueDouble() );
+	      System.out.println( "Min " +((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
+	      System.out.println( "Max " +((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
 	    }
 
 	    setLowerLimit(lowerLimit);

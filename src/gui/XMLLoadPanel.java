@@ -134,10 +134,10 @@ public class XMLLoadPanel extends JPanel {
 					 //System.out.println(selectedFile.getAbsolutePath());
 
 					 Node[] xmlFile = xmlOperations.readXML(selectedFile);
-					 lblTitletext.setText( xmlFile[0].getTextContent().toString());
-					 lblDescriptionText.setText(xmlFile[1].getTextContent().toString());
-					 lblWaittimeText.setText(xmlFile[2].getTextContent().toString());
-
+					 lblTitletext.setText( xmlFile[0].toString());
+//					 lblDescriptionText.setText(xmlFile[1].getTextContent().toString());
+//					 lblWaittimeText.setText(xmlFile[2].getTextContent().toString());
+//
 					 for(Node n : xmlFile) {
 
 						 if(n.getNodeName().equals("variable") )	{

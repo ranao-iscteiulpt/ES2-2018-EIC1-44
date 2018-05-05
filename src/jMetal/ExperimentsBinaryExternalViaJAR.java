@@ -24,6 +24,8 @@ import org.uma.jmetal.util.experiment.component.*;
 import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 import org.uma.jmetal.util.experiment.util.ExperimentProblem;
 
+import objects.Problem;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +35,7 @@ public class ExperimentsBinaryExternalViaJAR {
   private static final int INDEPENDENT_RUNS = 2;
   private static final int maxEvaluations = 250;
   
-  public static void main(String[] args) throws IOException {
+  public void startOptimization (Problem problem) throws IOException {
     String experimentBaseDirectory = "experimentBaseDirectory";
 
     List<ExperimentProblem<BinarySolution>> problemList = new ArrayList<>();

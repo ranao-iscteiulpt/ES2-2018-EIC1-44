@@ -7,11 +7,11 @@ public class Problem {
 	private ArrayList<Variable> variableList;
 	private String name;
 	private String description;
-	private int waitTime;
+	private String waitTime;
 	private int invalidValue;
 	private int variableCounter;
 
-	public Problem(String name, String description, int waitTime, int invalidValue, int variableCounter,ArrayList variableList) {
+	public Problem(String name, String description, String waitTime, int invalidValue, int variableCounter,ArrayList<Variable> variableList) {
 		this.name = name;
 		this.description = description;
 		this.waitTime = waitTime;
@@ -28,7 +28,7 @@ public class Problem {
 		return description;
 	}
 
-	public int getWaitTime() {
+	public String getWaitTime() {
 		return waitTime;
 	}
 
@@ -39,6 +39,14 @@ public class Problem {
 	public int getVariableCounter() {
 		return variableCounter;
 	}
-
+	
+	public ArrayList getVariableList() {
+		return variableList;
+	}
+	
+	@Override
+	public String toString() {
+		return "Problem Name: "+name+", Description: "+description+", waiTime: " +waitTime+", invalidValue: "+invalidValue+", Variables" + variableList;
+	}
 
 }

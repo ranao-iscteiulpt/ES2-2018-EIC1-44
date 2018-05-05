@@ -40,6 +40,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 		try {
 			model.setRowCount(0);
 			file = jfc;
+			System.out.println(file);
 			Node[] xmlFile = xmlOperations.readXML(file);
 			nameTF.setText( xmlFile[0].getTextContent().toString());
 			descriptionTA.setText(xmlFile[1].getTextContent().toString());
@@ -76,7 +77,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("falhou");
 		}
 		//lblInvalidText.setText(xmlFile[xmlFile.length]);
 	}

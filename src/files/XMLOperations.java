@@ -136,7 +136,7 @@ public class XMLOperations {
 				//System.out.println("Name: " +nNode.getAttributes().item(temp).getTextContent() );
 
 				for (int i =0 ; i < nNode.getChildNodes().getLength(); i++) {
-			//		System.out.println(" "+ nNode.getChildNodes().item(i).getTextContent());	
+					//System.out.println(" "+ nNode.getChildNodes().item(i).getTextContent());	
 					xmlContent[i] = nNode.getChildNodes().item(i);
 				//	System.out.println(xmlContent[i].getNodeName());
 				}
@@ -145,7 +145,7 @@ public class XMLOperations {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Reading XML Failed");
 		}
 
 		return xmlContent;

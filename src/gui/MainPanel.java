@@ -64,8 +64,6 @@ public class MainPanel extends JPanel {
 					 OpenXMLPanel xmlPanel = new OpenXMLPanel(jfc.getSelectedFile());
 					 form.create(xmlPanel);
 				 }
-				
-				 
 //				XMLLoadPanel xmlPanel = new XMLLoadPanel();
 //				form.create(xmlPanel);
 			}
