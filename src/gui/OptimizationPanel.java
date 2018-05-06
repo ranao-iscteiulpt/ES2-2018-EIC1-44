@@ -7,6 +7,8 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
@@ -124,29 +126,49 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		for (File f: fileList) {
 			problemCB.addItem(f.getName());
 		}
+		
+		for (File f: fileList) {
+			resetComboBoxValues();
+			if(problemCB.getSelectedItem().equals(f.getName())) {
+				receiveData(f);
+			}
+			fillAlgorithmComboBox();
+		}
 
-
-
-		problemDoneButton.addActionListener(new ActionListener() {
+		problemCB.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				resetComboBoxValues();
-				for (File f: fileList) {
-					if(problemCB.getSelectedItem().equals(f.getName())) {
-						receiveData(f);
-					}
+				algorithmsChosenList.removeAllElements();
+				
+				if(problemCB.getSelectedIndex() != 0 ) {
+					for (File f: fileList) {
+						resetComboBoxValues();
+						if(problemCB.getSelectedItem().equals(f.getName())) {
+							receiveData(f);
+						}
+						fillAlgorithmComboBox();
+					}	
 				}
-				fillAlgorithmComboBox();
-			}	
+				else {
+					for (File f: fileList) {
+						resetComboBoxValues();
+						if(problemCB.getSelectedItem().equals(f.getName())) {
+							receiveData(f);
+						}
+						fillAlgorithmComboBox();
+					}	
+				}
+
+			}
 		});
 
 		addAlgorithmButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				algorithmsChosenList.addElement(algorithmCB.getSelectedItem().toString());	
+				if( !isOnList())
+					algorithmsChosenList.addElement(algorithmCB.getSelectedItem().toString());	
 			}
 		});
 
@@ -163,7 +185,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addFitnessVariable();
-				
+
 			}
 		});
 
@@ -261,6 +283,14 @@ public class OptimizationPanel extends javax.swing.JPanel {
 				);
 	}// </editor-fold>//GEN-END:initComponents
 
+	public boolean isOnList() {
+		for(int i = 0; i < algorithmsChosenList.getSize() ; i++ ) {
+			if(algorithmsChosenList.get(i).equals(algorithmCB.getSelectedItem())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public void resetComboBoxValues() {
 		algorithmCB.removeAllItems();		
@@ -340,7 +370,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		} catch(Exception e ) {	}
 		problem = new Problem(name,description,waitTime,Integer.parseInt(invalidValue),variableCounter,variableList);
 	}
-	
+
 	private void addFitnessVariable() {
 		fitnessVariables.addRow(new Object[] {fitnessName.getText(),fitnessJarFile.getText()});
 	}
@@ -378,7 +408,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 	private File file;
 	private int variableCounter;
 	private File choosenFile;
-	private DefaultListModel<String> algorithmsChosenList = new DefaultListModel<>();
+	private DefaultListModel<String> algorithmsChosenList = new DefaultListModel<String>();
 	private String variableType=""; 
 	private DefaultTableModel fitnessVariables = new DefaultTableModel();
 
