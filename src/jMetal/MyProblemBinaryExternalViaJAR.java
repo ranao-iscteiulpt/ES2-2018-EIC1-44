@@ -5,9 +5,14 @@ import org.uma.jmetal.solution.BinarySolution;
 import org.uma.jmetal.solution.impl.DefaultBinarySolution;
 import org.uma.jmetal.util.JMetalException;
 
+import objects.Problem;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.BitSet;
+
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /* Implementação de um problema do tipo Binary que executa o .jar externo
    OneZeroMax.jar e pode ser usado como um dos problema de teste indicados 
@@ -17,14 +22,13 @@ import java.util.BitSet;
 public class MyProblemBinaryExternalViaJAR extends AbstractBinaryProblem {
 	  private int bits ;
 
-	  public MyProblemBinaryExternalViaJAR() throws JMetalException {
-		// 10 decision variables by default  
-	    this(10);
+	  public MyProblemBinaryExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) throws JMetalException { 
+		 this(problem.getVariableCounter(),problem,fitnessVariables);
 	  }
 
-	  public MyProblemBinaryExternalViaJAR(Integer numberOfBits) throws JMetalException {
-		setNumberOfVariables(1);
-	    setNumberOfObjectives(2);
+	  public MyProblemBinaryExternalViaJAR(Integer numberOfBits, Problem problem, DefaultTableModel fitnessVariables) throws JMetalException {
+		setNumberOfVariables(1); //?
+	    setNumberOfObjectives(fitnessVariables.getRowCount());
 	    setName("MyProblemBinaryExternalViaJAR");
 	    bits = numberOfBits ;
 
@@ -52,7 +56,7 @@ public class MyProblemBinaryExternalViaJAR extends AbstractBinaryProblem {
 	    solutionString = bitset.toString();
 	    try {
 			String line;
-	    	Process p = Runtime.getRuntime().exec("java -jar c:\\OneZeroMax.jar" + " " + solutionString);
+	    	Process p = Runtime.getRuntime().exec("java -jar C:\\Users\\Ricardo\\Desktop\\OneZeroMax.jar" + " " + solutionString);
 	    	BufferedReader brinput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	    	while ((line = brinput.readLine()) != null) 
 	    		{evaluationResultString+=line;}

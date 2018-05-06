@@ -24,18 +24,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
 public class ExperimentsIntegeExternalViaJAR {
 	private static final int INDEPENDENT_RUNS = 2;
 	private static final int maxEvaluations = 250;
 
-	public void startOptimization (Problem problem) throws IOException {
+	private Problem problem;
+	private DefaultListModel algorithmsList;
+	private DefaultTableModel fitnessVariables;
+
+	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) throws IOException {
+		this.problem = problem;
+		this.algorithmsList = algorithmsList;
+		this.fitnessVariables = fitnessVariables;
+
 		String experimentBaseDirectory = "experimentBaseDirectory";
 
 		List<ExperimentProblem<IntegerSolution>> problemList = new ArrayList<>();
-		problemList.add(new ExperimentProblem<>(new MyProblemIntegerExternalViaJAR()));
+		problemList.add(new ExperimentProblem<>(new MyProblemIntegerExternalViaJAR(problem, algorithmsList, fitnessVariables)));
 
 		List<ExperimentAlgorithm<IntegerSolution, List<IntegerSolution>>> algorithmList =
-				configureAlgorithmList(problemList);
+				configureAlgorithmList(problemList,algorithmsList);
 
 		Experiment<IntegerSolution, List<IntegerSolution>> experiment =
 				new ExperimentBuilder<IntegerSolution, List<IntegerSolution>>("ExperimentsIntegerExternalViaJAR")
@@ -58,19 +69,54 @@ public class ExperimentsIntegeExternalViaJAR {
 	}
 
 	static List<ExperimentAlgorithm<IntegerSolution, List<IntegerSolution>>> configureAlgorithmList(
-			List<ExperimentProblem<IntegerSolution>> problemList) {
+			List<ExperimentProblem<IntegerSolution>> problemList, DefaultListModel algorithmList) {
 		List<ExperimentAlgorithm<IntegerSolution, List<IntegerSolution>>> algorithms = new ArrayList<>();
 
 		for (int i = 0; i < problemList.size(); i++) {
-			Algorithm<List<IntegerSolution>> algorithm1 = new NSGAIIBuilder<>(
-					problemList.get(i).getProblem(),
-					new IntegerSBXCrossover(0.9, 20.0),
-					new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0))
-					.setMaxEvaluations(maxEvaluations)
-					.setPopulationSize(100)
-					.build();
-			algorithms.add(new ExperimentAlgorithm<>(algorithm1, "NSGAII", problemList.get(i).getTag()));
+			for(int j = 0; i < algorithmList.size(); j++) {
 
+				if(algorithmList.get(i).equals("NSGAII")) { 
+					Algorithm<List<IntegerSolution>> algorithm1 = new NSGAIIBuilder<>(
+							problemList.get(i).getProblem(),
+							new IntegerSBXCrossover(0.9, 20.0),
+							new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0))
+							.setMaxEvaluations(maxEvaluations)
+							.setPopulationSize(100)
+							.build();
+					algorithms.add(new ExperimentAlgorithm<>(algorithm1, "NSGAII", problemList.get(i).getTag()));
+				}
+				
+				if(algorithmList.get(i).equals("SMSEMOA")) {
+				    Algorithm<List<IntegerSolution>> algorithm2 = new SMSEMOABuilder<>(
+				    		problemList.get(i).getProblem(),
+				    		new IntegerSBXCrossover(0.9, 20.0),
+				    		new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0))
+				    		.setMaxEvaluations(maxEvaluations).build();      
+					    algorithms.add(new ExperimentAlgorithm<>(algorithm2, "SMSEMOA", problemList.get(i).getTag()));
+				}
+				
+				if(algorithmList.get(i).equals("MOCell")) {
+						  Algorithm<List<IntegerSolution>> algorithm3 = new MOCellBuilder<>(
+								  problemList.get(i).getProblem(),
+								  new IntegerSBXCrossover(0.9, 20.0),
+								  new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0))
+								  .setMaxEvaluations(maxEvaluations).build();
+						  algorithms.add(new ExperimentAlgorithm<>(algorithm3, "MOCell", problemList.get(i).getTag())); 
+				}
+				
+				if(algorithmList.get(i).equals("MOCell")) {
+						  Algorithm<List<IntegerSolution>> algorithm4 = new PAESBuilder<>(
+								  problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).setArchiveSize(100).setBiSections(2).setMutationOperator(new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0)).build();
+						  algorithms.add(new ExperimentAlgorithm<>(algorithm4, "PAES", problemList.get(i).getTag())); 
+				}
+				
+				if(algorithmList.get(i).equals("MOCell")) {
+						  Algorithm<List<IntegerSolution>> algorithm5 = new RandomSearchBuilder<>(
+								  problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).build();
+						  algorithms.add(new ExperimentAlgorithm<>(algorithm5, "RandomSearch", problemList.get(i).getTag()));
+				}
+				
+			}
 			/* As simulações com ExternalViaJAR no nome tem as funções de avaliação 
       implementadas em .JAR externos que são invocados no método evaluate() 
       As simulações que executam .jar externos são muito mais demoradas, 
@@ -78,14 +124,6 @@ public class ExperimentsIntegeExternalViaJAR {
 			/* Deverão ser comentadas ou retiradas de comentário as linhas 
       correspondentes às simulações que se pretendem executar */      
 
-			//    Algorithm<List<IntegerSolution>> algorithm2 = new SMSEMOABuilder<>(problemList.get(i).getProblem(), new IntegerSBXCrossover(0.9, 20.0),new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0)).setMaxEvaluations(maxEvaluations).build();      
-			//    algorithms.add(new ExperimentAlgorithm<>(algorithm2, "SMSEMOA", problemList.get(i).getTag()));
-			//	  Algorithm<List<IntegerSolution>> algorithm3 = new MOCellBuilder<>(problemList.get(i).getProblem(),new IntegerSBXCrossover(0.9, 20.0), new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0)).setMaxEvaluations(maxEvaluations).build();
-			//	  algorithms.add(new ExperimentAlgorithm<>(algorithm3, "MOCell", problemList.get(i).getTag()));    
-			//	  Algorithm<List<IntegerSolution>> algorithm4 = new PAESBuilder<>(problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).setArchiveSize(100).setBiSections(2).setMutationOperator(new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0)).build();
-			//	  algorithms.add(new ExperimentAlgorithm<>(algorithm4, "PAES", problemList.get(i).getTag())); 	
-			//	  Algorithm<List<IntegerSolution>> algorithm5 = new RandomSearchBuilder<>(problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).build();
-			//	  algorithms.add(new ExperimentAlgorithm<>(algorithm5, "RandomSearch", problemList.get(i).getTag()));
 		}
 		return algorithms;
 	}

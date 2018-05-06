@@ -51,5 +51,6 @@ public class Variable {
 	public String toString() {
 		return "Variable [name=" + name + ", type=" + type + ", minValue=" + minValue + ", maxValue=" + maxValue + "]";
 	}
+		
 
 }

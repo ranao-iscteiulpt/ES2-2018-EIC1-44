@@ -4,10 +4,16 @@ import org.uma.jmetal.problem.impl.AbstractIntegerProblem;
 import org.uma.jmetal.solution.IntegerSolution;
 import org.uma.jmetal.util.JMetalException;
 
+import objects.Problem;
+import objects.Variable;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 
 /* Implementação de um problema do tipo Integer que executa o .jar externo
    NMMin.jar e pode ser usado como um dos problema de teste indicados 
@@ -16,22 +22,21 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class MyProblemIntegerExternalViaJAR extends AbstractIntegerProblem {
 	
-	  public MyProblemIntegerExternalViaJAR() throws JMetalException {
-		// 10 decision variables by default  
-	    this(10);
+	  public MyProblemIntegerExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) throws JMetalException {
+		  this(problem.getVariableCounter(),problem,fitnessVariables);
 	  }
 
-	  public MyProblemIntegerExternalViaJAR(Integer numberOfVariables) throws JMetalException {
+	  public MyProblemIntegerExternalViaJAR(Integer numberOfVariables, Problem problem, DefaultTableModel fitnessVariables) throws JMetalException {
 	    setNumberOfVariables(numberOfVariables);
-	    setNumberOfObjectives(2);
+	    setNumberOfObjectives(fitnessVariables.getRowCount());
 	    setName("MyProblemIntegerExternalViaJAR");
 
 	    List<Integer> lowerLimit = new ArrayList<>(getNumberOfVariables()) ;
 	    List<Integer> upperLimit = new ArrayList<>(getNumberOfVariables()) ;
 
 	    for (int i = 0; i < getNumberOfVariables(); i++) {
-	      lowerLimit.add(-1000);
-	      upperLimit.add(+1000);
+	      lowerLimit.add( ((Variable) problem.getVariableList().get(i)).getMinValue() );
+	      upperLimit.add( ((Variable) problem.getVariableList().get(i)).getMaxValue() );
 	    }
 
 	    setLowerLimit(lowerLimit);

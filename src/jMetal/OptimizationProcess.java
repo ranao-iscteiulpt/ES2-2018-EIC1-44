@@ -32,13 +32,13 @@ public class OptimizationProcess {
    maxEvaluations e INDEPENDENT_RUNS tem por isso valores mais baixos */
 
 			if(variableType.equals("double"))
-				experimentsDouble.startOptimization(problem, variableType, algorithmsList, fitnessVariables);
+				experimentsDouble.startOptimization(problem, algorithmsList, fitnessVariables);
 
 			if(variableType.equals("integer"))
-				experimentsInteger.startOptimization(problem);
+				experimentsInteger.startOptimization(problem, algorithmsList, fitnessVariables);
 
 			if(variableType.equals("binary"))
-				experimentsBinary.startOptimization(problem);	
+				experimentsBinary.startOptimization(problem, algorithmsList, fitnessVariables);	
 
 		} catch (IOException e) {
 			e.printStackTrace();
