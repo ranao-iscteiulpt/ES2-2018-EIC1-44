@@ -406,7 +406,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 	private ArrayList<Variable> variableList = new ArrayList<Variable>();
 	private File fileTemp;
 	private File file;
-	private int variableCounter;
+	private int variableCounter=0;
 	private File choosenFile;
 	private DefaultListModel<String> algorithmsChosenList = new DefaultListModel<String>();
 	private String variableType=""; 

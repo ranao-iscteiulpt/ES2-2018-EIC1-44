@@ -21,6 +21,7 @@ import objects.Variable;
 @SuppressWarnings("serial")
 public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 
+	private int contador=0;
 
 	public MyProblemDoubleExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) {
 		this(problem.getVariableCounter(),problem,fitnessVariables);
@@ -35,6 +36,7 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		List<Double> upperLimit = new ArrayList<>(getNumberOfVariables()) ;
 
 		for (int i = 0; i < getNumberOfVariables(); i++) {
+			System.out.println("NUMERO DE VARIAVEIS: " + getNumberOfVariables());
 			lowerLimit.add( ((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
 			upperLimit.add(((Variable) problem.getVariableList().get(i)).getMaxValueDouble() );
 		}
@@ -44,7 +46,8 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 	}
 
 	public void evaluate(DoubleSolution solution){
-		
+		contador++;
+		System.out.println(contador);		
 		String solutionString ="";
 		String evaluationResultString ="";
 		for (int i = 0; i < solution.getNumberOfVariables(); i++) {

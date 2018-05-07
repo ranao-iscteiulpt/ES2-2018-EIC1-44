@@ -41,7 +41,8 @@ public class OptimizationProcess {
 				experimentsBinary.startOptimization(problem, algorithmsList, fitnessVariables);	
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("acabou");
 		}
 	} 
 

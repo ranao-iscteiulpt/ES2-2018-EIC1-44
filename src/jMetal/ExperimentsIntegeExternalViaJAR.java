@@ -73,9 +73,9 @@ public class ExperimentsIntegeExternalViaJAR {
 		List<ExperimentAlgorithm<IntegerSolution, List<IntegerSolution>>> algorithms = new ArrayList<>();
 
 		for (int i = 0; i < problemList.size(); i++) {
-			for(int j = 0; i < algorithmList.size(); j++) {
+			for(int j = 0; j < algorithmList.size(); j++) {
 
-				if(algorithmList.get(i).equals("NSGAII")) { 
+				if(algorithmList.get(j).equals("NSGAII")) { 
 					Algorithm<List<IntegerSolution>> algorithm1 = new NSGAIIBuilder<>(
 							problemList.get(i).getProblem(),
 							new IntegerSBXCrossover(0.9, 20.0),
@@ -86,7 +86,7 @@ public class ExperimentsIntegeExternalViaJAR {
 					algorithms.add(new ExperimentAlgorithm<>(algorithm1, "NSGAII", problemList.get(i).getTag()));
 				}
 				
-				if(algorithmList.get(i).equals("SMSEMOA")) {
+				if(algorithmList.get(j).equals("SMSEMOA")) {
 				    Algorithm<List<IntegerSolution>> algorithm2 = new SMSEMOABuilder<>(
 				    		problemList.get(i).getProblem(),
 				    		new IntegerSBXCrossover(0.9, 20.0),
@@ -95,7 +95,7 @@ public class ExperimentsIntegeExternalViaJAR {
 					    algorithms.add(new ExperimentAlgorithm<>(algorithm2, "SMSEMOA", problemList.get(i).getTag()));
 				}
 				
-				if(algorithmList.get(i).equals("MOCell")) {
+				if(algorithmList.get(j).equals("MOCell")) {
 						  Algorithm<List<IntegerSolution>> algorithm3 = new MOCellBuilder<>(
 								  problemList.get(i).getProblem(),
 								  new IntegerSBXCrossover(0.9, 20.0),
@@ -104,13 +104,13 @@ public class ExperimentsIntegeExternalViaJAR {
 						  algorithms.add(new ExperimentAlgorithm<>(algorithm3, "MOCell", problemList.get(i).getTag())); 
 				}
 				
-				if(algorithmList.get(i).equals("MOCell")) {
+				if(algorithmList.get(j).equals("MOCell")) {
 						  Algorithm<List<IntegerSolution>> algorithm4 = new PAESBuilder<>(
 								  problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).setArchiveSize(100).setBiSections(2).setMutationOperator(new IntegerPolynomialMutation(1/problemList.get(i).getProblem().getNumberOfVariables(), 20.0)).build();
 						  algorithms.add(new ExperimentAlgorithm<>(algorithm4, "PAES", problemList.get(i).getTag())); 
 				}
 				
-				if(algorithmList.get(i).equals("MOCell")) {
+				if(algorithmList.get(j).equals("MOCell")) {
 						  Algorithm<List<IntegerSolution>> algorithm5 = new RandomSearchBuilder<>(
 								  problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).build();
 						  algorithms.add(new ExperimentAlgorithm<>(algorithm5, "RandomSearch", problemList.get(i).getTag()));

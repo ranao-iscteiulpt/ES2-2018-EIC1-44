@@ -73,9 +73,9 @@ public class ExperimentsBinaryExternalViaJAR {
 
 		for (int i = 0; i < problemList.size(); i++) {
 
-			for(int j = 0; i < algorithmList.size(); j++) {
+			for(int j = 0; j < algorithmList.size(); j++) {
 				
-				if(algorithmList.get(i).equals("NSGAII")) { 
+				if(algorithmList.get(j).equals("NSGAII")) { 
 					Algorithm<List<BinarySolution>> algorithm = new NSGAIIBuilder<>(
 							problemList.get(i).getProblem(),
 							new SinglePointCrossover(1.0),
@@ -85,28 +85,28 @@ public class ExperimentsBinaryExternalViaJAR {
 							.build();
 					algorithms.add(new ExperimentAlgorithm<>(algorithm, "NSGAII", problemList.get(i).getTag()));
 				}
-				if(algorithmList.get(i).equals("SMSEMOA")) {
+				if(algorithmList.get(j).equals("SMSEMOA")) {
 					Algorithm<List<BinarySolution>> algorithm2 = new SMSEMOABuilder<>(problemList.get(i).getProblem(), new SinglePointCrossover(1.0), new BitFlipMutation(1.0 / ((MyProblemBinaryExternalViaJAR) problemList.get(i).getProblem()).getNumberOfBits(0))).setMaxEvaluations(maxEvaluations).build();      
 					algorithms.add(new ExperimentAlgorithm<>(algorithm2, "SMSEMOA", problemList.get(i).getTag()));
 				}
-				if(algorithmList.get(i).equals("MOCell")) {
+				if(algorithmList.get(j).equals("MOCell")) {
 					Algorithm<List<BinarySolution>> algorithm3 = new SMSEMOABuilder<>(problemList.get(i).getProblem(), new SinglePointCrossover(1.0), new BitFlipMutation(1.0 / ((MyProblemBinaryExternalViaJAR) problemList.get(i).getProblem()).getNumberOfBits(0))).setMaxEvaluations(maxEvaluations).build();
 					algorithms.add(new ExperimentAlgorithm<>(algorithm3, "MOCell", problemList.get(i).getTag()));
 				}
-				if(algorithmList.get(i).equals("MOCH")) {
+				if(algorithmList.get(j).equals("MOCH")) {
 					Algorithm<List<BinarySolution>> algorithm4 = new MOCHCBuilder((BinaryProblem) problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations)
 							.setCrossover(new HUXCrossover(1.0)).setNewGenerationSelection(new RankingAndCrowdingSelection<BinarySolution>(100)).setCataclysmicMutation(new BitFlipMutation(0.35)).setParentSelection(new RandomSelection<BinarySolution>()).setEvaluator(new SequentialSolutionListEvaluator<BinarySolution>()).build();
 					algorithms.add(new ExperimentAlgorithm<>(algorithm4, "MOCH", problemList.get(i).getTag()));
 				}
-				if(algorithmList.get(i).equals("PAES")) {
+				if(algorithmList.get(j).equals("PAES")) {
 					Algorithm<List<BinarySolution>> algorithm5 = new PAESBuilder<>(problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).setArchiveSize(100).setBiSections(2).setMutationOperator(new BitFlipMutation(1.0 / ((MyProblemBinaryExternalViaJAR) problemList.get(i).getProblem()).getNumberOfBits(0))).build();
 					algorithms.add(new ExperimentAlgorithm<>(algorithm5, "PAES", problemList.get(i).getTag()));
 				}
-				if(algorithmList.get(i).equals("RandomSearch")) {
+				if(algorithmList.get(j).equals("RandomSearch")) {
 					Algorithm<List<BinarySolution>> algorithm6 = new RandomSearchBuilder<>(problemList.get(i).getProblem()).setMaxEvaluations(maxEvaluations).build();
 					algorithms.add(new ExperimentAlgorithm<>(algorithm6, "RandomSearch", problemList.get(i).getTag()));
 				}
-				if(algorithmList.get(i).equals("SPEA2")) {
+				if(algorithmList.get(j).equals("SPEA2")) {
 					Algorithm<List<BinarySolution>> algorithm7 = new SPEA2Builder<>(problemList.get(i).getProblem(),new SinglePointCrossover(1.0),new BitFlipMutation(1.0 / ((MyProblemBinaryExternalViaJAR) problemList.get(i).getProblem()).getNumberOfBits(0))).setMaxIterations(maxEvaluations).build();
 					algorithms.add(new ExperimentAlgorithm<>(algorithm7, "SPEA2", problemList.get(i).getTag()));
 				}
