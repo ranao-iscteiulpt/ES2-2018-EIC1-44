@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 
@@ -52,6 +54,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
+		jScrollBar1 = new javax.swing.JScrollBar();
 		optimizationTitle = new javax.swing.JLabel();
 		problemLabel = new javax.swing.JLabel();
 		problemCB = new javax.swing.JComboBox<>();
@@ -64,14 +67,16 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		fitnessNameLabel = new javax.swing.JLabel();
 		fitnessJarLabel = new javax.swing.JLabel();
 		fitnessJarFile = new javax.swing.JTextField();
-		addButton = new javax.swing.JButton();
+		addFitnessVariableButton = new javax.swing.JButton();
 		optimizeButton = new javax.swing.JButton();
 		manualConfigRB = new javax.swing.JRadioButton();
 		automaticConfigRB = new javax.swing.JRadioButton();
-		problemDoneButton = new javax.swing.JButton();
 		addAlgorithmButton = new javax.swing.JButton();
 		jScrollPane2 = new javax.swing.JScrollPane();
 		algorithmList = new javax.swing.JList<>();
+		removeAlgorithmButton = new javax.swing.JButton();
+		chosenAlgorithmLabel = new javax.swing.JLabel();
+		importJarFileButton = new javax.swing.JButton();
 
 		setPreferredSize(new java.awt.Dimension(660, 628));
 
@@ -100,7 +105,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 
 		fitnessJarLabel.setText("JAR");
 
-		addButton.setText("Add");
+		addFitnessVariableButton.setText("Add Variable");
 
 		optimizeButton.setText("Done");
 
@@ -110,12 +115,17 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		automaticConfigRB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 		automaticConfigRB.setText("Automatic Configuration");
 
-		problemDoneButton.setText("Done");
-
 		addAlgorithmButton.setText("Add");
 
 		algorithmList.setModel(algorithmsChosenList);
 		jScrollPane2.setViewportView(algorithmList);
+
+		removeAlgorithmButton.setText("Remove");
+
+		chosenAlgorithmLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+		chosenAlgorithmLabel.setText("Chosen Algorithms");
+
+		importJarFileButton.setText("Import");
 
 		/*  **************************** METODOS CRIADOS **************************** */
 
@@ -126,7 +136,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		for (File f: fileList) {
 			problemCB.addItem(f.getName());
 		}
-		
+
 		for (File f: fileList) {
 			resetComboBoxValues();
 			if(problemCB.getSelectedItem().equals(f.getName())) {
@@ -140,7 +150,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				algorithmsChosenList.removeAllElements();
-				
+
 				if(problemCB.getSelectedIndex() != 0 ) {
 					for (File f: fileList) {
 						resetComboBoxValues();
@@ -172,20 +182,54 @@ public class OptimizationPanel extends javax.swing.JPanel {
 			}
 		});
 
+		removeAlgorithmButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(algorithmsChosenList.getSize() > 0 ) {
+					int selectedItem = algorithmList.getSelectedIndex();
+					algorithmsChosenList.removeElementAt(selectedItem);
+				}
+			}
+		});
+
 		optimizeButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
+				if(fitnessVariables.getRowCount() > 1) {
+					optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
+				} else 				
+				JOptionPane.showMessageDialog(null, "Please add more than 1 fitness variable");
 			} 
 		});
 
-		addButton.addActionListener(new ActionListener() {
+		addFitnessVariableButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addFitnessVariable();
 
+			}
+		});
+
+		importJarFileButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				String filePath;
+
+				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+
+				int returnValue = jfc.showOpenDialog(null);
+
+				if (returnValue == JFileChooser.APPROVE_OPTION) {
+					filePath = jfc.getSelectedFile().getAbsolutePath();
+					String escapedFilepath = filePath.replace("\\","\\\\"); 
+					fitnessJarFile.setText(escapedFilepath);
+					
+				}	
 			}
 		});
 
@@ -199,45 +243,49 @@ public class OptimizationPanel extends javax.swing.JPanel {
 										.addGap(275, 275, 275)
 										.addComponent(optimizationTitle))
 								.addGroup(layout.createSequentialGroup()
-										.addGap(21, 21, 21)
 										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-												.addComponent(variaveisTitleLabel)
 												.addGroup(layout.createSequentialGroup()
-														.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(26, 26, 26)
-														.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-																.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-																		.addGroup(layout.createSequentialGroup()
-																				.addComponent(fitnessJarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-																				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																				.addComponent(fitnessJarFile))
-																		.addGroup(layout.createSequentialGroup()
-																				.addComponent(fitnessNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-																				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-																				.addComponent(fitnessName, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-																.addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addComponent(optimizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-						.addContainerGap(34, Short.MAX_VALUE))
+														.addGap(36, 36, 36)
+														.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+																.addComponent(problemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+																.addComponent(algorithmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+																.addComponent(chosenAlgorithmLabel)
+																.addComponent(variaveisTitleLabel))
+														.addGap(32, 32, 32)
+														.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+																.addComponent(jScrollPane2)
+																.addComponent(algorithmCB, 0, 279, Short.MAX_VALUE)
+																.addComponent(problemCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+												.addGroup(layout.createSequentialGroup()
+														.addGap(27, 27, 27)
+														.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+																.addGroup(layout.createSequentialGroup()
+																		.addComponent(fitnessJarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(fitnessJarFile))
+																.addGroup(layout.createSequentialGroup()
+																		.addComponent(fitnessNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		.addComponent(fitnessName, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))))
+												.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+														.addContainerGap()
+														.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+														.addComponent(addAlgorithmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(removeAlgorithmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+														.addComponent(addFitnessVariableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(importJarFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+												.addGroup(layout.createSequentialGroup()
+														.addGap(86, 86, 86)
+														.addComponent(optimizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+						.addContainerGap(28, Short.MAX_VALUE))
 				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
 						.addGap(0, 0, Short.MAX_VALUE)
 						.addComponent(manualConfigRB)
 						.addGap(58, 58, 58)
 						.addComponent(automaticConfigRB)
-						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(layout.createSequentialGroup()
-						.addGap(36, 36, 36)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(problemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(algorithmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGap(47, 47, 47)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-								.addComponent(jScrollPane2)
-								.addComponent(algorithmCB, 0, 279, Short.MAX_VALUE)
-								.addComponent(problemCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGap(18, 18, 18)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(addAlgorithmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(problemDoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
 						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
 		layout.setVerticalGroup(
@@ -250,35 +298,43 @@ public class OptimizationPanel extends javax.swing.JPanel {
 								.addComponent(manualConfigRB)
 								.addComponent(automaticConfigRB))
 						.addGap(36, 36, 36)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(problemDoneButton, javax.swing.GroupLayout.Alignment.TRAILING)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-										.addComponent(problemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addComponent(problemCB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+								.addComponent(problemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addComponent(problemCB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 								.addComponent(algorithmLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
 								.addComponent(algorithmCB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(addAlgorithmButton))
-						.addGap(18, 18, 18)
-						.addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+								.addComponent(addAlgorithmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+								.addComponent(removeAlgorithmButton)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(chosenAlgorithmLabel)))
+						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(variaveisTitleLabel)
-						.addGap(18, 18, 18)
 						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 								.addGroup(layout.createSequentialGroup()
+										.addGap(198, 198, 198)
+										.addComponent(optimizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addGroup(layout.createSequentialGroup()
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 												.addComponent(fitnessNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
 												.addComponent(fitnessName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+												.addComponent(fitnessJarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
 												.addComponent(fitnessJarFile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addComponent(fitnessJarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addGap(18, 18, 18)
-										.addComponent(addButton))
-								.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-						.addGap(43, 43, 43)
-						.addComponent(optimizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addComponent(importJarFileButton))
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addGroup(layout.createSequentialGroup()
+														.addGap(21, 21, 21)
+														.addComponent(addFitnessVariableButton))
+												.addGroup(layout.createSequentialGroup()
+														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+														.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
 						.addGap(20, 20, 20))
 				);
 	}// </editor-fold>//GEN-END:initComponents
@@ -377,23 +433,26 @@ public class OptimizationPanel extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton addAlgorithmButton;
-	private javax.swing.JButton addButton;
+	private javax.swing.JButton addFitnessVariableButton;
 	private javax.swing.JComboBox<String> algorithmCB;
 	private javax.swing.JLabel algorithmLabel;
 	private javax.swing.JList<String> algorithmList;
 	private javax.swing.JRadioButton automaticConfigRB;
+	private javax.swing.JLabel chosenAlgorithmLabel;
 	private javax.swing.JTextField fitnessJarFile;
 	private javax.swing.JLabel fitnessJarLabel;
 	private javax.swing.JTextField fitnessName;
 	private javax.swing.JLabel fitnessNameLabel;
+	private javax.swing.JButton importJarFileButton;
+	private javax.swing.JScrollBar jScrollBar1;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JRadioButton manualConfigRB;
 	private javax.swing.JLabel optimizationTitle;
 	private javax.swing.JButton optimizeButton;
 	private javax.swing.JComboBox<String> problemCB;
-	private javax.swing.JButton problemDoneButton;
 	private javax.swing.JLabel problemLabel;
+	private javax.swing.JButton removeAlgorithmButton;
 	private javax.swing.JTable variablesTable;
 	private javax.swing.JLabel variaveisTitleLabel;
 	// End of variables declaration//GEN-END:variables

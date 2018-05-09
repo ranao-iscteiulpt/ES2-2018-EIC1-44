@@ -80,7 +80,7 @@ public class ExperimentsDoubleExternalViaJAR {
 		for (int i = 0; i < problemList.size(); i++) {
 			
 			for(int j = 0; j < algorithmList.size(); j++) {
-				
+				System.out.println(algorithmList);
 				
 				if(algorithmList.get(j).equals("NSGAII")) { 
 					Algorithm<List<DoubleSolution>> algorithm1 = new NSGAIIBuilder<>(
