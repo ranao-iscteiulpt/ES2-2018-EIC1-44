@@ -55,7 +55,7 @@ public class MyProblemIntegerExternalViaJAR extends AbstractIntegerProblem {
 	    	Process p = Runtime.getRuntime().exec("java -jar c:\\NMMin.jar" + " " + solutionString);
 	    	BufferedReader brinput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	    	while ((line = brinput.readLine()) != null) 
-	    		{evaluationResultString+=line;}
+	    		{evaluationResultString+=line+" ";}
 	    	brinput.close();
 	        p.waitFor();
 	      }

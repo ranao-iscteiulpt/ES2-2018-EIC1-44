@@ -40,7 +40,6 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		List<Double> upperLimit = new ArrayList<>(getNumberOfVariables()) ;
 
 		for (int i = 0; i < getNumberOfVariables(); i++) {
-			System.out.println("NUMERO DE VARIAVEIS: " + getNumberOfVariables());
 			lowerLimit.add( ((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
 			upperLimit.add(((Variable) problem.getVariableList().get(i)).getMaxValueDouble() );
 		}
@@ -61,15 +60,13 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		}
 
 		for (int i =0 ; i < solution.getNumberOfObjectives(); i++) {
-			//			System.out.println("FICHEIRO JAR " + fitnessVariables.getValueAt(i, 1));
-						System.out.println("nUMERO DE OBJECTIVOS "+ i);
 			try {			
 				String line;
 				//Process p = Runtime.getRuntime().exec("java -jar C:\\Users\\Ricardo\\Desktop\\Kursawe.jar" + " " + solutionString);
 				Process p = Runtime.getRuntime().exec("java -jar " + fitnessVariables.getValueAt(i, 1) + " " + solutionString);
 				BufferedReader brinput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 				while ((line = brinput.readLine()) != null) 
-				{evaluationResultString+=line;}
+				{evaluationResultString+=line+" ";}
 				brinput.close();
 				p.waitFor();
 			}
@@ -83,7 +80,6 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		// It is assumed that all evaluated criteria are returned in the same result string		
 		for (int i = 0; i < solution.getNumberOfObjectives(); i++) {
 			solution.setObjective(i, Double.parseDouble(individualEvaluationCriteria[i]));
-			System.out.println("dei a solucao "+ i);
 		}	
 	}
 

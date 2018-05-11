@@ -59,7 +59,7 @@ public class MyProblemBinaryExternalViaJAR extends AbstractBinaryProblem {
 	    	Process p = Runtime.getRuntime().exec("java -jar C:\\Users\\Ricardo\\Desktop\\OneZeroMax.jar" + " " + solutionString);
 	    	BufferedReader brinput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	    	while ((line = brinput.readLine()) != null) 
-	    		{evaluationResultString+=line;}
+	    		{evaluationResultString+=line+" ";}
 	    	brinput.close();
 	        p.waitFor();
 	      }
