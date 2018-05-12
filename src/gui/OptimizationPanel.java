@@ -13,6 +13,7 @@ import java.io.File;
 import java.nio.file.FileSystemLoopException;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -77,6 +78,8 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		removeAlgorithmButton = new javax.swing.JButton();
 		chosenAlgorithmLabel = new javax.swing.JLabel();
 		importJarFileButton = new javax.swing.JButton();
+		radioButtonGroup.add(manualConfigRB);
+		radioButtonGroup.add(automaticConfigRB);
 
 		setPreferredSize(new java.awt.Dimension(660, 628));
 
@@ -142,14 +145,34 @@ public class OptimizationPanel extends javax.swing.JPanel {
 			if(problemCB.getSelectedItem().equals(f.getName())) {
 				receiveData(f);
 			}
-			fillAlgorithmComboBox();
 		}
+
+		automaticConfigRB.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				resetComboBoxValues();
+				resetChoosenAlgorithms();
+				fillAlgorithmComboBoxAutomaticConfig();
+			}
+		});
+
+		manualConfigRB.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				resetComboBoxValues();
+				resetChoosenAlgorithms();
+				fillAlgorithmComboBoxManualConfig();				
+			}
+		});
+
 
 		problemCB.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				algorithmsChosenList.removeAllElements();
+				resetChoosenAlgorithms();
 
 				if(problemCB.getSelectedIndex() != 0 ) {
 					for (File f: fileList) {
@@ -157,16 +180,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 						if(problemCB.getSelectedItem().equals(f.getName())) {
 							receiveData(f);
 						}
-						fillAlgorithmComboBox();
-					}	
-				}
-				else {
-					for (File f: fileList) {
-						resetComboBoxValues();
-						if(problemCB.getSelectedItem().equals(f.getName())) {
-							receiveData(f);
-						}
-						fillAlgorithmComboBox();
+						fillAlgorithmComboBoxAutomaticConfig();
 					}	
 				}
 
@@ -186,10 +200,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(algorithmsChosenList.getSize() > 0 ) {
-					int selectedItem = algorithmList.getSelectedIndex();
-					algorithmsChosenList.removeElementAt(selectedItem);
-				}
+				removeSelectedAlgorithm();
 			}
 		});
 
@@ -200,7 +211,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 				if(fitnessVariables.getRowCount() > 1) {
 					optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
 				} else 				
-				JOptionPane.showMessageDialog(null, "Please add more than 1 fitness variable");
+					JOptionPane.showMessageDialog(null, "Please add more than 1 fitness variable");
 			} 
 		});
 
@@ -228,7 +239,7 @@ public class OptimizationPanel extends javax.swing.JPanel {
 					filePath = jfc.getSelectedFile().getAbsolutePath();
 					String escapedFilepath = filePath.replace("\\","\\\\"); 
 					fitnessJarFile.setText(escapedFilepath);
-					
+
 				}	
 			}
 		});
@@ -351,8 +362,19 @@ public class OptimizationPanel extends javax.swing.JPanel {
 	public void resetComboBoxValues() {
 		algorithmCB.removeAllItems();		
 	}
+	
+	public void resetChoosenAlgorithms() {
+		algorithmsChosenList.removeAllElements();		
+	}
+	
+	public void removeSelectedAlgorithm() {
+		if(algorithmsChosenList.getSize() > 0 ) {
+			int selectedItem = algorithmList.getSelectedIndex();
+			algorithmsChosenList.removeElementAt(selectedItem);
+		}
+	}
 
-	public void fillAlgorithmComboBox() {
+	public void fillAlgorithmComboBoxAutomaticConfig() {
 
 		variableType = ((Variable) problem.getVariableList().get(0)).getType(); //integer or double or binary
 		if( variableType.equals("double")){
@@ -374,6 +396,13 @@ public class OptimizationPanel extends javax.swing.JPanel {
 		}	
 
 	}
+
+	public void fillAlgorithmComboBoxManualConfig() {
+		for(String algorithm: optimizationProcess.getAlgorithmsManual()) {
+			algorithmCB.addItem(algorithm);
+		}
+	}
+
 
 	public void receiveData (File jfc) {
 
@@ -470,5 +499,6 @@ public class OptimizationPanel extends javax.swing.JPanel {
 	private DefaultListModel<String> algorithmsChosenList = new DefaultListModel<String>();
 	private String variableType=""; 
 	private DefaultTableModel fitnessVariables = new DefaultTableModel();
+	private ButtonGroup radioButtonGroup = new ButtonGroup();
 
 }
