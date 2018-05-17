@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileSystemView;
 
+import GUITest.OptimizationProcess1;
+import GUITest.ProblemProcess1;
 import funcionalities.Form;
 
 public class MainPanel extends JPanel {
@@ -31,7 +33,7 @@ public class MainPanel extends JPanel {
 	}
 
 	public void mainPanel() {
-		frame.setSize(681, 688);
+		frame.setSize(830,480);
 		frame.setLocationRelativeTo(null);
 		
 		setLayout(new BorderLayout());
@@ -83,7 +85,8 @@ public class MainPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				ProblemPanel problemPanel = new ProblemPanel();
+				//ProblemPanel problemPanel = new ProblemPanel(); para retirar
+				ProblemProcess1 problemPanel = new ProblemProcess1(form);
 				form.create(problemPanel);
 			}
 
@@ -118,8 +121,9 @@ public class MainPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				OptimizationPanel optimizatinPanel = new OptimizationPanel();
-				form.create(optimizatinPanel);
+				//OptimizationPanel optimizatinPanel = new OptimizationPanel();
+				OptimizationProcess1 optimizationPanel = new OptimizationProcess1(form);
+				form.create(optimizationPanel);
 			}
 		});
 		

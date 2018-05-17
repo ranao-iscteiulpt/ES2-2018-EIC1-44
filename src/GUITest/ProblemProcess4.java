@@ -5,16 +5,36 @@
  */
 package GUITest;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import files.XMLOperations;
+import funcionalities.Form;
+
 /**
  *
  * @author Ricardo
  */
 public class ProblemProcess4 extends javax.swing.JPanel {
 
+	private WelcomePage welcomePanel = new WelcomePage();
+	private XMLOperations xml = new XMLOperations();
+	private Form form;
+	private String name;
+	private String description;
+	private DefaultTableModel variableList;
+		
     /**
      * Creates new form ProblemProcess4
      */
-    public ProblemProcess4() {
+    public ProblemProcess4(Form form, String name, String description, DefaultTableModel variableList) {
+    	this.form = form;
+    	this.name=name;
+    	this.description=description;
+    	this.variableList=variableList;
         initComponents();
     }
 
@@ -28,48 +48,62 @@ public class ProblemProcess4 extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        timeLabel = new javax.swing.JLabel();
+        invalidValueLabel = new javax.swing.JLabel();
+        firstInvalidValueTextField = new javax.swing.JTextField();
         timeComboBox = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        secondInvalidValueTextField = new javax.swing.JTextField();
+        intervalRButton = new javax.swing.JRadioButton();
+        singleRButton = new javax.swing.JRadioButton();
+        toLabel = new javax.swing.JLabel();
+        finishButton = new javax.swing.JButton();
+        waitTimeTextField = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Create Problem");
+        jLabel1.setText("Choose the restrictions");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Wait Time");
+        timeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        timeLabel.setText("Wait Time");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Invalid Values");
+        invalidValueLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        invalidValueLabel.setText("Invalid Values");
 
-        jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("e.g. 2");
-        jTextField2.setToolTipText("");
-        jTextField2.setMargin(new java.awt.Insets(2, 15, 2, 2));
+        firstInvalidValueTextField.setForeground(new java.awt.Color(153, 153, 153));
+        firstInvalidValueTextField.setText("e.g. 2");
+        firstInvalidValueTextField.setToolTipText("");
+        firstInvalidValueTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 
         timeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seconds", "minutes", "hours", "days" }));
 
-        jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setText("e.g. 4");
+        secondInvalidValueTextField.setForeground(new java.awt.Color(153, 153, 153));
+        secondInvalidValueTextField.setText("e.g. 4");
 
-        jRadioButton1.setText("Interval");
+        intervalRButton.setText("Interval");
 
-        jRadioButton2.setText("Single Value");
+        singleRButton.setText("Single Value");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("to");
+        toLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        toLabel.setText("to");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Finish");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton2.setFocusable(false);
+        finishButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        finishButton.setText("Finish");
+        finishButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        finishButton.setFocusable(false);
+
+        waitTimeTextField.setForeground(new java.awt.Color(153, 153, 153));
+        waitTimeTextField.setText("e.g. 10");
+        waitTimeTextField.setToolTipText("");
+        waitTimeTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
+        
+        finishButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				createXML();				
+			}
+		});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -79,36 +113,34 @@ public class ProblemProcess4 extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(166, 166, 166)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(invalidValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jRadioButton2))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jRadioButton1)
-                                    .addGap(155, 155, 155))))
-                        .addGap(0, 254, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(intervalRButton)
+                                .addGap(54, 54, 54)
+                                .addComponent(singleRButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(firstInvalidValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(toLabel)
+                                .addGap(27, 27, 27)
+                                .addComponent(secondInvalidValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(waitTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 147, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,35 +149,46 @@ public class ProblemProcess4 extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(waitTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(invalidValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(intervalRButton)
+                    .addComponent(singleRButton))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(firstInvalidValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toLabel)
+                    .addComponent(secondInvalidValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nextPanel() {
+    	form.create(welcomePanel);
+    }
+    
+    private void createXML() {
+		xml.writeXML(name, variableList ,description, waitTimeTextField.getText() + " " + timeComboBox.getSelectedItem() , firstInvalidValueTextField.getText());
+		JOptionPane.showMessageDialog(null, "XML Created");
+    }
+	
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton finishButton;
+    private javax.swing.JTextField firstInvalidValueTextField;
+    private javax.swing.JRadioButton intervalRButton;
+    private javax.swing.JLabel invalidValueLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField secondInvalidValueTextField;
+    private javax.swing.JRadioButton singleRButton;
     private javax.swing.JComboBox<String> timeComboBox;
+    private javax.swing.JLabel timeLabel;
+    private javax.swing.JLabel toLabel;
+    private javax.swing.JTextField waitTimeTextField;
     // End of variables declaration//GEN-END:variables
 }

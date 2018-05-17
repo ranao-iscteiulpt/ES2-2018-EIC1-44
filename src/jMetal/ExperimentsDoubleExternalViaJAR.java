@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 public class ExperimentsDoubleExternalViaJAR {
@@ -39,9 +40,11 @@ public class ExperimentsDoubleExternalViaJAR {
 	private Problem problem;
 	private DefaultListModel algorithmsList;
 	private DefaultTableModel fitnessVariables;
+	private JProgressBar progressBar;
+	private int estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
 	
 
-	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) throws IOException {
+	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, JProgressBar progressBar) throws IOException {
 		this.problem = problem;
 		this.algorithmsList = algorithmsList;
 		this.fitnessVariables = fitnessVariables;
@@ -49,7 +52,7 @@ public class ExperimentsDoubleExternalViaJAR {
 		String experimentBaseDirectory = "experimentBaseDirectory";
 				
 		List<ExperimentProblem<DoubleSolution>> problemList = new ArrayList<>();
-		problemList.add(new ExperimentProblem<>(new MyProblemDoubleExternalViaJAR(problem, algorithmsList, fitnessVariables)));
+		problemList.add(new ExperimentProblem<>(new MyProblemDoubleExternalViaJAR(problem, algorithmsList, fitnessVariables, progressBar, estimatedFinishTime)));
 
 		List<ExperimentAlgorithm<DoubleSolution, List<DoubleSolution>>> algorithmList =
 				configureAlgorithmList(problemList,algorithmsList);

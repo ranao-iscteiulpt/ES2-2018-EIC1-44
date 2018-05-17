@@ -3,6 +3,7 @@ package jMetal;
 import java.io.IOException;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 import objects.Problem;
@@ -20,10 +21,10 @@ public class OptimizationProcess {
 	String[] AlgorithmsForBinaryProblemType = new String[]{"NSGAII","SMSEMOA","MOCell","MOCH","PAES","RandomSearch","SPEA2"};	
 	String[] AlgorithmsForManualProblemType = new String[]{"NSGAII","SMSEMOA","GDE3","IBEA","MOCell","MOEAD","PAES","RandomSearch","MOCH","SPEA2"};
 
-	public void init(Problem problem, String variableType, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) {
+	public void init(Problem problem, String variableType, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, JProgressBar progressBar ) {
 		try {
 			if(variableType.equals("double"))
-				experimentsDouble.startOptimization(problem, algorithmsList, fitnessVariables);
+				experimentsDouble.startOptimization(problem, algorithmsList, fitnessVariables, progressBar);
 
 			if(variableType.equals("integer"))
 				experimentsInteger.startOptimization(problem, algorithmsList, fitnessVariables);
@@ -50,4 +51,5 @@ public class OptimizationProcess {
 	public String[] getAlgorithmsManual() {
 		return AlgorithmsForManualProblemType;
 	}
+
 }

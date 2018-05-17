@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
+import org.apache.commons.math3.stat.descriptive.rank.Percentile.EstimationType;
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
 
@@ -23,10 +25,14 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 
 	private int contador=0;
 	private DefaultTableModel fitnessVariables;
+	private JProgressBar progressBar;
+	private int estimatedFinishTime;
 
-	public MyProblemDoubleExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) {
+	public MyProblemDoubleExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, JProgressBar progressBar, int estimatedFinishTime) {
 		this(problem.getVariableCounter(),problem,fitnessVariables);
 		this.fitnessVariables = fitnessVariables;
+		this.progressBar = progressBar;
+		this.estimatedFinishTime = estimatedFinishTime;
 	}
 
 	public MyProblemDoubleExternalViaJAR(Integer numberOfVariables,Problem problem,DefaultTableModel fitnessVariables) {
@@ -51,6 +57,7 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 	public void evaluate(DoubleSolution solution){
 
 		contador++;
+		progressBar.setValue( (contador/estimatedFinishTime)*100 );
 		System.out.println(contador);//mostrar progresso da optimizacao
 		String solutionString ="";
 		String evaluationResultString ="";
