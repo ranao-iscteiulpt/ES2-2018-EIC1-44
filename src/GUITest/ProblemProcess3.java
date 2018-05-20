@@ -116,7 +116,7 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 		titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		titleLabel.setText("Create variables");
 
-		nextButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ricardo\\Desktop\\arrowRight.png")); // NOI18N
+		nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
 		nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 		nextButton.setFocusable(false);
 

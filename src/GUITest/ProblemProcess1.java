@@ -44,7 +44,7 @@ public class ProblemProcess1 extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        nextButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ricardo\\Desktop\\arrowRight.png")); // NOI18N
+        nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nextButton.setFocusable(false);
 

@@ -22,6 +22,7 @@ import org.uma.jmetal.util.experiment.component.*;
 import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 import org.uma.jmetal.util.experiment.util.ExperimentProblem;
 
+import GUITest.OptimizationProcess5;
 import objects.Problem;
 
 import java.io.IOException;
@@ -34,25 +35,29 @@ import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 public class ExperimentsDoubleExternalViaJAR {
-	private static final int INDEPENDENT_RUNS = 2;
-	private static final int maxEvaluations = 250;
+	private static final int INDEPENDENT_RUNS = 1;
+	private static final int maxEvaluations = 1; //250
 
 	private Problem problem;
 	private DefaultListModel algorithmsList;
 	private DefaultTableModel fitnessVariables;
 	private JProgressBar progressBar;
-	private int estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
+	private OptimizationProcess5 optimization;
+	private int estimatedFinishTime = 0;
 	
 
-	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, JProgressBar progressBar) throws IOException {
+	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables,OptimizationProcess5 optimization) throws IOException {
 		this.problem = problem;
 		this.algorithmsList = algorithmsList;
 		this.fitnessVariables = fitnessVariables;
+		this.optimization = optimization;
+		//estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
+		estimatedFinishTime = 100;
 
 		String experimentBaseDirectory = "experimentBaseDirectory";
 				
 		List<ExperimentProblem<DoubleSolution>> problemList = new ArrayList<>();
-		problemList.add(new ExperimentProblem<>(new MyProblemDoubleExternalViaJAR(problem, algorithmsList, fitnessVariables, progressBar, estimatedFinishTime)));
+		problemList.add(new ExperimentProblem<>(new MyProblemDoubleExternalViaJAR(problem, algorithmsList, fitnessVariables, optimization, estimatedFinishTime)));
 
 		List<ExperimentAlgorithm<DoubleSolution, List<DoubleSolution>>> algorithmList =
 				configureAlgorithmList(problemList,algorithmsList);
@@ -83,7 +88,7 @@ public class ExperimentsDoubleExternalViaJAR {
 		for (int i = 0; i < problemList.size(); i++) {
 			
 			for(int j = 0; j < algorithmList.size(); j++) {
-				System.out.println(algorithmList);
+				//System.out.println(algorithmList);
 				
 				if(algorithmList.get(j).equals("NSGAII")) { 
 					Algorithm<List<DoubleSolution>> algorithm1 = new NSGAIIBuilder<>(

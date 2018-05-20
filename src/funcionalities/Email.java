@@ -19,10 +19,13 @@ import javax.mail.internet.MimeMultipart;
 public class Email {
 
 
-	public void sendEmail(String subject, String mailMessage) {
+	public void sendEmail(String userEmail, String userPassword, String subject, String mailMessage) {
 
-		final String username = "grupo44es@gmail.com";
-		final String password = "projecto2018";
+		//final String username = "grupo44es@gmail.com";
+		//final String password = "projecto2018";
+		
+		final String username = userEmail;
+		final String password = userPassword;
 
 		Properties props = new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
@@ -41,7 +44,7 @@ public class Email {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("grupo44es@gmail.com"));
+			message.setFrom(new InternetAddress(userEmail));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse("ricnogueira01@gmail.com"));
 			message.setSubject(subject);

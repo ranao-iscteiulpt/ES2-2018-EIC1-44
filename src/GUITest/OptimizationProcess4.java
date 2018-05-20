@@ -10,10 +10,12 @@ import java.awt.event.ActionListener;
 import java.util.jar.JarFile;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 
 import funcionalities.Form;
+import objects.User;
 
 /**
  *
@@ -26,11 +28,13 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 	private String fileDirectory;
 	private OptimizationProcess3 optimizationPanel;
 	private DefaultTableModel fitnessVariables = new DefaultTableModel();
+	private User userLoggedIn;
 	/**
 	 * Creates new form OptimizationProcess4
 	 */
-	public OptimizationProcess4(Form form, String fileDirectory) {
+	public OptimizationProcess4(Form form, String fileDirectory, User userLoggedIn) {
 		this.form = form;
+		this.userLoggedIn = userLoggedIn;
 		this.fileDirectory = fileDirectory;
 		initComponents();
 	}
@@ -63,14 +67,14 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 		titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		titleLabel.setText("Add the fitness variables");
 
-		nameTextField.setForeground(new java.awt.Color(153, 153, 153));
-		nameTextField.setText("Variable Name (e.g. False Positive)");
+		//nameTextField.setForeground(new java.awt.Color(153, 153, 153));
+		//nameTextField.setText("Variable Name (e.g. False Positive)");
 		nameTextField.setToolTipText("");
 		nameTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 		nameTextField.setName(""); // NOI18N
 
-		jarDirectoryTextField.setForeground(new java.awt.Color(153, 153, 153));
-		jarDirectoryTextField.setText("Browse your computer");
+		//jarDirectoryTextField.setForeground(new java.awt.Color(153, 153, 153));
+		//jarDirectoryTextField.setText("Browse your computer");
 		jarDirectoryTextField.setToolTipText("");
 		jarDirectoryTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 
@@ -89,9 +93,9 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 
 		jarLabel.setText("Jar");
 
-		loggedInLabel.setText("Logged in as : @var");
+		loggedInLabel.setText("Logged in as : "  + userLoggedIn.getUsername());
 
-		nextButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ricardo\\Desktop\\arrowRight.png")); // NOI18N
+		nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
 		nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 		nextButton.setFocusable(false);
 
@@ -111,6 +115,14 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 
 			}
 		});
+		
+		removeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				deleteFitnessVariable();			
+			}
+		});
 
 		browseButton.addActionListener(new ActionListener() {
 
@@ -127,7 +139,6 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 					filePath = jfc.getSelectedFile().getAbsolutePath();
 					String escapedFilepath = filePath.replace("\\","\\\\"); 
 					jarDirectoryTextField.setText(escapedFilepath);
-
 				}	
 			}
 		});
@@ -200,12 +211,25 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void nextPanel() {
-		optimizationPanel = new OptimizationProcess3(form, fileDirectory, fitnessVariables);
-		form.create(optimizationPanel);
+		if(variablesTable.getRowCount() > 0) {
+			optimizationPanel = new OptimizationProcess3(form, fileDirectory, fitnessVariables,userLoggedIn);
+			form.create(optimizationPanel);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Please add a variable");
+		}
+
 	}
 
 	private void addFitnessVariable() {
 		fitnessVariables.addRow(new Object[] {nameTextField.getText(),jarDirectoryTextField.getText()});
+	}
+	
+	private void deleteFitnessVariable() {
+		if(variablesTable.getRowCount() > 0) {
+			int selectedRow = variablesTable.getSelectedRow();
+			fitnessVariables.removeRow(selectedRow);
+		}
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables

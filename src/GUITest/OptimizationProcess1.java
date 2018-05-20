@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import funcionalities.Form;
+import objects.User;
 
 /**
  *
@@ -18,13 +19,15 @@ public class OptimizationProcess1 extends javax.swing.JPanel {
 
 	
 	private Form form;
+	private User userLoggedIn;
 	private OptimizationProcess2 optimizationPanel;
     /**
      * Creates new form OptimizationProcess1
      */
-    public OptimizationProcess1(Form form) {
+    public OptimizationProcess1(Form form, User userLoggedIn) {
     	this.form = form;
-    	optimizationPanel = new OptimizationProcess2(form);
+    	this.userLoggedIn = userLoggedIn;
+    	optimizationPanel = new OptimizationProcess2(form,userLoggedIn);
         initComponents();
     }
 
@@ -50,11 +53,11 @@ public class OptimizationProcess1 extends javax.swing.JPanel {
         title2Label.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         title2Label.setText("and if you have any doubts click this icon () that will give you a tip");
 
-        nextButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ricardo\\Desktop\\arrowRight.png")); // NOI18N
+        nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nextButton.setFocusable(false);
 
-        loggedInLabel.setText("Logged in as : @var");
+        loggedInLabel.setText("Logged in as : " + userLoggedIn.getUsername());
         
     	nextButton.addActionListener(new ActionListener() {
 			

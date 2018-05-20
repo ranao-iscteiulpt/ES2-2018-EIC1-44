@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +23,7 @@ import funcionalities.Form;
 import funcionalities.Optimization;
 import jMetal.OptimizationProcess;
 import objects.Problem;
+import objects.User;
 import objects.Variable;
 
 /**
@@ -44,10 +46,13 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 	private OptimizationProcess optimizationProcess = new OptimizationProcess();
 	private String variableType=""; 
 	private DefaultTableModel fitnessVariables;
+	private ButtonGroup radioButtonGroup = new ButtonGroup();
+	private User userLoggedIn;
 
 	/** Creates new form OptimizationProcess3 */
-	public OptimizationProcess3(Form form, String fileDirectory, DefaultTableModel fitnessVariables) {
+	public OptimizationProcess3(Form form, String fileDirectory, DefaultTableModel fitnessVariables, User userLoggedIn) {
 		this.form = form;
+		this.userLoggedIn = userLoggedIn;
 		this.fileDirectory = fileDirectory;
 		this.fitnessVariables = fitnessVariables;
 		initComponents();
@@ -116,8 +121,14 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
         finishButton.setText("Finish");
         finishButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         finishButton.setFocusable(false);
+        radioButtonGroup.add(automaticConfigRButton);
+        radioButtonGroup.add(manualConfigRButton);
         
+        configPanel.setEnabled(false);
+        
+        System.out.println(fileDirectory);
         File[] fileList = optimization.searchFiles(fileDirectory);
+        System.out.println(fileList);
 
       		for (File f: fileList) {
       			filesComboBox.addItem(f.getName());
@@ -126,6 +137,47 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
       				receiveData(f);
       			}
       		}
+      		
+      		automaticConfigRButton.addActionListener(new ActionListener() {
+
+    			@Override
+    			public void actionPerformed(ActionEvent e) {
+    				configPanel.setEnabled(true);
+    				resetComboBoxValues();
+    				resetChoosenAlgorithms();
+    				fillAlgorithmComboBoxAutomaticConfig();
+    			}
+    		});
+
+    		manualConfigRButton.addActionListener(new ActionListener() {
+
+    			@Override
+    			public void actionPerformed(ActionEvent e) {
+    				configPanel.setEnabled(true);
+    				resetComboBoxValues();
+    				resetChoosenAlgorithms();
+    				fillAlgorithmComboBoxManualConfig();				
+    			}
+    		});
+    		
+    		filesComboBox.addActionListener(new ActionListener() {
+
+    			@Override
+    			public void actionPerformed(ActionEvent e) {
+    				resetChoosenAlgorithms();
+
+    				if(filesComboBox.getSelectedIndex() != 0 ) {
+    					for (File f: fileList) {
+    						resetComboBoxValues();
+    						if(filesComboBox.getSelectedItem().equals(f.getName())) {
+    							receiveData(f);
+    						}
+    						fillAlgorithmComboBoxAutomaticConfig();
+    					}	
+    				}
+
+    			}
+    		});
 
       		addButton.addActionListener(new ActionListener() {
 
@@ -213,7 +265,7 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        loggedInLabel.setText("Logged in as : @var");
+        loggedInLabel.setText("Logged in as : " + userLoggedIn.getUsername());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -257,8 +309,10 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 
 	private void nextPanel() {
 		//optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
-		optimizationPanel = new OptimizationProcess5(form, problem , variableType, algorithmsChosenList, fitnessVariables);
+		optimizationPanel = new OptimizationProcess5(form, problem , variableType, algorithmsChosenList, fitnessVariables,userLoggedIn);
+		//System.out.println("P: " + problem+ ", VarType: "+ variableType+",Algorithms: "+ algorithmsChosenList+",fitness: "+ fitnessVariables);
 		form.create(optimizationPanel);
+		//optimizationPanel.optimizationStart();
 	}
 
 	public boolean isOnList() {

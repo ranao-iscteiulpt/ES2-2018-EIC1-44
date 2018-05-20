@@ -20,15 +20,18 @@ import javax.swing.filechooser.FileSystemView;
 import GUITest.OptimizationProcess1;
 import GUITest.ProblemProcess1;
 import funcionalities.Form;
+import objects.User;
 
 public class MainPanel extends JPanel {
 
 	private JFrame frame;
 	private Form form = new Form(this);
 	private File selectedFile;
+	private User userLoggedIn;
 
-	public MainPanel(JFrame frame) {
+	public MainPanel(JFrame frame, User userLoggedIn) {
 		this.frame = frame;
+		this.userLoggedIn = userLoggedIn;
 		frame.setLayout(new BorderLayout());
 	}
 
@@ -99,7 +102,7 @@ public class MainPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				EmailPanel emailPanel = new EmailPanel();
+				EmailPanel emailPanel = new EmailPanel(userLoggedIn);
 				form.create(emailPanel);
 				
 			}
@@ -122,7 +125,7 @@ public class MainPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//OptimizationPanel optimizatinPanel = new OptimizationPanel();
-				OptimizationProcess1 optimizationPanel = new OptimizationProcess1(form);
+				OptimizationProcess1 optimizationPanel = new OptimizationProcess1(form,userLoggedIn);
 				form.create(optimizationPanel);
 			}
 		});

@@ -13,6 +13,7 @@ import org.apache.commons.math3.stat.descriptive.rank.Percentile.EstimationType;
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
 
+import GUITest.OptimizationProcess5;
 import objects.Problem;
 import objects.Variable;
 
@@ -23,20 +24,23 @@ import objects.Variable;
 @SuppressWarnings("serial")
 public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 
-	private int contador=0;
 	private DefaultTableModel fitnessVariables;
-	private JProgressBar progressBar;
+	private OptimizationProcess5 optimization;
 	private int estimatedFinishTime;
+	private double contador;
+	private double percent;
 
-	public MyProblemDoubleExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, JProgressBar progressBar, int estimatedFinishTime) {
+	public MyProblemDoubleExternalViaJAR(Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, OptimizationProcess5 optimization, int estimatedFinishTime) {
 		this(problem.getVariableCounter(),problem,fitnessVariables);
-		this.fitnessVariables = fitnessVariables;
-		this.progressBar = progressBar;
 		this.estimatedFinishTime = estimatedFinishTime;
+		this.fitnessVariables = fitnessVariables;
+		this.optimization = optimization;
+		optimization.updateProgressBar();
+		
 	}
 
 	public MyProblemDoubleExternalViaJAR(Integer numberOfVariables,Problem problem,DefaultTableModel fitnessVariables) {
-
+		
 		setNumberOfVariables(numberOfVariables);
 		//System.out.println(fitnessVariables.getRowCount());
 		setNumberOfObjectives(fitnessVariables.getRowCount()); //tem a haver com as variaveis da optimizacao panel
@@ -55,10 +59,9 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 	}
 
 	public void evaluate(DoubleSolution solution){
-
 		contador++;
-		progressBar.setValue( (contador/estimatedFinishTime)*100 );
-		System.out.println(contador);//mostrar progresso da optimizacao
+		percent = ((contador)/estimatedFinishTime)*100;
+		optimization.setProgressPercent((int)percent);
 		String solutionString ="";
 		String evaluationResultString ="";
 
@@ -69,7 +72,6 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		for (int i =0 ; i < solution.getNumberOfObjectives(); i++) {
 			try {			
 				String line;
-				//Process p = Runtime.getRuntime().exec("java -jar C:\\Users\\Ricardo\\Desktop\\Kursawe.jar" + " " + solutionString);
 				Process p = Runtime.getRuntime().exec("java -jar " + fitnessVariables.getValueAt(i, 1) + " " + solutionString);
 				BufferedReader brinput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 				while ((line = brinput.readLine()) != null) 
@@ -89,5 +91,6 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 			solution.setObjective(i, Double.parseDouble(individualEvaluationCriteria[i]));
 		}	
 	}
-
+	
+	
 }

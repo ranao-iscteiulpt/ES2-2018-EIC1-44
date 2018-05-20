@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import funcionalities.Email;
+import objects.User;
 
 /**
  *
@@ -16,10 +17,12 @@ import funcionalities.Email;
  */
 public class EmailPanel extends javax.swing.JPanel {
 
+	private User userLoggedIn;
 	/**
 	 * Creates new form EmailPanel
 	 */
-	public EmailPanel() {
+	public EmailPanel(User userLoggedIn) {
+		this.userLoggedIn = userLoggedIn;
 		initComponents();
 	}
 
@@ -54,7 +57,7 @@ public class EmailPanel extends javax.swing.JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				email.sendEmail(subjectTF.getText(),messageTF.getText());
+				email.sendEmail(userLoggedIn.getEmail(), userLoggedIn.getPassword(), subjectTF.getText(),messageTF.getText());
 				subjectTF.setText("");
 				messageTF.setText("");
 

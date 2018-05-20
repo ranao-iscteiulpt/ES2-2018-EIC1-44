@@ -24,6 +24,7 @@ import org.uma.jmetal.util.experiment.component.*;
 import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 import org.uma.jmetal.util.experiment.util.ExperimentProblem;
 
+import GUITest.OptimizationProcess5;
 import objects.Problem;
 
 import java.io.IOException;
@@ -32,17 +33,31 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 public class ExperimentsBinaryExternalViaJAR {
 	private static final int INDEPENDENT_RUNS = 2;
 	private static final int maxEvaluations = 250;
+	
+	private Problem problem;
+	private DefaultListModel algorithmsList;
+	private DefaultTableModel fitnessVariables;
+	private JProgressBar progressBar;
+	private OptimizationProcess5 optimization;
+	private int estimatedFinishTime = 0;
 
-	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) throws IOException {
+	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables,OptimizationProcess5 optimization) throws IOException {
+		this.problem = problem;
+		this.algorithmsList = algorithmsList;
+		this.fitnessVariables = fitnessVariables;
+		this.optimization = optimization;
+		estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
+		
 		String experimentBaseDirectory = "experimentBaseDirectory";
 
 		List<ExperimentProblem<BinarySolution>> problemList = new ArrayList<>();
-		problemList.add(new ExperimentProblem<>(new MyProblemBinaryExternalViaJAR(problem, algorithmsList, fitnessVariables)));
+		problemList.add(new ExperimentProblem<>(new MyProblemBinaryExternalViaJAR(problem, algorithmsList, fitnessVariables,optimization, estimatedFinishTime)));
 
 		List<ExperimentAlgorithm<BinarySolution, List<BinarySolution>>> algorithmList =
 				configureAlgorithmList(problemList,algorithmsList);

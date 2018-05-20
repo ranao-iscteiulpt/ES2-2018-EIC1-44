@@ -15,6 +15,7 @@ public class Login {
 	private boolean login = false;
 	private TEXTOperations textOperations = new TEXTOperations();
 	private ArrayList<User> users = new ArrayList<>();
+	private User userLoggedIn;
 	
 	public Login(String userText, String passText){
 		this.userText = userText;
@@ -44,6 +45,7 @@ public class Login {
 					
 					if(userText.equals(users.get(i).getUsername())){
 						if(passText.equals(users.get(i).getPassword())){
+							userLoggedIn = new User(users.get(i).getUsername(),users.get(i).getPassword(),users.get(i).getEmail());
 							login = true;
 							break;
 						}
@@ -61,5 +63,9 @@ public class Login {
 		
 	public boolean getLogin(){
 		return login;
+	}
+	
+	public User getLoggedUser() {
+		return userLoggedIn;
 	}
 }

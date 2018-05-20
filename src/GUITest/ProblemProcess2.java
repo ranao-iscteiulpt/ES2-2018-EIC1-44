@@ -55,7 +55,7 @@ public class ProblemProcess2 extends javax.swing.JPanel {
 		//nameTextfield.setText("e.g. rule ");
 		nameTextfield.setMargin(new java.awt.Insets(2, 15, 2, 2));
 
-		nextButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ricardo\\Desktop\\arrowRight.png")); // NOI18N
+		nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
 		nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 		nextButton.setFocusable(false);
 

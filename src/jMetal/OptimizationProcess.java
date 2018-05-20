@@ -6,6 +6,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
+import GUITest.OptimizationProcess5;
 import objects.Problem;
 
 public class OptimizationProcess {
@@ -21,16 +22,16 @@ public class OptimizationProcess {
 	String[] AlgorithmsForBinaryProblemType = new String[]{"NSGAII","SMSEMOA","MOCell","MOCH","PAES","RandomSearch","SPEA2"};	
 	String[] AlgorithmsForManualProblemType = new String[]{"NSGAII","SMSEMOA","GDE3","IBEA","MOCell","MOEAD","PAES","RandomSearch","MOCH","SPEA2"};
 
-	public void init(Problem problem, String variableType, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, JProgressBar progressBar ) {
+	public void init(Problem problem, String variableType, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, OptimizationProcess5 optimization ) {
 		try {
 			if(variableType.equals("double"))
-				experimentsDouble.startOptimization(problem, algorithmsList, fitnessVariables, progressBar);
+				experimentsDouble.startOptimization(problem, algorithmsList, fitnessVariables, optimization);
 
 			if(variableType.equals("integer"))
-				experimentsInteger.startOptimization(problem, algorithmsList, fitnessVariables);
+				experimentsInteger.startOptimization(problem, algorithmsList, fitnessVariables, optimization);
 
 			if(variableType.equals("binary"))
-				experimentsBinary.startOptimization(problem, algorithmsList, fitnessVariables);	
+				experimentsBinary.startOptimization(problem, algorithmsList, fitnessVariables, optimization);	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

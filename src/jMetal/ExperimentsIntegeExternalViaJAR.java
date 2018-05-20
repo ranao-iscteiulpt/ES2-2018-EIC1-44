@@ -17,6 +17,7 @@ import org.uma.jmetal.util.experiment.component.*;
 import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 import org.uma.jmetal.util.experiment.util.ExperimentProblem;
 
+import GUITest.OptimizationProcess5;
 import objects.Problem;
 
 import java.io.IOException;
@@ -34,16 +35,19 @@ public class ExperimentsIntegeExternalViaJAR {
 	private Problem problem;
 	private DefaultListModel algorithmsList;
 	private DefaultTableModel fitnessVariables;
+	private OptimizationProcess5 optimization;
+	private int estimatedFinishTime = 0;
 
-	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables) throws IOException {
+	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariable, OptimizationProcess5 optimization ) throws IOException {
 		this.problem = problem;
 		this.algorithmsList = algorithmsList;
 		this.fitnessVariables = fitnessVariables;
-
+		this.optimization = optimization;
+		estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
 		String experimentBaseDirectory = "experimentBaseDirectory";
 
 		List<ExperimentProblem<IntegerSolution>> problemList = new ArrayList<>();
-		problemList.add(new ExperimentProblem<>(new MyProblemIntegerExternalViaJAR(problem, algorithmsList, fitnessVariables)));
+		problemList.add(new ExperimentProblem<>(new MyProblemIntegerExternalViaJAR(problem, algorithmsList, fitnessVariables, optimization, estimatedFinishTime)));
 
 		List<ExperimentAlgorithm<IntegerSolution, List<IntegerSolution>>> algorithmList =
 				configureAlgorithmList(problemList,algorithmsList);

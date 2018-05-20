@@ -61,10 +61,10 @@ public class LoginPanel extends javax.swing.JPanel {
 				login = new Login(usernameTF.getText(), passwordTF.getText());
 				login.confirmLogin();
 				
-				if(login.getLogin() == true){
+				if(login.getLogin() == true){				
 					JOptionPane.showMessageDialog(null, "Login sucessfully!");
 					LoginPanel.this.setVisible(false);
-					MainPanel mainPanel = new MainPanel(frame);
+					MainPanel mainPanel = new MainPanel(frame,login.getLoggedUser());
 					mainPanel.mainPanel();
 				}
 			}

@@ -15,6 +15,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import funcionalities.Form;
 import gui.OpenXMLPanel;
+import objects.User;
 
 /**
  *
@@ -24,15 +25,16 @@ public class OptimizationProcess2 extends javax.swing.JPanel {
 
 	
 	private Form form;
-	private File selectedFile;
+	private User userLoggedIn;
+	private File selectedDirectory;
 	private OptimizationProcess4 optimizationPanel;
 	
     /**
      * Creates new form OptimizationProcess2
      */
-    public OptimizationProcess2(Form form) {
+    public OptimizationProcess2(Form form, User userLoggedIn) {
     	this.form = form;
-    	
+    	this.userLoggedIn = userLoggedIn;
         initComponents();
     }
 
@@ -56,18 +58,18 @@ public class OptimizationProcess2 extends javax.swing.JPanel {
         titleLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         titleLabel.setText("Choose the folder where you have your xml files located");
 
-        fileDirectoryTextField.setForeground(new java.awt.Color(153, 153, 153));
-        fileDirectoryTextField.setText("Browse your computer");
+        //fileDirectoryTextField.setForeground(new java.awt.Color(153, 153, 153));
+        //fileDirectoryTextField.setText("Browse your computer");
         fileDirectoryTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
         fileDirectoryTextField.setOpaque(false);
 
         browseButton.setText("Browse");
 
-        nextButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ricardo\\Desktop\\arrowRight.png")); // NOI18N
+        nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nextButton.setFocusable(false);
 
-        loggedInLabel.setText("Logged in as : @var");
+        loggedInLabel.setText("Logged in as : "  + userLoggedIn.getUsername());
         
         browseButton.addActionListener(new ActionListener() {
 			
@@ -79,8 +81,9 @@ public class OptimizationProcess2 extends javax.swing.JPanel {
 				 // int returnValue = jfc.showSaveDialog(null);
 
 				 if (returnValue == JFileChooser.APPROVE_OPTION) {
-					 selectedFile = jfc.getSelectedFile(); 
-					 fileDirectoryTextField.setText(selectedFile.getAbsolutePath());
+					 //selectedFile = jfc.getSelectedFile();
+					 selectedDirectory = jfc.getCurrentDirectory();
+					 fileDirectoryTextField.setText(selectedDirectory.getAbsolutePath());
 				 }				
 			}
 		});
@@ -133,7 +136,7 @@ public class OptimizationProcess2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextPanel() {
-    	optimizationPanel = new OptimizationProcess4(form,fileDirectoryTextField.getText());
+    	optimizationPanel = new OptimizationProcess4(form,fileDirectoryTextField.getText(),userLoggedIn);
     	form.create(optimizationPanel);
     }
 
