@@ -71,13 +71,13 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 		quantityLabel.setText("Quantity");
 
 		nameTextField.setForeground(new java.awt.Color(153, 153, 153));
-		nameTextField.setText("e.g. rule ");
+		//nameTextField.setText("e.g. rule ");
 		nameTextField.setToolTipText("");
 		nameTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 		nameTextField.setName(""); // NOI18N
 
 		quantityTextField.setForeground(new java.awt.Color(153, 153, 153));
-		quantityTextField.setText("e.g. 20");
+		//quantityTextField.setText("e.g. 20");
 		quantityTextField.setToolTipText("");
 		quantityTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 
@@ -88,7 +88,7 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 		minValueLabel.setText("Mininum Value");
 
 		minValueTextField.setForeground(new java.awt.Color(153, 153, 153));
-		minValueTextField.setText("e.g. 1");
+		//minValueTextField.setText("e.g. 1");
 		minValueTextField.setToolTipText("");
 		minValueTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 
@@ -96,7 +96,7 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 		maxValueLabel.setText("Maximum Value");
 
 		maxValueTextField.setForeground(new java.awt.Color(153, 153, 153));
-		maxValueTextField.setText("e.g. 10");
+		//maxValueTextField.setText("e.g. 10");
 		maxValueTextField.setToolTipText("");
 		maxValueTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 		maxValueTextField.setName(""); // NOI18N

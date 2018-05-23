@@ -8,7 +8,9 @@ package GUITest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import javax.swing.table.DefaultTableModel;
 
 import files.XMLOperations;
@@ -26,6 +28,7 @@ public class ProblemProcess4 extends javax.swing.JPanel {
 	private String name;
 	private String description;
 	private DefaultTableModel variableList;
+	private ButtonGroup radioButtonGroup = new ButtonGroup();
 		
     /**
      * Creates new form ProblemProcess4
@@ -71,14 +74,15 @@ public class ProblemProcess4 extends javax.swing.JPanel {
         invalidValueLabel.setText("Invalid Values");
 
         firstInvalidValueTextField.setForeground(new java.awt.Color(153, 153, 153));
-        firstInvalidValueTextField.setText("e.g. 2");
+        //firstInvalidValueTextField.setText("e.g. 2");
         firstInvalidValueTextField.setToolTipText("");
         firstInvalidValueTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
 
         timeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seconds", "minutes", "hours", "days" }));
 
         secondInvalidValueTextField.setForeground(new java.awt.Color(153, 153, 153));
-        secondInvalidValueTextField.setText("e.g. 4");
+        secondInvalidValueTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
+        //secondInvalidValueTextField.setText("e.g. 4");
 
         intervalRButton.setText("Interval");
 
@@ -93,9 +97,32 @@ public class ProblemProcess4 extends javax.swing.JPanel {
         finishButton.setFocusable(false);
 
         waitTimeTextField.setForeground(new java.awt.Color(153, 153, 153));
-        waitTimeTextField.setText("e.g. 10");
+        //waitTimeTextField.setText("e.g. 10");
         waitTimeTextField.setToolTipText("");
         waitTimeTextField.setMargin(new java.awt.Insets(2, 15, 2, 2));
+        
+        radioButtonGroup.add(intervalRButton);
+        radioButtonGroup.add(singleRButton);
+        firstInvalidValueTextField.setEnabled(false);
+        secondInvalidValueTextField.setEnabled(false);
+        
+        intervalRButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				firstInvalidValueTextField.setEnabled(true);
+				secondInvalidValueTextField.setEnabled(true);
+			}
+		});
+        
+        singleRButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				secondInvalidValueTextField.setEnabled(false);
+			}
+		});
+        
         
         finishButton.addActionListener(new ActionListener() {
 			
@@ -173,7 +200,14 @@ public class ProblemProcess4 extends javax.swing.JPanel {
     }
     
     private void createXML() {
-		xml.writeXML(name, variableList ,description, waitTimeTextField.getText() + " " + timeComboBox.getSelectedItem() , firstInvalidValueTextField.getText());
+    	if(singleRButton.isSelected()) {
+    		xml.writeXML(name, variableList ,description, waitTimeTextField.getText() + " " + timeComboBox.getSelectedItem() , firstInvalidValueTextField.getText());
+    	} else {
+    		System.out.println("interval");
+    		xml.writeXML(name, variableList ,description, waitTimeTextField.getText() + " " + timeComboBox.getSelectedItem() , firstInvalidValueTextField.getText(),secondInvalidValueTextField.getText());
+    	}
+    	
+		
 		JOptionPane.showMessageDialog(null, "XML Created");
     }
 	

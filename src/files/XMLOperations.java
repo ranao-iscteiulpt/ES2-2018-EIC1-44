@@ -22,8 +22,95 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class XMLOperations {
+	
+	public void writeXML(String title,DefaultTableModel model ,String description, String waitTime, String firstInvalidNumber, String secondInvalidNumber ) {
+		try {
 
-	public void writeXML(String title,DefaultTableModel model ,String description, String waitTime, String invalidNumbers ) {
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+			// root elements
+			Document doc = docBuilder.newDocument();
+			Element rootElement = doc.createElement("file");
+			doc.appendChild(rootElement);
+
+			// problem elements
+			Element problem = doc.createElement("problem");
+			rootElement.appendChild(problem);
+
+			// set attribute 
+//			Attr attr = doc.createAttribute("name");
+//			attr.setValue(title);
+//			problem.setAttributeNode(attr);
+			
+			Element nameElement = doc.createElement("name");
+			nameElement.appendChild(doc.createTextNode(title));
+			problem.appendChild(nameElement);
+
+			Element descriptionElement = doc.createElement("description");
+			descriptionElement.appendChild(doc.createTextNode(description));
+			problem.appendChild(descriptionElement);
+
+			Element waitTimeElement = doc.createElement("waitTime");
+			waitTimeElement.appendChild(doc.createTextNode(waitTime));
+			problem.appendChild(waitTimeElement);
+			
+			for(int i =0; i < model.getRowCount(); i++) {
+				
+				Element variableElement = doc.createElement("variable");
+				problem.appendChild(variableElement);
+				
+				Element variableName = doc.createElement("name");
+				variableName.appendChild(doc.createTextNode(model.getValueAt(i, 0).toString()));
+				
+				Element variableType = doc.createElement("type");
+				variableType.appendChild(doc.createTextNode(model.getValueAt(i, 1).toString()));
+				
+				Element variableMinValue = doc.createElement("minimumValue");
+				variableMinValue.appendChild(doc.createTextNode(model.getValueAt(i, 2).toString()));
+				
+				Element variableMaxValue = doc.createElement("maximumValue");
+				variableMaxValue.appendChild(doc.createTextNode(model.getValueAt(i, 3).toString()));
+				
+							
+				variableElement.appendChild(variableName); //adicionar elemento ao parent
+				variableElement.appendChild(variableType);
+				variableElement.appendChild(variableMinValue);
+				variableElement.appendChild(variableMaxValue);
+			}			
+
+			Element firstInvalidValue = doc.createElement("firstInvalidValue");
+			firstInvalidValue.appendChild(doc.createTextNode(firstInvalidNumber));
+			problem.appendChild(firstInvalidValue);
+			
+			Element secondInvalidValue = doc.createElement("secondInvalidValue");
+			secondInvalidValue.appendChild(doc.createTextNode(secondInvalidNumber));
+			problem.appendChild(secondInvalidValue);
+
+			// write the content into xml file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+
+			Date dNow = new Date();
+			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
+			String guardaData = df.format(dNow);
+			StreamResult result = new StreamResult(new File(title+guardaData+".xml"));
+
+			// Output to console for testing
+			// StreamResult result = new StreamResult(System.out);
+
+			transformer.transform(source, result);
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		}
+		
+	}
+
+	public void writeXML(String title,DefaultTableModel model ,String description, String waitTime, String invalidNumber ) {
 
 		try {
 
@@ -81,7 +168,7 @@ public class XMLOperations {
 			}			
 
 			Element invalidValues = doc.createElement("invalidValues");
-			invalidValues.appendChild(doc.createTextNode(invalidNumbers));
+			invalidValues.appendChild(doc.createTextNode(invalidNumber));
 			problem.appendChild(invalidValues);
 
 			// write the content into xml file
