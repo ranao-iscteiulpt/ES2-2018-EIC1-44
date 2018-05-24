@@ -40,7 +40,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 		try {
 			model.setRowCount(0);
 			file = jfc;
-			System.out.println(file);
+			//System.out.println(file);
 			Node[] xmlFile = xmlOperations.readXML(file);
 			nameTF.setText( xmlFile[0].getTextContent().toString());
 			descriptionTA.setText(xmlFile[1].getTextContent().toString());
@@ -57,7 +57,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 
 					//model.addElement("AAA");
 					for(int i=0; i < n.getChildNodes().getLength(); i++) {
-						System.out.println(n.getChildNodes().item(i).getTextContent());
+						//System.out.println(n.getChildNodes().item(i).getTextContent());
 						// model.addElement(n.getChildNodes().item(i).getTextContent());
 						if(n.getChildNodes().item(i).getNodeName().equals("name"))
 							variableName = n.getChildNodes().item(i).getTextContent();
@@ -74,10 +74,14 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 
 				if(n.getNodeName().equals("invalidValues"))
 					invalidValueTF.setText(n.getTextContent());
+				if(n.getNodeName().equals("firstInvalidValue"))
+					invalidValueTF.setText(n.getTextContent());
+				if(n.getNodeName().equals("secondInvalidValue"))
+					secondInvalidValueTextField.setText(n.getTextContent());
 
 			}
 		} catch (Exception e) {
-			System.out.println("falhou");
+			//System.out.println("falhou");
 		}
 		//lblInvalidText.setText(xmlFile[xmlFile.length]);
 	}
@@ -120,6 +124,10 @@ public class OpenXMLPanel extends javax.swing.JPanel {
         quantityTextField = new javax.swing.JTextField();
         typeComboBox = new javax.swing.JComboBox<>();
         saveButton = new javax.swing.JButton();
+        toLabel = new javax.swing.JLabel();
+        secondInvalidValueTextField = new javax.swing.JTextField();
+        removeButton = new javax.swing.JButton();
+        editVariables = new javax.swing.JButton();
 
         waitTimeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         waitTimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -133,18 +141,18 @@ public class OpenXMLPanel extends javax.swing.JPanel {
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nameLabel.setText("Name");
 
-        variablesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Name", "Type", "Min Value", "Max Value"
-            }
-        ));
-        jScrollPane1.setViewportView(variablesTable);
+		model = new javax.swing.table.DefaultTableModel() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+        variablesTable.setModel(model);
+		model.addColumn("Name");
+		model.addColumn("Type");
+		model.addColumn("Min Value");
+		model.addColumn("Max Value");
+		jScrollPane1.setViewportView(variablesTable);
 
         variableNameLabel.setText("Name");
 
@@ -168,25 +176,25 @@ public class OpenXMLPanel extends javax.swing.JPanel {
         descriptionLabel.setText("Description");
 
         editWaitTimeButton.setForeground(new java.awt.Color(51, 102, 255));
-        editWaitTimeButton.setText("Editar");
+        editWaitTimeButton.setText("Edit");
         editWaitTimeButton.setBorderPainted(false);
         editWaitTimeButton.setContentAreaFilled(false);
         editWaitTimeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         editNameButton.setForeground(new java.awt.Color(51, 102, 255));
-        editNameButton.setText("Editar");
+        editNameButton.setText("Edit");
         editNameButton.setBorderPainted(false);
         editNameButton.setContentAreaFilled(false);
         editNameButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         editInvalidValueButton.setForeground(new java.awt.Color(51, 102, 255));
-        editInvalidValueButton.setText("Editar");
+        editInvalidValueButton.setText("Edit");
         editInvalidValueButton.setBorderPainted(false);
         editInvalidValueButton.setContentAreaFilled(false);
         editInvalidValueButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         editDescriptionButton.setForeground(new java.awt.Color(51, 102, 255));
-        editDescriptionButton.setText("Editar");
+        editDescriptionButton.setText("Edit");
         editDescriptionButton.setBorderPainted(false);
         editDescriptionButton.setContentAreaFilled(false);
         editDescriptionButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -209,11 +217,76 @@ public class OpenXMLPanel extends javax.swing.JPanel {
         quantityLabel.setText("Quantity");
 
         quantityTextField.setEditable(false);
-        quantityTextField.setBackground(new java.awt.Color(240, 240, 240));
 
-        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "integer", "string", "binary" }));
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "integer", "double", "binary" }));
 
         saveButton.setText("Save");
+
+        toLabel.setText("to");
+
+        secondInvalidValueTextField.setBackground(new java.awt.Color(240, 240, 240));
+        secondInvalidValueTextField.setBorder(null);
+
+        removeButton.setText("Remove");
+
+        editVariables.setText("Edit");
+        
+        editWaitTimeButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(waitTimeTF.isEditable()) {
+					waitTimeTF.setEditable(false);
+					waitTimeTF.setBackground(new Color(240,240,240));
+				} else {
+					waitTimeTF.setEditable(true);
+					waitTimeTF.setBackground(new Color(255,255,255));
+				}				
+			}
+		});
+        
+        editNameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(nameTF.isEditable()) {
+					nameTF.setEditable(false);
+					nameTF.setBackground(new Color(240,240,240));
+				} else {
+					nameTF.setEditable(true);
+					nameTF.setBackground(new Color(255,255,255));
+				}
+			}
+		});
+        
+        editInvalidValueButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(invalidValueTF.isEditable()) {
+					invalidValueTF.setEditable(false);
+					invalidValueTF.setBackground(new Color(240,240,240));
+				} else {
+					invalidValueTF.setEditable(true);
+					invalidValueTF.setBackground(new Color(255,255,255));
+				}
+
+			}
+		});
+        
+        editDescriptionButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(descriptionTA.isEditable()) {
+					descriptionTA.setEditable(false);
+					descriptionTA.setBackground(new Color(240,240,240));
+				} else {
+					descriptionTA.setEditable(true);
+					descriptionTA.setBackground(new Color(255,255,255));
+				}
+			}
+		});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,7 +305,10 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
@@ -247,9 +323,12 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                                     .addComponent(quantityLabel))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(variableNameTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(variableNameTF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addComponent(editVariables, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(variableMinValueTF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(variableMaxValueTF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -264,7 +343,12 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(invalidValueTF, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(invalidValueTF, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(toLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(secondInvalidValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(editInvalidValueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,7 +360,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                                         .addComponent(waitTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(editWaitTimeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,15 +377,18 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(invalidValueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(invalidValueTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(invalidValueTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(toLabel)
+                        .addComponent(secondInvalidValueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(editInvalidValueButton))
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(variableNameLabel)
-                            .addComponent(variableNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
+                            .addComponent(variableNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editVariables))
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(varTypeLabel)
                             .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -318,7 +405,8 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(generateButton)
                     .addComponent(quantityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeButton))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,7 +415,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(descriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editDescriptionButton))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -343,6 +431,7 @@ public class OpenXMLPanel extends javax.swing.JPanel {
     private javax.swing.JButton editDescriptionButton;
     private javax.swing.JButton editInvalidValueButton;
     private javax.swing.JButton editNameButton;
+    private javax.swing.JButton editVariables;
     private javax.swing.JButton editWaitTimeButton;
     private javax.swing.JButton generateButton;
     private javax.swing.JLabel invalidValueLabel;
@@ -353,7 +442,10 @@ public class OpenXMLPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameTF;
     private javax.swing.JLabel quantityLabel;
     private javax.swing.JTextField quantityTextField;
+    private javax.swing.JButton removeButton;
     private javax.swing.JButton saveButton;
+    private javax.swing.JTextField secondInvalidValueTextField;
+    private javax.swing.JLabel toLabel;
     private javax.swing.JComboBox<String> typeComboBox;
     private javax.swing.JLabel varMaxLabel;
     private javax.swing.JLabel varMinLabel;
