@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 import funcionalities.Form;
+import objects.User;
 
 /**
  *
@@ -22,13 +23,14 @@ public class ProblemProcess2 extends javax.swing.JPanel {
 
 	private Form form;
 	private ProblemProcess3 problemPanel;
+	private User userLoggedIn;
 
 	/**
 	 * Creates new form ProblemProcess2
 	 */
-	public ProblemProcess2(Form form) {
+	public ProblemProcess2(Form form,User userLoggedIn) {
 		this.form = form;
-
+		this.userLoggedIn = userLoggedIn;
 		initComponents();
 	}
 
@@ -141,7 +143,7 @@ public class ProblemProcess2 extends javax.swing.JPanel {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void nextPanel(String name, String description) {
-		problemPanel = new ProblemProcess3(form,name,description);
+		problemPanel = new ProblemProcess3(form,name,description,userLoggedIn);
 		form.create(problemPanel);
 	}
 

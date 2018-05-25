@@ -28,44 +28,46 @@ public class FaqPanel extends javax.swing.JPanel {
     public void initComponents() {
 
         faqTitleLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        faqQ1Label = new javax.swing.JLabel();
+        faqA1Label = new javax.swing.JLabel();
+        faqQ2Label = new javax.swing.JLabel();
+        faqA2Label = new javax.swing.JLabel();
+        faqQ3Label = new javax.swing.JLabel();
+        faqA3Label = new javax.swing.JLabel();
+        faqQ4Label = new javax.swing.JLabel();
+        faqA4Label = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         faqTitleLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         faqTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         faqTitleLabel.setText("F.A.Q.");
         faqTitleLabel.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Q: How do you create problems?");
-        jLabel1.setToolTipText("");
+        faqQ1Label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        faqQ1Label.setText("Q: How do you create Problems?");
+        faqQ1Label.setToolTipText("");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("A: On the menu you have to follow this path: Actions -> New Problem.");
+        faqA1Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        faqA1Label.setText("A: On the menu you have to follow this path: Actions -> New Problem");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Q: Do I receive updates on the state of the optimization?");
+        faqQ2Label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        faqQ2Label.setText("Q: Do i receive updates on the state of the optimization?");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("A: Yes , the administrator will send you emails with analysis of the optimization.");
+        faqA2Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        faqA2Label.setText("A: Yes , the administrator will send you emails with analysis of the optimization");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Q: Can I be in the optimization process with more than one problem?");
+        faqQ3Label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        faqQ3Label.setText("Q: Can I be in the optimization process with more than one problem?");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("A:Yes , you can have various optimizations being done at the same time.");
+        faqA3Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        faqA3Label.setText("A:Yes , you can have various optimizations being done at the same time");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Q: What is a JAR file?");
+        faqQ4Label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        faqQ4Label.setText("Q: What is a JAR file ?");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setText("A: A java file that contains java code and can be executed.");
+        faqA4Label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        faqA4Label.setText("A: A java file that contains java code and can be executed");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,56 +76,56 @@ public class FaqPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(faqTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                            .addComponent(faqQ1Label)
+                            .addComponent(faqQ2Label)
+                            .addComponent(faqA2Label)
+                            .addComponent(faqQ3Label)
+                            .addComponent(faqA3Label)
+                            .addComponent(faqQ4Label)
+                            .addComponent(faqA4Label)
+                            .addComponent(faqA1Label)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(faqTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(25, 25, 25)
                 .addComponent(faqTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
+                .addComponent(faqQ1Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel3)
+                .addComponent(faqA1Label)
+                .addGap(18, 18, 18)
+                .addComponent(faqQ2Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(61, 61, 61)
-                .addComponent(jLabel5)
+                .addComponent(faqA2Label)
+                .addGap(18, 18, 18)
+                .addComponent(faqQ3Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addGap(49, 49, 49)
-                .addComponent(jLabel7)
+                .addComponent(faqA3Label)
+                .addGap(18, 18, 18)
+                .addComponent(faqQ4Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addComponent(faqA4Label)
+                .addContainerGap(84, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel faqA1Label;
+    private javax.swing.JLabel faqA2Label;
+    private javax.swing.JLabel faqA3Label;
+    private javax.swing.JLabel faqA4Label;
+    private javax.swing.JLabel faqQ1Label;
+    private javax.swing.JLabel faqQ2Label;
+    private javax.swing.JLabel faqQ3Label;
+    private javax.swing.JLabel faqQ4Label;
     private javax.swing.JLabel faqTitleLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

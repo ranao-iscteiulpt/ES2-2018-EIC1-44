@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import funcionalities.Form;
+import objects.User;
 
 /**
  *
@@ -19,13 +20,15 @@ public class ProblemProcess1 extends javax.swing.JPanel {
 	 
 	 private Form form;
 	 private ProblemProcess2 problemPanel;
+	 private User userLoggedIn;
 
     /**
      * Creates new form ProblemProcess1
      */
-    public ProblemProcess1(Form form) {
+    public ProblemProcess1(Form form, User userLoggedIn) {
     	this.form = form;
-    	problemPanel = new ProblemProcess2(form);
+    	this.userLoggedIn = userLoggedIn;
+    	problemPanel = new ProblemProcess2(form,userLoggedIn);
         initComponents();
     }
 

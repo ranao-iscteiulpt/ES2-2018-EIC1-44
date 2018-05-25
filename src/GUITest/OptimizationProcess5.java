@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import files.TEXTOperations;
+import funcionalities.Email;
 import funcionalities.Form;
 import jMetal.OptimizationProcess;
 import objects.Problem;
@@ -38,7 +39,9 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 	private User userLoggedIn;
 	private ArrayList<String> jarList;
 	private TEXTOperations textOperations = new TEXTOperations();
-	private WelcomePage welcomePage = new WelcomePage();
+	private WelcomePage welcomePage = new WelcomePage(userLoggedIn);
+	private Email email = new Email();
+	private String oldMessage ="";
 	/**
 	 * Creates new form OptimizationProcess5
 	 * @param fitnessVariables 
@@ -70,7 +73,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
         optimizationProgressBar = new javax.swing.JProgressBar();
         optimizationProgressLabel = new javax.swing.JLabel();
         loggedInLabel = new javax.swing.JLabel();
-        nextButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton("Menu");
         startButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -87,7 +90,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
         optimizationProgressLabel.setVisible(false);
         optimizationProgressBar.setVisible(false);
 
-        loggedInLabel.setText("Logged in as : @var");
+        loggedInLabel.setText("Logged in as: " + userLoggedIn.getUsername());
 
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nextButton.setFocusable(false);
@@ -112,7 +115,11 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 				
 				Thread t1 = new Thread() {
 					public void run() {
-						//envia email ao utilizador
+						updateMessage("Muito obrigado por usar esta  plataforma de otimização. "
+								+ "Será informado por email sobre o progresso do processo de otimização,"
+								+ " quando o processo de otimização tiver atingido 25%, 50%, 75%  do  total "
+								+ " do (número  de  avaliações  ou) tempo estimado,  e  também  quando  o  "
+								+ "processo  tiver terminado, com sucesso ou devido à ocorrência de erros.");
 						optimizationStart();					
 						textOperations.createGraph(jarList,algorithmsChosenList,problem);
 						nextButton.setVisible(true);
@@ -185,14 +192,27 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 			while(progressPercent <= 100) {
 				optimizationProgressBar.setValue(progressPercent);
 				optimizationProgressBar.repaint();
+				if(progressPercent == 25)
+					updateMessage("Optimization progress reached 25%");
+				if(progressPercent == 50)
+					updateMessage("Optimization progress reached 50%");
+				if(progressPercent == 75)
+					updateMessage("Optimization progress reached 75%");	
+				if(progressPercent == 100)
+					updateMessage("Optimization progress reached 100%");	
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e) {}
 			}
-//			optimizationProgressBar.setVisible(false);
-//			optimizationProgressLabel.setVisible(false);
 		}
 	};
+	
+	public void updateMessage(String mailMessage) {
+		if(!oldMessage.equals(mailMessage)) {
+		email.updateUser(mailMessage);
+		}
+		oldMessage = mailMessage;
+	}
 
 	public void setProgressPercent(int percent) {
 		progressPercent = percent;

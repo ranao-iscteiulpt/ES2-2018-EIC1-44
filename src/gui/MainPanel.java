@@ -19,6 +19,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import GUITest.OptimizationProcess1;
 import GUITest.ProblemProcess1;
+import GUITest.WelcomePage;
 import funcionalities.Form;
 import objects.User;
 
@@ -50,6 +51,10 @@ public class MainPanel extends JPanel {
 		menu.add(actions);
 		JMenu help = new JMenu("Help");
 		menu.add(help);
+		
+		
+		WelcomePage welcomePage = new WelcomePage(userLoggedIn);
+		form.create(welcomePage);
 
 
 		JMenuItem loadXml = new JMenuItem("Load XML");
@@ -69,8 +74,6 @@ public class MainPanel extends JPanel {
 					 OpenXMLPanel xmlPanel = new OpenXMLPanel(jfc.getSelectedFile());
 					 form.create(xmlPanel);
 				 }
-//				XMLLoadPanel xmlPanel = new XMLLoadPanel();
-//				form.create(xmlPanel);
 			}
 		});
 
@@ -89,7 +92,7 @@ public class MainPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				//ProblemPanel problemPanel = new ProblemPanel(); para retirar
-				ProblemProcess1 problemPanel = new ProblemProcess1(form);
+				ProblemProcess1 problemPanel = new ProblemProcess1(form,userLoggedIn);
 				form.create(problemPanel);
 			}
 

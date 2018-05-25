@@ -57,4 +57,42 @@ public class Email {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void updateUser( String mailMessage) {
+		final String userEmail = "grupo44es@gmail.com";
+				final String userPassword = "projecto2018";
+				
+				final String username = userEmail;
+				final String password = userPassword;
+
+				Properties props = new Properties();
+				props.put("mail.smtp.starttls.enable", "true");
+				props.put("mail.smtp.auth", "true");
+				props.put("mail.smtp.host", "smtp.gmail.com");
+				props.put("mail.smtp.port", "587");
+				props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+				Session session = Session.getInstance(props,
+						new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				});
+
+				try {
+
+					Message message = new MimeMessage(session);
+					message.setFrom(new InternetAddress(userEmail));
+					message.setRecipients(Message.RecipientType.TO,
+							InternetAddress.parse("ricnogueira01@gmail.com"));
+					message.setSubject("optmizacao");
+					message.setText(mailMessage);
+
+					Transport.send(message);
+					
+				
+				} catch (MessagingException e) {
+					throw new RuntimeException(e);
+				}
+	}
 }

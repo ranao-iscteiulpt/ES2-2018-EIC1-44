@@ -5,17 +5,21 @@
  */
 package GUITest;
 
+import objects.User;
+
 /**
  *
  * @author Ricardo
  */
 public class WelcomePage extends javax.swing.JPanel {
 
+	private User userLoggedIn;
     /**
      * Creates new form WelcomePage
      */
-    public WelcomePage() {
-        initComponents();
+    public WelcomePage(User userLoggedIn) {
+        this.userLoggedIn = userLoggedIn;
+    	initComponents();
     }
 
     /**
