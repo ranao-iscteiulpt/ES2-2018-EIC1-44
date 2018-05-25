@@ -392,29 +392,7 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 
 				if(n.getNodeName().equals("variable") )	{
 					variableCounter++;
-					String variableName = "";
-					String variableType = "";
-					String variableMinimumValue = "";
-					String variableMaximumValue = "";
-
-					for(int i=0; i < n.getChildNodes().getLength(); i++) {
-						if(n.getChildNodes().item(i).getNodeName().equals("name"))
-							variableName = n.getChildNodes().item(i).getTextContent();
-						if(n.getChildNodes().item(i).getNodeName().equals("type"))
-							variableType = n.getChildNodes().item(i).getTextContent();
-						if(n.getChildNodes().item(i).getNodeName().equals("minimumValue"))
-							variableMinimumValue = n.getChildNodes().item(i).getTextContent();
-						if(n.getChildNodes().item(i).getNodeName().equals("maximumValue"))
-							variableMaximumValue = n.getChildNodes().item(i).getTextContent();
-					}
-
-					if(variableType.equals("integer"))
-						variable = new Variable (variableName, variableType, Integer.parseInt(variableMinimumValue), Integer.parseInt(variableMaximumValue));
-					if(variableType.equals("double"))
-						variable = new Variable (variableName, variableType, Double.parseDouble(variableMinimumValue), Double.parseDouble(variableMaximumValue));
-					if(variableType.equals("binary"))
-						variable = new Variable (variableName, variableType, Integer.parseInt(variableMinimumValue), Integer.parseInt(variableMaximumValue));
-
+					variable(n);
 					variableList.add(variable);
 				}
 
@@ -431,6 +409,32 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 		} else {
 			problem = new Problem(name,description,waitTime,Integer.parseInt(firstInvalidValue),Integer.parseInt(secondInvalidValue),variableCounter,variableList);
 		}
+	}
+
+	private void variable(Node n) throws org.w3c.dom.DOMException, java.lang.NumberFormatException {
+		String variableName = "";
+		String variableType = "";
+		String variableMinimumValue = "";
+		String variableMaximumValue = "";
+		for (int i = 0; i < n.getChildNodes().getLength(); i++) {
+			if (n.getChildNodes().item(i).getNodeName().equals("name"))
+				variableName = n.getChildNodes().item(i).getTextContent();
+			if (n.getChildNodes().item(i).getNodeName().equals("type"))
+				variableType = n.getChildNodes().item(i).getTextContent();
+			if (n.getChildNodes().item(i).getNodeName().equals("minimumValue"))
+				variableMinimumValue = n.getChildNodes().item(i).getTextContent();
+			if (n.getChildNodes().item(i).getNodeName().equals("maximumValue"))
+				variableMaximumValue = n.getChildNodes().item(i).getTextContent();
+		}
+		if (variableType.equals("integer"))
+			variable = new Variable(variableName, variableType, Integer.parseInt(variableMinimumValue),
+					Integer.parseInt(variableMaximumValue));
+		if (variableType.equals("double"))
+			variable = new Variable(variableName, variableType, Double.parseDouble(variableMinimumValue),
+					Double.parseDouble(variableMaximumValue));
+		if (variableType.equals("binary"))
+			variable = new Variable(variableName, variableType, Integer.parseInt(variableMinimumValue),
+					Integer.parseInt(variableMaximumValue));
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
