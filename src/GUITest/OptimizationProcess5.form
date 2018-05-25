@@ -22,20 +22,15 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-              <Component id="optimizationProgressBar" min="-2" pref="700" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="optimizationProgressLabel" min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="loggedInLabel" min="-2" pref="161" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="optimizationProgressLabel" min="-2" pref="66" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="titleLabel" min="-2" pref="274" max="-2" attributes="0"/>
@@ -45,7 +40,16 @@
                       <Component id="nextButton" min="-2" pref="64" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="optimizationProgressBar" min="-2" pref="700" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+              <Component id="startButton" min="-2" pref="145" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,11 +60,13 @@
               <Component id="loggedInLabel" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="titleLabel" min="-2" pref="44" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <Component id="startButton" min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="optimizationProgressLabel" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="optimizationProgressBar" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace pref="134" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
               <Component id="nextButton" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -98,15 +104,17 @@
     </Component>
     <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Ricardo\Desktop\arrowRight.png"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder/>
           </Border>
         </Property>
         <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="startButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Optimization"/>
       </Properties>
     </Component>
   </SubComponents>

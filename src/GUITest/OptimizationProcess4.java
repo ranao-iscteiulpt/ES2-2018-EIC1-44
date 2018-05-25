@@ -7,6 +7,7 @@ package GUITest;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.jar.JarFile;
 
 import javax.swing.JFileChooser;
@@ -29,6 +30,7 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 	private OptimizationProcess3 optimizationPanel;
 	private DefaultTableModel fitnessVariables = new DefaultTableModel();
 	private User userLoggedIn;
+	private ArrayList<String> jarList = new ArrayList<String>();
 	/**
 	 * Creates new form OptimizationProcess4
 	 */
@@ -112,6 +114,7 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addFitnessVariable();
+				
 
 			}
 		});
@@ -120,7 +123,7 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				deleteFitnessVariable();			
+				deleteFitnessVariable();
 			}
 		});
 
@@ -212,7 +215,7 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 
 	private void nextPanel() {
 		if(variablesTable.getRowCount() > 0) {
-			optimizationPanel = new OptimizationProcess3(form, fileDirectory, fitnessVariables,userLoggedIn);
+			optimizationPanel = new OptimizationProcess3(form, fileDirectory, fitnessVariables,userLoggedIn,jarList);
 			form.create(optimizationPanel);
 		}
 		else {
@@ -223,12 +226,15 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 
 	private void addFitnessVariable() {
 		fitnessVariables.addRow(new Object[] {nameTextField.getText(),jarDirectoryTextField.getText()});
+		jarList.add(nameTextField.getText());
 	}
 	
 	private void deleteFitnessVariable() {
 		if(variablesTable.getRowCount() > 0) {
 			int selectedRow = variablesTable.getSelectedRow();
 			fitnessVariables.removeRow(selectedRow);
+			System.out.println("index"+selectedRow);
+			jarList.remove(selectedRow);
 		}
 	}
 

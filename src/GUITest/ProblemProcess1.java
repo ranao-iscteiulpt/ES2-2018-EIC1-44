@@ -48,9 +48,11 @@ public class ProblemProcess1 extends javax.swing.JPanel {
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nextButton.setFocusable(false);
 
-        title2Label.setText("jLabel1");
+        title2Label.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        title2Label.setText("If you have any doubts please send us an email");
 
-        titleLabel.setText("jLabel1");
+        titleLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        titleLabel.setText("Follow the steps to finish the creation of a problem");
         
     	nextButton.addActionListener(new ActionListener() {
 			

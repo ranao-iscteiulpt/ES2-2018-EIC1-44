@@ -51,7 +51,7 @@ public class OptimizationProcess1 extends javax.swing.JPanel {
         titleLabel.setText("Here is where you can start an Optimization. Follow the steps ");
 
         title2Label.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        title2Label.setText("and if you have any doubts click this icon () that will give you a tip");
+        title2Label.setText("and if you have any doubts please send us an email");
 
         nextButton.setIcon(new javax.swing.ImageIcon("img\\arrowRight.png")); // NOI18N
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

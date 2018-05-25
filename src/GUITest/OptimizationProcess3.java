@@ -48,13 +48,15 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 	private DefaultTableModel fitnessVariables;
 	private ButtonGroup radioButtonGroup = new ButtonGroup();
 	private User userLoggedIn;
+	private ArrayList<String> jarList;
 
 	/** Creates new form OptimizationProcess3 */
-	public OptimizationProcess3(Form form, String fileDirectory, DefaultTableModel fitnessVariables, User userLoggedIn) {
+	public OptimizationProcess3(Form form, String fileDirectory, DefaultTableModel fitnessVariables, User userLoggedIn, ArrayList<String> jarList) {
 		this.form = form;
 		this.userLoggedIn = userLoggedIn;
 		this.fileDirectory = fileDirectory;
 		this.fitnessVariables = fitnessVariables;
+		this.jarList= jarList;
 		initComponents();
 	}
 
@@ -203,7 +205,7 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(fitnessVariables.getRowCount() > 1) {
 
-					nextPanel();nextPanel();
+					nextPanel();
 				} else 				
 					JOptionPane.showMessageDialog(null, "Please add more than 1 fitness variable");
 
@@ -309,7 +311,7 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 
 	private void nextPanel() {
 		//optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
-		optimizationPanel = new OptimizationProcess5(form, problem , variableType, algorithmsChosenList, fitnessVariables,userLoggedIn);
+		optimizationPanel = new OptimizationProcess5(form, problem , variableType, algorithmsChosenList, fitnessVariables,userLoggedIn,jarList);
 		//System.out.println("P: " + problem+ ", VarType: "+ variableType+",Algorithms: "+ algorithmsChosenList+",fitness: "+ fitnessVariables);
 		form.create(optimizationPanel);
 		//optimizationPanel.optimizationStart();

@@ -49,7 +49,7 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		List<Double> lowerLimit = new ArrayList<>(getNumberOfVariables()) ;
 		List<Double> upperLimit = new ArrayList<>(getNumberOfVariables()) ;
 
-		for (int i = 0; i < getNumberOfVariables(); i++) {
+		for (int i = 0; i < getNumberOfVariables(); i++) {		
 			lowerLimit.add( ((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
 			upperLimit.add(((Variable) problem.getVariableList().get(i)).getMaxValueDouble() );
 		}
