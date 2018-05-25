@@ -25,7 +25,7 @@ public class WelcomePage extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    public void initComponents() {
 
         loggedInLabel = new javax.swing.JLabel();
         welcomeMessageLabel = new javax.swing.JLabel();

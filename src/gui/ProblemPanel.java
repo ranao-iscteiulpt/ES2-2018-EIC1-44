@@ -32,7 +32,7 @@ public class ProblemPanel extends javax.swing.JPanel {
 	 */
 	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    public void initComponents() {
 
         nameLabel = new javax.swing.JLabel();
         waitTimeLabel = new javax.swing.JLabel();

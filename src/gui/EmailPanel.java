@@ -33,7 +33,7 @@ public class EmailPanel extends javax.swing.JPanel {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-	private void initComponents() {
+	public void initComponents() {
 
 		emailLabel = new javax.swing.JLabel();
 		sendEmailButton = new javax.swing.JButton();
