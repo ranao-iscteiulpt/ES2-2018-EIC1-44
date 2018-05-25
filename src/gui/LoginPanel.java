@@ -22,6 +22,9 @@ public class LoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
+    private Login login;
+    private RegisterPanel registerPanel;
+    private JFrame frame;
     public LoginPanel(JFrame frame) {
     	this.frame = frame;
     	frame.setSize(422, 306);
@@ -133,8 +136,6 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
-    private Login login;
-    private RegisterPanel registerPanel;
-    private JFrame frame;
+
     
 }

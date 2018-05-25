@@ -53,7 +53,7 @@ public class MainPanel extends JPanel {
 		menu.add(help);
 		
 		
-		WelcomePage welcomePage = new WelcomePage(userLoggedIn);
+		WelcomePage welcomePage = new WelcomePage(form,userLoggedIn);
 		form.create(welcomePage);
 
 

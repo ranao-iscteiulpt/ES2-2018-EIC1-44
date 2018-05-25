@@ -199,7 +199,7 @@ public class ProblemProcess4 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextPanel() {
-    	 welcomePage = new WelcomePage(userLoggedIn);
+    	 welcomePage = new WelcomePage(form ,userLoggedIn);
     	form.create(welcomePage);
     }
     

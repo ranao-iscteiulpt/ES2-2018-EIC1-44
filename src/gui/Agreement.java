@@ -61,6 +61,7 @@ public class Agreement {
 	
 	public void init() {
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 		frame.setSize(350, 300);
 	}
 

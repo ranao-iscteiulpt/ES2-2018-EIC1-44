@@ -5,6 +5,11 @@
  */
 package GUITest;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import funcionalities.Form;
+import gui.EmailPanel;
 import objects.User;
 
 /**
@@ -14,10 +19,15 @@ import objects.User;
 public class WelcomePage extends javax.swing.JPanel {
 
 	private User userLoggedIn;
+	private OptimizationProcess1 optimizationProcess;
+	private EmailPanel emailPanel;
+	private ProblemProcess1 problemProcess;
+	private Form form;
     /**
      * Creates new form WelcomePage
      */
-    public WelcomePage(User userLoggedIn) {
+    public WelcomePage(Form form, User userLoggedIn) {
+    	this.form = form;
         this.userLoggedIn = userLoggedIn;
     	initComponents();
     }
@@ -40,7 +50,7 @@ public class WelcomePage extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setToolTipText("");
 
-        loggedInLabel.setText("Logged in as : @var");
+        loggedInLabel.setText("Logged in as : " + userLoggedIn.getUsername() );
 
         welcomeMessageLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         welcomeMessageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -63,6 +73,36 @@ public class WelcomePage extends javax.swing.JPanel {
         newProblemButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         newProblemButton.setBorderPainted(false);
         newProblemButton.setContentAreaFilled(false);
+        
+        newProblemButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ProblemProcess1 problemPanel = new ProblemProcess1(form,userLoggedIn);
+				form.create(problemPanel);
+				
+			}
+		});
+        
+        newEmailButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				EmailPanel emailPanel = new EmailPanel(userLoggedIn);
+				form.create(emailPanel);
+				
+			}
+		});
+        
+        newOptimizationButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OptimizationProcess1 optimizationPanel = new OptimizationProcess1(form,userLoggedIn);
+				form.create(optimizationPanel);
+				
+			}
+		});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
