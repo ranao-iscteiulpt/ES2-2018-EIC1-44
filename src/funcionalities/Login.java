@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import files.TEXTOperations;
-import jdk.nashorn.internal.scripts.JO;
 import objects.User;
 
 public class Login {

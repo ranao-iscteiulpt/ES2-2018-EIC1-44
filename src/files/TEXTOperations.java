@@ -24,6 +24,13 @@ public class TEXTOperations {
 	private FileWriter fw;
 	private Problem problem;
 
+	
+	/**
+	 * Method to create an account
+	 * @param userText username
+	 * @param passwordText password
+	 * @param emailText email
+	 */
 	public void createRegister(String userText, String passwordText, String emailText){
 
 		try {
@@ -42,6 +49,11 @@ public class TEXTOperations {
 		}
 	}
 
+	/**
+	 * Method to save an account 
+	 * @param users user
+	 */
+	
 	public void fillArray(ArrayList<User> users) {
 
 		users.clear();
@@ -59,6 +71,13 @@ public class TEXTOperations {
 		}
 
 	}
+	
+	/**
+	 * Method to create a graph related to JAR files, algorithms and a problem
+	 * @param jarList list with JAR Files
+	 * @param algorithmsChosenList list with chosen algorithms
+	 * @param problem user's problem
+	 */
 
 	public void createGraph(ArrayList<String> jarList, DefaultListModel<String> algorithmsChosenList, Problem problem ) {
 

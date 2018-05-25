@@ -23,6 +23,16 @@ import org.w3c.dom.NodeList;
 
 public class XMLOperations {
 	
+	/**
+	 * Method to create a problem in a XML File
+	 * @param title problem's title
+	 * @param model problem's variables
+	 * @param description text with problem's description
+	 * @param waitTime problem's waiting time
+	 * @param firstInvalidNumber first number that limits an interval of values that should not be considered
+	 * @param secondInvalidNumber second number that limits an interval of values that should not be considered
+	 */
+	
 	public void writeXML(String title,DefaultTableModel model ,String description, String waitTime, String firstInvalidNumber, String secondInvalidNumber ) {
 		try {
 
@@ -111,6 +121,15 @@ public class XMLOperations {
 		}
 		
 	}
+	
+	/**
+	 * Method to create a problem in a XML File
+	 * @param title problem's title
+	 * @param model problem's variables
+	 * @param description text with problem's description
+	 * @param waitTime problem's waiting time
+	 * @param invalidNumber number that should not be considered
+	 */
 
 	public void writeXML(String title,DefaultTableModel model ,String description, String waitTime, String invalidNumber ) {
 
