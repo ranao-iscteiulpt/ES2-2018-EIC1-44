@@ -120,7 +120,8 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 								+ " quando o processo de otimização tiver atingido 25%, 50%, 75%  do  total "
 								+ " do (número  de  avaliações  ou) tempo estimado,  e  também  quando  o  "
 								+ "processo  tiver terminado, com sucesso ou devido à ocorrência de erros.");
-						optimizationStart();					
+						optimizationStart();
+						
 						textOperations.createGraph(jarList,algorithmsChosenList,problem);
 						nextButton.setVisible(true);
 
