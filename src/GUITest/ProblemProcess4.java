@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import files.XMLOperations;
 import funcionalities.Form;
+import objects.User;
 
 /**
  *
@@ -22,22 +23,24 @@ import funcionalities.Form;
  */
 public class ProblemProcess4 extends javax.swing.JPanel {
 
-	private WelcomePage welcomePanel = new WelcomePage();
+	private WelcomePage welcomePage;
 	private XMLOperations xml = new XMLOperations();
 	private Form form;
 	private String name;
 	private String description;
 	private DefaultTableModel variableList;
+	private User userLoggedIn;
 	private ButtonGroup radioButtonGroup = new ButtonGroup();
 		
     /**
      * Creates new form ProblemProcess4
      */
-    public ProblemProcess4(Form form, String name, String description, DefaultTableModel variableList) {
+    public ProblemProcess4(Form form, String name, String description, DefaultTableModel variableList,User userLoggedIn) {
     	this.form = form;
     	this.name=name;
     	this.description=description;
     	this.variableList=variableList;
+    	this.userLoggedIn = userLoggedIn;
         initComponents();
     }
 
@@ -196,7 +199,8 @@ public class ProblemProcess4 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextPanel() {
-    	form.create(welcomePanel);
+    	 welcomePage = new WelcomePage(userLoggedIn);
+    	form.create(welcomePage);
     }
     
     private void createXML() {

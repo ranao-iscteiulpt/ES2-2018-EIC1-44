@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
 
 import funcionalities.Form;
+import objects.User;
 
 /**
  *
@@ -24,13 +25,15 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 	private DefaultTableModel variableTableModel = new DefaultTableModel();
 	private String name;
 	private String description;
+	private User userLoggedIn;
 
 	/**
 	 * Creates new form ProblemProcess3
 	 */
-	public ProblemProcess3(Form form,String name, String description) {
+	public ProblemProcess3(Form form,String name, String description, User userLoggedIn) {
 		this.name= name;
 		this.description = description;
+		this.userLoggedIn = userLoggedIn;
 		this.form = form;
 		initComponents();
 		
@@ -220,7 +223,7 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void nextPanel() {
-		problemPanel = new ProblemProcess4(form, name, description, variableTableModel);
+		problemPanel = new ProblemProcess4(form, name, description, variableTableModel,userLoggedIn);
 		form.create(problemPanel);
 	}
 	

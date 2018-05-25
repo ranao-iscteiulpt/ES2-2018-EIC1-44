@@ -95,12 +95,14 @@ public class XMLOperations {
 			Date dNow = new Date();
 			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
 			String guardaData = df.format(dNow);
-			StreamResult result = new StreamResult(new File(title+guardaData+".xml"));
-
+			String userHomeFolder = System.getProperty("user.home") + "/Desktop";
+			StreamResult result = new StreamResult(new File(userHomeFolder,title+guardaData+".xml"));
+	
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);
 
 			transformer.transform(source, result);
+					
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
@@ -179,7 +181,8 @@ public class XMLOperations {
 			Date dNow = new Date();
 			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
 			String guardaData = df.format(dNow);
-			StreamResult result = new StreamResult(new File(title+guardaData+".xml"));
+			String userHomeFolder = System.getProperty("user.home") + "/Desktop";
+			StreamResult result = new StreamResult(new File(userHomeFolder,title+guardaData+".xml"));
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);

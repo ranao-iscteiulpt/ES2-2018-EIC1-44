@@ -38,7 +38,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 	private User userLoggedIn;
 	private ArrayList<String> jarList;
 	private TEXTOperations textOperations = new TEXTOperations();
-	private WelcomePage welcomePage = new WelcomePage();
+	private WelcomePage welcomePage = new WelcomePage(userLoggedIn);
 	/**
 	 * Creates new form OptimizationProcess5
 	 * @param fitnessVariables 
@@ -70,7 +70,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
         optimizationProgressBar = new javax.swing.JProgressBar();
         optimizationProgressLabel = new javax.swing.JLabel();
         loggedInLabel = new javax.swing.JLabel();
-        nextButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton("Menu");
         startButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -87,7 +87,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
         optimizationProgressLabel.setVisible(false);
         optimizationProgressBar.setVisible(false);
 
-        loggedInLabel.setText("Logged in as : @var");
+        loggedInLabel.setText("Logged in as: " + userLoggedIn.getUsername());
 
         nextButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nextButton.setFocusable(false);
