@@ -18,7 +18,14 @@ import javax.mail.internet.MimeMultipart;
 
 public class Email {
 
-
+	/**
+	 * Method to send an email to the user
+	 * @param userEmail user email
+	 * @param userPassword user password
+	 * @param subject message subject
+	 * @param mailMessage message sent
+	 */
+	
 	public void sendEmail(String userEmail, String userPassword, String subject, String mailMessage) {
 
 		//final String username = "grupo44es@gmail.com";
@@ -57,6 +64,11 @@ public class Email {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	/**
+	 * Method to inform the user about the optimization progress in the different stages (25%, 50%, 75% and 100%)
+	 * @param mailMessage message sent
+	 */
 	
 	public void updateUser( String mailMessage) {
 		final String userEmail = "grupo44es@gmail.com";

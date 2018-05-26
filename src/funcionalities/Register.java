@@ -21,6 +21,10 @@ public class Register {
 		this.passwordText = passwordText;	
 	}
 	
+	/**
+	 * Method to register a new user
+	 */
+	
 	public void newRegister(){
 
 		tOperations.createRegister(userText, passwordText, emailText);

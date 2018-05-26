@@ -36,6 +36,10 @@ public class MainPanel extends JPanel {
 		frame.setLayout(new BorderLayout());
 	}
 
+	/**
+	 * Method to create and add the menu bar
+	 */
+	
 	public void mainPanel() {
 		frame.setSize(830,480);
 		frame.setLocationRelativeTo(null);

@@ -246,6 +246,10 @@ public class ProblemPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
+	/**
+	 * Method to add variables based on quantity chosen
+	 */
+	
     private void createVariables() {
     	int variableQuantityInteger = Integer.parseInt(variableQuantity.getText());
     	for(int i = 0; i <=  variableQuantityInteger ; i++) {
@@ -255,6 +259,10 @@ public class ProblemPanel extends javax.swing.JPanel {
     	variableFormReset();    	
     }
     
+    /**
+     * Method to reset fields
+     */
+    
     private void variableFormReset() {
     	variableName.setText("");
     	variableQuantity.setText("");
@@ -262,6 +270,10 @@ public class ProblemPanel extends javax.swing.JPanel {
 		variableMinValue.setText("");
 		variableMaxValue.setText(""); 
     }
+    
+    /**
+     * Method to create XML File with specified problem
+     */
     
     private void createXML() {
 		xml.writeXML(problemName.getText(), model ,problemDescription.getText(), problemWaitTime.getText() + " " + timeComboBox.getSelectedItem() , problemInvalidValue.getText());
