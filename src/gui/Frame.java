@@ -18,11 +18,19 @@ public class Frame {
 		addComponents();
 	}
 
+	/**
+	 * Method to add the first panel (login)
+	 */
+	
 	private void addComponents() {
 		
 		LoginPanel loginPanel = new LoginPanel(frame);
 	}
 
+	/**
+	 * Method to initialize the frame
+	 */
+	
 	public void init() {
 		
 		//frame.setSize(640, 668);

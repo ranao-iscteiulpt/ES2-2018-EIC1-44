@@ -5,7 +5,12 @@ import java.io.FilenameFilter;
 
 public class Optimization {
 	
-
+	/**
+	 * Method to get all XML Files in specified folder
+	 * @param diretory XML Files path
+	 * @return XML Files
+	 */
+	
 	public File[] searchFiles(String diretory) {
 		
 		File f = new File(diretory);

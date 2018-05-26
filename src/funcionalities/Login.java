@@ -21,6 +21,10 @@ public class Login {
 		this.passText = passText;
 	}
 	
+	/**
+	 * Method to verify the user's credentials
+	 */
+	
 	public void confirmLogin(){
 			
 		textOperations.fillArray(users);

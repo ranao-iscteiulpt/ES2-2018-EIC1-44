@@ -42,6 +42,11 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 		initComponents();
 		receiveData(jfc);
 	}
+	
+	/**
+	 * Method to load the XML File
+	 * @param jfc XML File to load
+	 */
 
 	public void receiveData (File jfc) {
 		try {
@@ -501,6 +506,10 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 				);
 	}// </editor-fold>//GEN-END:initComponents
 
+	/**
+	 * Method to add more variables based on quantity chosen
+	 */
+	
 	public void createVariables() {
 		int variableQuantityInteger = Integer.parseInt(quantityTextField.getText());
 		for(int i = 0; i <  variableQuantityInteger ; i++) {
@@ -509,6 +518,10 @@ public class OpenXMLPanel extends javax.swing.JPanel {
 		} 	
 	}
 
+	/**
+	 * Method to remove selected variable
+	 */
+	
 	public void deleteVariable() {
 		if(variablesTable.getRowCount() > 0) {
 			int selectedRow = variablesTable.getSelectedRow();

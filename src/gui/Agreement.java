@@ -24,6 +24,10 @@ public class Agreement {
 		
 	}
 
+	/**
+	 * Method to create and add frame components
+	 */
+	
 	private void addComponents() {
 		
 		JLabel title = new JLabel("AGREEMENT");
@@ -58,6 +62,10 @@ public class Agreement {
 		frame.add(close, BorderLayout.SOUTH);
 	
 	}
+	
+	/**
+	 * Method to initialize the frame
+	 */
 	
 	public void init() {
 		frame.setVisible(true);

@@ -21,7 +21,14 @@ import javax.mail.internet.MimeMultipart;
 
 public class Email {
 
-
+	/**
+	 * Method to send an email to the user
+	 * @param userEmail user email
+	 * @param userPassword user password
+	 * @param subject message subject
+	 * @param mailMessage message sent
+	 */
+	
 	public void sendEmail(String userEmail, String userPassword, String subject, String mailMessage) {
 
 		//final String username = "grupo44es@gmail.com";
@@ -61,6 +68,12 @@ public class Email {
 		}
 	}
 	
+<<<<<<< HEAD
+	/**
+	 * Method to inform the user about the optimization progress in the different stages (25%, 50%, 75% and 100%)
+	 * @param mailMessage message sent
+	 */
+=======
 	public void sendEmailWithAttachment(String userEmail, String userPassword, String subject, String mailMessage, String filePath) {
 		final String username = userEmail;
 		final String password = userPassword;
@@ -108,6 +121,7 @@ public class Email {
 		}
 		
 	}
+>>>>>>> d8dda54bf9fd780cd11d9ed002a6716166579726
 	
 	public void updateUser( String mailMessage) {
 		final String userEmail = "grupo44es@gmail.com";
