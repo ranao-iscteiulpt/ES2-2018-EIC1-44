@@ -60,6 +60,7 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 
 	public void evaluate(DoubleSolution solution){
 		contador++;
+		System.out.println(contador);
 		percent = ((contador)/estimatedFinishTime)*100;
 		optimization.setProgressPercent((int)percent);
 		String solutionString ="";

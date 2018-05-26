@@ -36,7 +36,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ExperimentsDoubleExternalViaJAR {
 	private static final int INDEPENDENT_RUNS = 1;
-	private static final int maxEvaluations = 1; //250
+	private static final int maxEvaluations = 250; //250
 
 	private Problem problem;
 	private DefaultListModel algorithmsList;
@@ -51,8 +51,9 @@ public class ExperimentsDoubleExternalViaJAR {
 		this.algorithmsList = algorithmsList;
 		this.fitnessVariables = fitnessVariables;
 		this.optimization = optimization;
-		//estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
-		estimatedFinishTime = 100;
+	    estimatedFinishTime = INDEPENDENT_RUNS * maxEvaluations * algorithmsList.getSize();
+	    System.out.println("estimated "+estimatedFinishTime);
+		//estimatedFinishTime = 100;
 
 		String experimentBaseDirectory = "experimentBaseDirectory";
 				
@@ -88,7 +89,6 @@ public class ExperimentsDoubleExternalViaJAR {
 		for (int i = 0; i < problemList.size(); i++) {
 			
 			for(int j = 0; j < algorithmList.size(); j++) {
-				//System.out.println(algorithmList);
 				
 				if(algorithmList.get(j).equals("NSGAII")) { 
 					Algorithm<List<DoubleSolution>> algorithm1 = new NSGAIIBuilder<>(

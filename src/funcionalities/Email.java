@@ -116,11 +116,11 @@ public class Email {
 		
 	}
 
-/**
- * Method to inform the user about the optimization progress in the different stages (25%, 50%, 75% and 100%)
- * @param mailMessage message sent
- *
- */
+
+	/**
+	 * Method to inform the user about the optimization progress in the different stages (25%, 50%, 75% and 100%)
+	 * @param mailMessage message sent
+	 */
 	
 	public void updateUser( String mailMessage) {
 		final String userEmail = "grupo44es@gmail.com";
