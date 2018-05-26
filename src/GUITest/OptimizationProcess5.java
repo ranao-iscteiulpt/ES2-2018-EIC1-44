@@ -122,7 +122,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 								+ " quando o processo de otimização tiver atingido 25%, 50%, 75%  do  total "
 								+ " do (número  de  avaliações  ou) tempo estimado,  e  também  quando  o  "
 								+ "processo  tiver terminado, com sucesso ou devido à ocorrência de erros.";
-						email.sendEmailWithAttachment(userLoggedIn.getEmail(), userLoggedIn.getPassword(), "Optimization in course "+problem.getName(), mailMessage, fileDirectory);
+						//email.sendEmailWithAttachment(userLoggedIn.getEmail(), userLoggedIn.getPassword(), "Optimization in course "+problem.getName(), mailMessage, fileDirectory);
 						optimizationStart();
 
 						textOperations.createGraph(jarList,algorithmsChosenList,problem);
@@ -197,14 +197,14 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 			while(progressPercent <= 100) {
 				optimizationProgressBar.setValue(progressPercent);
 				optimizationProgressBar.repaint();
-				if(progressPercent == 25)
-					updateMessage("Optimization progress reached 25%");
-				if(progressPercent == 50)
-					updateMessage("Optimization progress reached 50%");
-				if(progressPercent == 75)
-					updateMessage("Optimization progress reached 75%");	
-				if(progressPercent == 100)
-					updateMessage("Optimization progress reached 100%");	
+//				if(progressPercent == 25)
+//					updateMessage("Optimization progress reached 25%");
+//				if(progressPercent == 50)
+//					updateMessage("Optimization progress reached 50%");
+//				if(progressPercent == 75)
+//					updateMessage("Optimization progress reached 75%");	
+//				if(progressPercent == 100)
+//					updateMessage("Optimization progress reached 100%");	
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e) {}

@@ -101,7 +101,8 @@ public class TEXTOperations {
 
 		for (int i = 0; i < algorithmsChosenList.size(); i++) {
 			//Mudar directorio
-			File bestResults = new File("experimentBaseDirectory/ExperimentsDoubleExternalViaJAR/data/"+algorithmsChosenList.get(i)+"/MyProblemDoubleExternalViaJAR/BEST_HV_FUN.tsv");
+			File bestResults = null;
+			bestResults = new File("experimentBaseDirectory/ExperimentsDoubleExternalViaJAR/data/"+algorithmsChosenList.get(i)+"/MyProblemDoubleExternalViaJAR/BEST_HV_FUN.tsv");
 
 			Scanner sc = null;
 
