@@ -2,7 +2,7 @@
 
 EIC1 Turma EIC1
 
-LINK VIDEO
+https://www.youtube.com/watch?v=29S-ku1Fgqk&feature=youtu.be
 
 Funcionalidades não completas
 -Testes unitarios com erros (3 erros) a 54.0% de coverage
