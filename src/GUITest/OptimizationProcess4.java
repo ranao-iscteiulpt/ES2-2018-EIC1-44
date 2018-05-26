@@ -213,6 +213,10 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 						.addContainerGap())
 				);
 	}// </editor-fold>//GEN-END:initComponents
+	
+	/**
+	 * Method to remove the current panel and add the next one
+	 */
 
 	private void nextPanel() {
 		if(variablesTable.getRowCount() > 0) {
@@ -224,11 +228,19 @@ public class OptimizationProcess4 extends javax.swing.JPanel {
 		}
 
 	}
+	
+	/**
+	 * Method to add a JAR File
+	 */
 
 	private void addFitnessVariable() {
 		fitnessVariables.addRow(new Object[] {nameTextField.getText(),jarDirectoryTextField.getText()});
 		jarList.add(nameTextField.getText());
 	}
+	
+	/**
+	 * Method to remove a JAR File
+	 */
 	
 	private void deleteFitnessVariable() {
 		if(variablesTable.getRowCount() > 0) {

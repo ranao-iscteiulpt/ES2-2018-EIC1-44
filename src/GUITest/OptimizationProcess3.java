@@ -308,6 +308,10 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
 	}// </editor-fold>//GEN-END:initComponents
+	
+	/**
+	 * Method to remove the current panel and add the next one
+	 */
 
 	private void nextPanel() {
 		//optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
@@ -317,6 +321,11 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 		//optimizationPanel.optimizationStart();
 	}
 
+	/**
+	 * Method to verify if selected algorithm is valid
+	 * @return true if valid, false if not
+	 */
+	
 	public boolean isOnList() {
 		for(int i = 0; i < algorithmsChosenList.getSize() ; i++ ) {
 			if(algorithmsChosenList.get(i).equals(algorithmComboBox.getSelectedItem())) {
@@ -325,14 +334,26 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 		}
 		return false;
 	}
+	
+	/**
+	 * Method to remove all algorithms
+	 */
 
 	public void resetComboBoxValues() {
 		algorithmComboBox.removeAllItems();		
 	}
+	
+	/**
+	 * Method to remove all selected algorithm
+	 */
 
 	public void resetChoosenAlgorithms() {
 		algorithmsChosenList.removeAllElements();		
 	}
+	
+	/**
+	 * Method to selected algorithm
+	 */
 
 	public void removeSelectedAlgorithm() {
 		if(algorithmsChosenList.getSize() > 0 ) {
@@ -341,6 +362,10 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 		}
 	}
 
+	/**
+	 * Method to fill combo box with specific algorithms based on selected problem
+	 */
+	
 	public void fillAlgorithmComboBoxAutomaticConfig() {
 
 		variableType = ((Variable) problem.getVariableList().get(0)).getType(); //integer or double or binary
@@ -363,6 +388,10 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 		}	
 
 	}
+	
+	/**
+	 * Method to fill combo box with all algorithms
+	 */
 
 	public void fillAlgorithmComboBoxManualConfig() {
 		for(String algorithm: optimizationProcess.getAlgorithmsManual()) {
@@ -370,6 +399,10 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 		}
 	}
 
+	/**
+	 * Method to load a XML File
+	 * @param jfc XML File
+	 */
 
 	public void receiveData (File jfc) {
 
@@ -410,7 +443,7 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 			problem = new Problem(name,description,waitTime,Integer.parseInt(firstInvalidValue),Integer.parseInt(secondInvalidValue),variableCounter,variableList);
 		}
 	}
-
+	
 	private void variable(Node n) throws org.w3c.dom.DOMException, java.lang.NumberFormatException {
 		String variableName = "";
 		String variableType = "";

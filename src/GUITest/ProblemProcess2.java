@@ -141,6 +141,12 @@ public class ProblemProcess2 extends javax.swing.JPanel {
 						.addContainerGap())
 				);
 	}// </editor-fold>//GEN-END:initComponents
+	
+	/**
+	 * Method to remove the current panel and add the next one
+	 * @param name problem name
+	 * @param description problem description
+	 */
 
 	private void nextPanel(String name, String description) {
 		problemPanel = new ProblemProcess3(form,name,description,userLoggedIn);

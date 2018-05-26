@@ -43,7 +43,7 @@ class ExperimentsBinaryExternalViaJARTest {
 		algorithmsList.addElement("RandomSearch");
 		algorithmsList.addElement("SPEA2");
 		DefaultTableModel fitnessVariables = new DefaultTableModel();
-		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList);
+		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList, variableType);
 		try {
 			ebevj.startOptimization(problem, algorithmsList, fitnessVariables, optimization);
 		} catch (IOException e) {

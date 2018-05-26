@@ -22,6 +22,15 @@ public class OptimizationProcess {
 	String[] AlgorithmsForBinaryProblemType = new String[]{"NSGAII","SMSEMOA","MOCell","MOCH","PAES","RandomSearch","SPEA2"};	
 	String[] AlgorithmsForManualProblemType = new String[]{"NSGAII","SMSEMOA","GDE3","IBEA","MOCell","MOEAD","PAES","RandomSearch","MOCH","SPEA2"};
 
+	/**
+	 * Method to initialize the optimization process based on type of experiments (double, integer or binary)
+	 * @param problem problem to optimize
+	 * @param variableType variable type (double, integer or binary)
+	 * @param algorithmsList list of selected algorithms
+	 * @param fitnessVariables selected JAR Files
+	 * @param optimization selected optimization
+	 */
+	
 	public void init(Problem problem, String variableType, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, OptimizationProcess5 optimization ) {
 		try {
 			if(variableType.equals("double"))

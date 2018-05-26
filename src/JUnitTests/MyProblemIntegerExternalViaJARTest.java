@@ -43,7 +43,7 @@ class MyProblemIntegerExternalViaJARTest {
 		algorithmsList.addElement("RandomSearch");
 		algorithmsList.addElement("SPEA2");
 		DefaultTableModel fitnessVariables = new DefaultTableModel();
-		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList);
+		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList, variableType);
 		mpievj = new MyProblemIntegerExternalViaJAR(problem, algorithmsList, fitnessVariables, optimization, 20);
 	}
 	

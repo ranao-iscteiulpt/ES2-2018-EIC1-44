@@ -44,7 +44,7 @@ class ExperimentsDoubleExternalViaJARTest {
 		algorithmsList.addElement("PAES");
 		algorithmsList.addElement("RandomSearch");
 		DefaultTableModel fitnessVariables = new DefaultTableModel();
-		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList);
+		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList, variableType);
 		try {
 			edevj.startOptimization(problem, algorithmsList, fitnessVariables, optimization);
 		} catch (IOException e) {

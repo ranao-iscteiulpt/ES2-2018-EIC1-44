@@ -67,13 +67,7 @@ public class Email {
 			throw new RuntimeException(e);
 		}
 	}
-	
-<<<<<<< HEAD
-	/**
-	 * Method to inform the user about the optimization progress in the different stages (25%, 50%, 75% and 100%)
-	 * @param mailMessage message sent
-	 */
-=======
+
 	public void sendEmailWithAttachment(String userEmail, String userPassword, String subject, String mailMessage, String filePath) {
 		final String username = userEmail;
 		final String password = userPassword;
@@ -121,7 +115,12 @@ public class Email {
 		}
 		
 	}
->>>>>>> d8dda54bf9fd780cd11d9ed002a6716166579726
+
+/**
+ * Method to inform the user about the optimization progress in the different stages (25%, 50%, 75% and 100%)
+ * @param mailMessage message sent
+ *
+ */
 	
 	public void updateUser( String mailMessage) {
 		final String userEmail = "grupo44es@gmail.com";

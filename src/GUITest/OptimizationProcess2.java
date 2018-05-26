@@ -134,6 +134,10 @@ public class OptimizationProcess2 extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    /**
+     * Method to remove the current panel and add the next one
+     */
 
     private void nextPanel() {
     	optimizationPanel = new OptimizationProcess4(form,fileDirectoryTextField.getText(),userLoggedIn);

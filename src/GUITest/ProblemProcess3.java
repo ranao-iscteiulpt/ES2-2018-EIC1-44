@@ -222,10 +222,18 @@ public class ProblemProcess3 extends javax.swing.JPanel {
 				);
 	}// </editor-fold>//GEN-END:initComponents
 
+	/**
+	 * Method to remove the current panel and add the next one
+	 */
+	
 	private void nextPanel() {
 		problemPanel = new ProblemProcess4(form, name, description, variableTableModel,userLoggedIn);
 		form.create(problemPanel);
 	}
+	
+	/**
+	 * Method to create variables based on quantity selected
+	 */
 	
     private void createVariables() {
     	int variableQuantityInteger = Integer.parseInt(quantityTextField.getText());

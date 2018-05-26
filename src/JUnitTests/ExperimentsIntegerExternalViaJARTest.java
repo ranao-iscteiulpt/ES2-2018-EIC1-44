@@ -42,7 +42,7 @@ class ExperimentsIntegerExternalViaJARTest {
 		algorithmsList.addElement("MOCell");
 		DefaultTableModel fitnessVariables = new DefaultTableModel();
 		fitnessVariables.addRow(new Object[] {"Teste","Teste.jar"});
-		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList);
+		OptimizationProcess5 optimization = new OptimizationProcess5(form, problem, variableType, algorithmsChosenList, fitnessVariables, userLoggedIn, jarList, variableType);
 		try {
 			eievj.startOptimization(problem, algorithmsList, fitnessVariables, optimization);
 		} catch (IOException e) {

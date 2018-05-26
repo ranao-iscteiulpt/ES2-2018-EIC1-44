@@ -198,10 +198,18 @@ public class ProblemProcess4 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Method to remove the current panel and add the next one
+     */
+    
     private void nextPanel() {
     	 welcomePage = new WelcomePage(form ,userLoggedIn);
     	form.create(welcomePage);
     }
+    
+    /**
+     * Method to create a XML File
+     */
     
     private void createXML() {
     	if(singleRButton.isSelected()) {

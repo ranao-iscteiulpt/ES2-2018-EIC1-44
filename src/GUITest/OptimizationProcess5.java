@@ -179,14 +179,27 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 						.addContainerGap())
 				);
 	}// </editor-fold>//GEN-END:initComponents
+	
+	/**
+	 * Method to remove the current panel and add the next one
+	 */
 
 	private void nextPanel() {
 		welcomePage = new WelcomePage(form,userLoggedIn);
 		form.create(welcomePage);
 	}
+	
+	/**
+	 * Method to start the optimization process
+	 */
+	
 	public void optimizationStart() {
 		optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables,this);
 	}
+	
+	/**
+	 * Method fill the progress bar with percentage completed
+	 */
 
 	public void updateProgressBar()	{
 		t.start();
@@ -212,12 +225,22 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 		}
 	};
 
+	/**
+	 * Method to change message sent based on percentage completed
+	 * @param mailMessage message text to change
+	 */
+	
 	public void updateMessage(String mailMessage) {
 		if(!oldMessage.equals(mailMessage)) {
 			email.updateUser(mailMessage);
 		}
 		oldMessage = mailMessage;
 	}
+	
+	/**
+	 * Method to change the number of percentage completed
+	 * @param percent 
+	 */
 
 	public void setProgressPercent(int percent) {
 		progressPercent = percent;

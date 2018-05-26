@@ -99,6 +99,10 @@ public class OptimizationProcess1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Method to remove the current panel and add the next one
+     */
+    
     private void nextPanel() {
     	form.create(optimizationPanel);
     }
