@@ -42,6 +42,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 	private WelcomePage welcomePage;
 	private Email email = new Email();
 	private String oldMessage ="";
+	private String fileDirectory;
 	/**
 	 * Creates new form OptimizationProcess5
 	 * @param fitnessVariables 
@@ -49,7 +50,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 	 * @param variableType 
 	 * @param problem 
 	 */
-	public OptimizationProcess5(Form form, Problem problem, String variableType, DefaultListModel<String> algorithmsChosenList, DefaultTableModel fitnessVariables, User userLoggedIn,ArrayList<String> jarList) {
+	public OptimizationProcess5(Form form, Problem problem, String variableType, DefaultListModel<String> algorithmsChosenList, DefaultTableModel fitnessVariables, User userLoggedIn,ArrayList<String> jarList, String fileDirectory) {
 		this.form = form;
 		this.userLoggedIn = userLoggedIn;
 		this.problem = problem;
@@ -57,6 +58,7 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 		this.algorithmsChosenList = algorithmsChosenList;
 		this.fitnessVariables = fitnessVariables;
 		this.jarList = jarList;
+		this.fileDirectory = fileDirectory;
 		initComponents(); 
 	}
 
@@ -115,11 +117,12 @@ public class OptimizationProcess5 extends javax.swing.JPanel {
 
 				Thread t1 = new Thread() {
 					public void run() {
-						updateMessage("Muito obrigado por usar esta  plataforma de otimização. "
+						String mailMessage = "Muito obrigado por usar esta  plataforma de otimização. "
 								+ "Será informado por email sobre o progresso do processo de otimização,"
 								+ " quando o processo de otimização tiver atingido 25%, 50%, 75%  do  total "
 								+ " do (número  de  avaliações  ou) tempo estimado,  e  também  quando  o  "
-								+ "processo  tiver terminado, com sucesso ou devido à ocorrência de erros.");
+								+ "processo  tiver terminado, com sucesso ou devido à ocorrência de erros.";
+						email.sendEmailWithAttachment(userLoggedIn.getEmail(), userLoggedIn.getPassword(), "Optimization in course "+problem.getName(), mailMessage, fileDirectory);
 						optimizationStart();
 
 						textOperations.createGraph(jarList,algorithmsChosenList,problem);

@@ -311,7 +311,7 @@ public class OptimizationProcess3 extends javax.swing.JPanel {
 
 	private void nextPanel() {
 		//optimizationProcess.init(problem,variableType,algorithmsChosenList,fitnessVariables);
-		optimizationPanel = new OptimizationProcess5(form, problem , variableType, algorithmsChosenList, fitnessVariables,userLoggedIn,jarList);
+		optimizationPanel = new OptimizationProcess5(form, problem , variableType, algorithmsChosenList, fitnessVariables,userLoggedIn,jarList,fileDirectory);
 		//System.out.println("P: " + problem+ ", VarType: "+ variableType+",Algorithms: "+ algorithmsChosenList+",fitness: "+ fitnessVariables);
 		form.create(optimizationPanel);
 		//optimizationPanel.optimizationStart();
