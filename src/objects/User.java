@@ -6,6 +6,13 @@ public class User {
 	private String password;
 	private String email;
 	
+	/**
+	 * Method to create a new user
+	 * @param username user username
+	 * @param password user password
+	 * @param email user email
+	 */
+	
 	public User(String username, String password, String email) {
 		this.username = username;
 		this.password = password;

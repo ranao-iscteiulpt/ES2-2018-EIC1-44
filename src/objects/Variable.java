@@ -9,12 +9,28 @@ public class Variable {
 	private double minValueDouble;
 	private double maxValueDouble;
 	
+	/**
+	 * Method to create a new variable
+	 * @param name variable name
+	 * @param type variable type (double, integer or binary)
+	 * @param minValueDouble minimum variable value
+	 * @param maxValueDouble maximum variable value
+	 */
+	
 	public Variable(String name, String type, double minValueDouble, double maxValueDouble) {
 		this.name = name;
 		this.type = type;
 		this.minValueDouble = minValueDouble;
 		this.maxValueDouble = maxValueDouble;		
 	}
+	
+	/**
+	 * Method to create a new variable
+	 * @param name variable name
+	 * @param type variable type (double, integer or binary)
+	 * @param minValue minimum variable value
+	 * @param maxValue maximum variable value
+	 */
 	
 	public Variable(String name, String type, int minValue, int maxValue) {
 		this.name = name;

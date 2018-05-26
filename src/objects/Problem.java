@@ -13,6 +13,16 @@ public class Problem {
 	private int firstInvalidValue;
 	private int secondInvalidValue;
 	
+	/**
+	 * Method to create a problem with one invalid value
+	 * @param name problem name
+	 * @param description problem description
+	 * @param waitTime problem waiting time
+	 * @param invalidValue problem invalid value
+	 * @param variableCounter variable pointer
+	 * @param variableList list with all problem variables
+	 */
+	
 	public Problem(String name, String description, String waitTime, int invalidValue, int variableCounter,ArrayList<Variable> variableList) {
 		this.name = name;
 		this.description = description;
@@ -21,6 +31,17 @@ public class Problem {
 		this.variableCounter = variableCounter;
 		this.variableList = variableList;
 	}
+	
+	/**
+	 * Method to create a problem
+	 * @param name problem's name
+	 * @param description text with problem's description
+	 * @param waitTime problem's waiting time
+	 * @param firstInvalidNumber first number that limits an interval of values that should not be considered
+	 * @param secondInvalidNumber second number that limits an interval of values that should not be considered
+	 * @param variableCounter variable pointer
+	 * @param variableList list with all problem variables
+	 */
 	
 	public Problem(String name, String description, String waitTime, int firstInvalidValue,int secondInvalidValue, int variableCounter,ArrayList<Variable> variableList) {
 		this.name = name;
