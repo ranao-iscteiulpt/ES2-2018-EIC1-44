@@ -11,13 +11,13 @@ import javax.swing.table.DefaultTableModel;
 
 import org.junit.jupiter.api.Test;
 
-import GUITest.OptimizationProcess5;
 import funcionalities.Form;
 import jMetal.ExperimentsDoubleExternalViaJAR;
 import jMetal.ExperimentsIntegeExternalViaJAR;
 import objects.Problem;
 import objects.User;
 import objects.Variable;
+import process.OptimizationProcess5;
 
 class ExperimentsIntegerExternalViaJARTest {
 

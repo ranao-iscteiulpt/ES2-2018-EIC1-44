@@ -79,7 +79,7 @@ public class TEXTOperations {
 	 * @param problem user's problem
 	 */
 
-	public void createGraph(ArrayList<String> jarList, DefaultListModel<String> algorithmsChosenList, Problem problem ) {
+	public void createGraph(ArrayList<String> jarList, DefaultListModel<String> algorithmsChosenList, Problem problem , String variableType, int estimatedFinishTime) {
 
 
 		try {
@@ -102,7 +102,12 @@ public class TEXTOperations {
 		for (int i = 0; i < algorithmsChosenList.size(); i++) {
 			//Mudar directorio
 			File bestResults = null;
-			bestResults = new File("experimentBaseDirectory/ExperimentsDoubleExternalViaJAR/data/"+algorithmsChosenList.get(i)+"/MyProblemDoubleExternalViaJAR/BEST_HV_FUN.tsv");
+			if(variableType.equals("double"))
+				bestResults = new File("experimentBaseDirectory/ExperimentsDoubleExternalViaJAR/data/"+algorithmsChosenList.get(i)+"/MyProblemDoubleExternalViaJAR/BEST_HV_FUN.tsv");
+			if(variableType.equals("integer"))
+				bestResults = new File("experimentBaseDirectory/ExperimentsIntegerExternalViaJAR/data/"+algorithmsChosenList.get(i)+"/MyProblemIntegerExternalViaJAR/BEST_HV_FUN.tsv");
+			if(variableType.equals("binary"))
+				bestResults = new File("experimentBaseDirectory/MyProblemBinaryExternalViaJAR/data/"+algorithmsChosenList.get(i)+"/MyProblemBinaryExternalViaJAR/BEST_HV_FUN.tsv");
 
 			Scanner sc = null;
 
@@ -123,7 +128,7 @@ public class TEXTOperations {
 						values+="	" + tokens[j];
 
 					}
-					values+="	300\n";
+					values+= "	" +estimatedFinishTime+"\n";
 					try {
 						if(!isInvalid) {
 							fw.append(values);

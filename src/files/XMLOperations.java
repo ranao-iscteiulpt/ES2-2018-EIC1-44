@@ -38,6 +38,10 @@ public class XMLOperations {
 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			
+			Date dNow = new Date();
+			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
+			String guardaData = df.format(dNow);
 
 			// root elements
 			Document doc = docBuilder.newDocument();
@@ -54,7 +58,7 @@ public class XMLOperations {
 //			problem.setAttributeNode(attr);
 			
 			Element nameElement = doc.createElement("name");
-			nameElement.appendChild(doc.createTextNode(title));
+			nameElement.appendChild(doc.createTextNode(title+guardaData));
 			problem.appendChild(nameElement);
 
 			Element descriptionElement = doc.createElement("description");
@@ -102,9 +106,7 @@ public class XMLOperations {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
 
-			Date dNow = new Date();
-			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
-			String guardaData = df.format(dNow);
+
 			String userHomeFolder = System.getProperty("user.home") + "/Desktop";
 			StreamResult result = new StreamResult(new File(userHomeFolder,title+guardaData+".xml"));
 	
@@ -137,6 +139,10 @@ public class XMLOperations {
 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			
+			Date dNow = new Date();
+			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
+			String guardaData = df.format(dNow);
 
 			// root elements
 			Document doc = docBuilder.newDocument();
@@ -153,7 +159,7 @@ public class XMLOperations {
 //			problem.setAttributeNode(attr);
 			
 			Element nameElement = doc.createElement("name");
-			nameElement.appendChild(doc.createTextNode(title));
+			nameElement.appendChild(doc.createTextNode(title+guardaData));
 			problem.appendChild(nameElement);
 
 			Element descriptionElement = doc.createElement("description");
@@ -197,9 +203,7 @@ public class XMLOperations {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
 
-			Date dNow = new Date();
-			SimpleDateFormat df = new SimpleDateFormat("(yyy-MM-dd) (hh-mm-ss)");
-			String guardaData = df.format(dNow);
+
 			String userHomeFolder = System.getProperty("user.home") + "/Desktop";
 			StreamResult result = new StreamResult(new File(userHomeFolder,title+guardaData+".xml"));
 

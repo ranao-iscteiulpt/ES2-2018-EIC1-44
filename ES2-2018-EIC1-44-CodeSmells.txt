@@ -1,0 +1,152 @@
+long method inicial
+
+gui.RegisterPanel	public void initComponents() 	register	B1	0/6
+GUITest.OptimizationProcess5	private void initComponents() 	textOperations	B1	0/5
+gui.LoginPanel	private void initComponents() 	login	B1	0/4
+gui.LoginPanel	private void initComponents() 	mainPanel	B1	0/4
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	initial	B3	0/4
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	initial	B4	0/3
+jMetal.MyProblemBinaryExternalViaJAR	public void evaluate(org.uma.jmetal.solution.BinarySolution) 	optimization	B1	0/3
+jMetal.MyProblemBinaryExternalViaJAR	public void evaluate(org.uma.jmetal.solution.BinarySolution) 	solutionString	B1	0/3
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	optimization	B1	0/3
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	optimization	B1	0/3
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	solutionString	B1	0/3
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	solutionString	B2	0/2
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	solutionString	B1	0/3
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	solutionString	B2	0/2
+gui.LoginPanel	private void initComponents() 	registerPanel	B1	0/2
+jMetal.MyProblemBinaryExternalViaJAR	public void evaluate(org.uma.jmetal.solution.BinarySolution) 	evaluationResultString	B4	0/2
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	evaluationResultString	B6	0/2
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	evaluationResultString	B6	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variable	B3	1/20
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variable	B4	0/19
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variable	B5	0/15
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variable	B14	0/6
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	secondInvalidValue	B2	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	secondInvalidValue	B25	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	firstInvalidValue	B2	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	firstInvalidValue	B23	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableMaximumValue	B4	1/4
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableMaximumValue	B5	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableMaximumValue	B12	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMaximumValue	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMaximumValue	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMaximumValue	B12	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	problem	B2	2/12
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	problem	B27	0/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableMinimumValue	B4	1/4
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableMinimumValue	B5	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableMinimumValue	B10	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMinimumValue	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMinimumValue	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMinimumValue	B10	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	invalidValue	B2	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	invalidValue	B21	0/2
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsBinary	B1	1/3
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsBinary	B5	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableType	B4	1/4
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableType	B5	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableType	B8	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableType	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableType	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableType	B8	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableName	B4	1/4
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableName	B5	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	variableName	B6	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableName	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableName	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableName	B6	0/2
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsInteger	B1	1/3
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsInteger	B3	0/2
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	sc	B8	1/4
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	isInvalid	B10	3/6
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	isInvalid	B11	1/3
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	isInvalid	B12	0/2
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsDouble	B1	1/3
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	values	B10	3/6
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	values	B11	1/3
+GUITest.OptimizationProcess4	private void nextPanel() 	optimizationPanel	B1	1/2
+JUnitTests.SignUpTest	void verifyLogin() 	u	B1	3/4
+funcionalities.Login	public void confirmLogin() 	userLoggedIn	B2	10/11
+funcionalities.Login	public void confirmLogin() 	userLoggedIn	B5	4/5
+funcionalities.Login	public void confirmLogin() 	userLoggedIn	B7	3/4
+funcionalities.Login	public void confirmLogin() 	userLoggedIn	B9	2/3
+funcionalities.Login	public void confirmLogin() 	userLoggedIn	B10	1/2
+
+long method final
+
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variable	B2	0/15
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variable	B11	0/6
+gui.RegisterPanel	public void initComponents() 	register	B1	0/6
+GUITest.OptimizationProcess5	private void initComponents() 	textOperations	B1	0/5
+gui.LoginPanel	private void initComponents() 	login	B1	0/4
+gui.LoginPanel	private void initComponents() 	mainPanel	B1	0/4
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	initial	B3	0/4
+files.TEXTOperations	public void createGraph(ArrayList<java.lang.String>, DefaultListModel<java.lang.String>, objects.Problem) 	initial	B4	0/3
+jMetal.MyProblemBinaryExternalViaJAR	public void evaluate(org.uma.jmetal.solution.BinarySolution) 	optimization	B1	0/3
+jMetal.MyProblemBinaryExternalViaJAR	public void evaluate(org.uma.jmetal.solution.BinarySolution) 	solutionString	B1	0/3
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	optimization	B1	0/3
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	optimization	B1	0/3
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	solutionString	B1	0/3
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	solutionString	B2	0/2
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	solutionString	B1	0/3
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	solutionString	B2	0/2
+gui.LoginPanel	private void initComponents() 	registerPanel	B1	0/2
+jMetal.MyProblemBinaryExternalViaJAR	public void evaluate(org.uma.jmetal.solution.BinarySolution) 	evaluationResultString	B4	0/2
+jMetal.MyProblemDoubleExternalViaJAR	public void evaluate(org.uma.jmetal.solution.DoubleSolution) 	evaluationResultString	B6	0/2
+jMetal.MyProblemIntegerExternalViaJAR	public void evaluate(org.uma.jmetal.solution.IntegerSolution) 	evaluationResultString	B6	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	secondInvalidValue	B2	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	secondInvalidValue	B9	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	firstInvalidValue	B2	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	firstInvalidValue	B7	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMaximumValue	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMaximumValue	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMaximumValue	B12	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	problem	B2	2/12
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	problem	B11	0/3
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableMaximumValue	B1	1/4
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableMaximumValue	B2	1/3
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableMaximumValue	B9	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMinimumValue	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMinimumValue	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableMinimumValue	B10	0/2
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	invalidValue	B2	1/3
+GUITest.OptimizationProcess3	public void receiveData(java.io.File) 	invalidValue	B5	0/2
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsBinary	B1	1/3
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsBinary	B5	0/2
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableMinimumValue	B1	1/4
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableMinimumValue	B2	1/3
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableMinimumValue	B7	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableType	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableType	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableType	B8	0/2
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableType	B1	1/4
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableType	B2	1/3
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableType	B5	0/2
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableName	B4	1/4
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableName	B5	1/3
+gui.OpenXMLPanel	public void receiveData(java.io.File) 	variableName	B6	0/2
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsInteger	B1	1/3
+jMetal.OptimizationProcess	public void init(objects.Problem, java.lang.String, DefaultListModel#RAW, javax.swing.table.DefaultTableModel, GUITest.OptimizationProcess5) 	experimentsInteger	B3	0/2
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableName	B1	1/4
+GUITest.OptimizationProcess3	private void variable(org.w3c.dom.Node) throws org.w3c.dom.DOMException, java.lang.NumberFormatException	variableName	B2	1/3
+
+god class inicial
+
+GUITest.ProblemProcess2	[GUITest.ProblemProcess2::funcionalities.Form form, GUITest.ProblemProcess2::nextPanel(java.lang.String, java.lang.String):void, GUITest.ProblemProcess2::GUITest.ProblemProcess3 problemPanel, GUITest.ProblemProcess2::objects.User userLoggedIn]
+GUITest.ProblemProcess4	[GUITest.ProblemProcess4::GUITest.WelcomePage welcomePage, GUITest.ProblemProcess4::nextPanel():void, GUITest.ProblemProcess4::funcionalities.Form form, GUITest.ProblemProcess4::objects.User userLoggedIn]
+GUITest.ProblemProcess4	[GUITest.ProblemProcess4::files.XMLOperations xml, GUITest.ProblemProcess4::java.lang.String name, GUITest.ProblemProcess4::java.lang.String description, GUITest.ProblemProcess4::javax.swing.table.DefaultTableModel variableList, GUITest.ProblemProcess4::javax.swing.JTextField firstInvalidValueTextField, GUITest.ProblemProcess4::javax.swing.JTextField secondInvalidValueTextField, GUITest.ProblemProcess4::javax.swing.JRadioButton singleRButton, GUITest.ProblemProcess4::javax.swing.JComboBox<java.lang.String> timeComboBox, GUITest.ProblemProcess4::javax.swing.JTextField waitTimeTextField, GUITest.ProblemProcess4::javax.swing.ButtonGroup radioButtonGroup, GUITest.ProblemProcess4::javax.swing.JButton finishButton, GUITest.ProblemProcess4::javax.swing.JRadioButton intervalRButton, GUITest.ProblemProcess4::javax.swing.JLabel invalidValueLabel, GUITest.ProblemProcess4::javax.swing.JLabel jLabel1, GUITest.ProblemProcess4::javax.swing.JLabel timeLabel, GUITest.ProblemProcess4::javax.swing.JLabel toLabel, GUITest.ProblemProcess4::initComponents():void, GUITest.ProblemProcess4::createXML():void]
+GUITest.OptimizationProcess3	[GUITest.OptimizationProcess3::jMetal.OptimizationProcess optimizationProcess, GUITest.OptimizationProcess3::fillAlgorithmComboBoxManualConfig():void, GUITest.OptimizationProcess3::javax.swing.JComboBox<java.lang.String> algorithmComboBox, GUITest.OptimizationProcess3::resetComboBoxValues():void]
+GUITest.OptimizationProcess3	[GUITest.OptimizationProcess3::java.util.ArrayList<objects.Variable> variableList, GUITest.OptimizationProcess3::java.io.File file, GUITest.OptimizationProcess3::int variableCounter, GUITest.OptimizationProcess3::files.XMLOperations xmlOperations, GUITest.OptimizationProcess3::objects.Variable variable, GUITest.OptimizationProcess3::variable(org.w3c.dom.Node):void, GUITest.OptimizationProcess3::receiveData(java.io.File):void]
+GUITest.OptimizationProcess5	[GUITest.OptimizationProcess5::funcionalities.Email email, GUITest.OptimizationProcess5::updateMessage(java.lang.String):void, GUITest.OptimizationProcess5::java.lang.String oldMessage]
+GUITest.OptimizationProcess5	[GUITest.OptimizationProcess5::int progressPercent, GUITest.OptimizationProcess5::setProgressPercent(int):void, GUITest.OptimizationProcess5::javax.swing.JLabel optimizationProgressLabel]
+files.TEXTOperations	[files.TEXTOperations::java.io.File fileGraph, files.TEXTOperations::createGraph(java.util.ArrayList<java.lang.String>, javax.swing.DefaultListModel<java.lang.String>, objects.Problem):void, files.TEXTOperations::java.io.FileWriter fw]
+files.TEXTOperations	[files.TEXTOperations::java.io.FileWriter fileWriter, files.TEXTOperations::createRegister(java.lang.String, java.lang.String, java.lang.String):void, files.TEXTOperations::java.io.File f, files.TEXTOperations::fillArray(java.util.ArrayList<objects.User>):void]
+GUITest.ProblemProcess3	[GUITest.ProblemProcess3::GUITest.ProblemProcess4 problemPanel, GUITest.ProblemProcess3::funcionalities.Form form, GUITest.ProblemProcess3::java.lang.String name, GUITest.ProblemProcess3::java.lang.String description, GUITest.ProblemProcess3::objects.User userLoggedIn, GUITest.ProblemProcess3::nextPanel():void]
+JUnitTests.MyProblemIntegerExternalViaJARTest	[JUnitTests.MyProblemIntegerExternalViaJARTest::jMetal.MyProblemIntegerExternalViaJAR mpievj, JUnitTests.MyProblemIntegerExternalViaJARTest::evaluate():void, JUnitTests.MyProblemIntegerExternalViaJARTest::test():void]
+
+god class final
+
+nao relevante
+
+sem code smells - feature envy e type checking 

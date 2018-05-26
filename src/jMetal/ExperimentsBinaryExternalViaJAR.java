@@ -24,8 +24,8 @@ import org.uma.jmetal.util.experiment.component.*;
 import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 import org.uma.jmetal.util.experiment.util.ExperimentProblem;
 
-import GUITest.OptimizationProcess5;
 import objects.Problem;
+import process.OptimizationProcess5;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -136,6 +136,10 @@ public class ExperimentsBinaryExternalViaJAR {
       correspondentes às simulações que se pretendem executar */
 		}
 		return algorithms;
+	}
+	
+	public int getEstimatedTime() {
+		return estimatedFinishTime;
 	}
 
 }

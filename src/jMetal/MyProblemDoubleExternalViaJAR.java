@@ -13,9 +13,9 @@ import org.apache.commons.math3.stat.descriptive.rank.Percentile.EstimationType;
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
 
-import GUITest.OptimizationProcess5;
 import objects.Problem;
 import objects.Variable;
+import process.OptimizationProcess5;
 
 /* Implementação de um problema do tipo Double que executa o .jar externo
    Kursawe.jar e pode ser usado como um dos problema de teste indicados 
@@ -49,6 +49,7 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 		List<Double> lowerLimit = new ArrayList<>(getNumberOfVariables()) ;
 		List<Double> upperLimit = new ArrayList<>(getNumberOfVariables()) ;
 
+		System.out.println("MYPROBLEMDOUBLE "+getNumberOfVariables());
 		for (int i = 0; i < getNumberOfVariables(); i++) {		
 			lowerLimit.add( ((Variable) problem.getVariableList().get(i)).getMinValueDouble() );
 			upperLimit.add(((Variable) problem.getVariableList().get(i)).getMaxValueDouble() );
@@ -60,7 +61,6 @@ public class MyProblemDoubleExternalViaJAR extends AbstractDoubleProblem {
 
 	public void evaluate(DoubleSolution solution){
 		contador++;
-		System.out.println(contador);
 		percent = ((contador)/estimatedFinishTime)*100;
 		optimization.setProgressPercent((int)percent);
 		String solutionString ="";

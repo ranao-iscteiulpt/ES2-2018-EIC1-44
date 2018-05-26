@@ -17,8 +17,8 @@ import org.uma.jmetal.util.experiment.component.*;
 import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 import org.uma.jmetal.util.experiment.util.ExperimentProblem;
 
-import GUITest.OptimizationProcess5;
 import objects.Problem;
+import process.OptimizationProcess5;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class ExperimentsIntegeExternalViaJAR {
 	private OptimizationProcess5 optimization;
 	private int estimatedFinishTime = 0;
 
-	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariable, OptimizationProcess5 optimization ) throws IOException {
+	public void startOptimization (Problem problem, DefaultListModel algorithmsList, DefaultTableModel fitnessVariables, OptimizationProcess5 optimization ) throws IOException {
 		this.problem = problem;
 		this.algorithmsList = algorithmsList;
 		this.fitnessVariables = fitnessVariables;
@@ -130,6 +130,10 @@ public class ExperimentsIntegeExternalViaJAR {
 
 		}
 		return algorithms;
+	}
+	
+	public int getEstimatedTime() {
+		return estimatedFinishTime;
 	}
 
 }

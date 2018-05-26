@@ -68,7 +68,7 @@ public class Email {
 		}
 	}
 
-	public void sendEmailWithAttachment(String userEmail, String userPassword, String subject, String mailMessage, String filePath) {
+	public void sendEmailWithAttachment(String userEmail, String userPassword, String subject, String mailMessage, String filePath,String problemName) {
 		final String username = userEmail;
 		final String password = userPassword;
 
@@ -91,7 +91,7 @@ public class Email {
 		    Message msg = new MimeMessage(session);
 		    try {
 		        msg.setFrom(new InternetAddress(username));
-		        msg.setRecipient(Message.RecipientType.TO, new InternetAddress("ricnogueira01@gmail.com"));
+		        msg.setRecipient(Message.RecipientType.TO, new InternetAddress(username));
 		        msg.setSubject(subject);
 
 		        Multipart multipart = new MimeMultipart();
@@ -100,9 +100,9 @@ public class Email {
 		        textBodyPart.setText(mailMessage);
 
 		        MimeBodyPart attachmentBodyPart= new MimeBodyPart();
-		        DataSource source = new FileDataSource(filePath); // ex : "C:\\test.pdf"
+		        DataSource source = new FileDataSource(filePath + "\\" + problemName + ".xml"); 
 		        attachmentBodyPart.setDataHandler(new DataHandler(source));
-		        attachmentBodyPart.setFileName("file.xml"); // ex : "test.pdf"
+		        attachmentBodyPart.setFileName(problemName+".xml"); // ex : "test.pdf"
 
 		        multipart.addBodyPart(textBodyPart);  // add the text part
 		        multipart.addBodyPart(attachmentBodyPart); // add the attachement part
@@ -150,7 +150,7 @@ public class Email {
 					Message message = new MimeMessage(session);
 					message.setFrom(new InternetAddress(userEmail));
 					message.setRecipients(Message.RecipientType.TO,
-							InternetAddress.parse("ricnogueira01@gmail.com"));
+							InternetAddress.parse(userEmail));
 					message.setSubject("Optimization Progress");
 					message.setText(mailMessage);
 

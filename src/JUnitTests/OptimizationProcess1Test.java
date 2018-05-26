@@ -16,11 +16,11 @@ class OptimizationProcess1Test {
 	Form form = new Form(jp);
 	User userLoggedIn = new User("test", "test", "test@test.com");
 	
-	GUITest.OptimizationProcess1 op1;
+	process.OptimizationProcess1 op1;
 	
 	void OptimizationProcess1() {
 		
-		op1 = new GUITest.OptimizationProcess1(form, userLoggedIn);
+		op1 = new process.OptimizationProcess1(form, userLoggedIn);
 	}
 
 	@Test

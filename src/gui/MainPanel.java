@@ -17,11 +17,11 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileSystemView;
 
-import GUITest.OptimizationProcess1;
-import GUITest.ProblemProcess1;
-import GUITest.WelcomePage;
 import funcionalities.Form;
 import objects.User;
+import process.OptimizationProcess1;
+import process.ProblemProcess1;
+import process.WelcomePage;
 
 public class MainPanel extends JPanel {
 

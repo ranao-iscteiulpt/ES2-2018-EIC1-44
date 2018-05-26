@@ -33,7 +33,8 @@ class TEXTOperationsTest {
 		DefaultListModel<String> algorithmsChosenList = new DefaultListModel<String>();
 		algorithmsChosenList.addElement("NSGAII");
 		Problem problem = new Problem(null, null, null, 0, 0, null);
-		to.createGraph(jarList, algorithmsChosenList, problem);
+		String variableType = "double";
+		to.createGraph(jarList, algorithmsChosenList, problem, variableType, 500);
 	}
 	
 	@Test

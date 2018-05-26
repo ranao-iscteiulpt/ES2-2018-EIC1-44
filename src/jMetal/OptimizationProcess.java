@@ -6,8 +6,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
-import GUITest.OptimizationProcess5;
 import objects.Problem;
+import process.OptimizationProcess5;
 
 public class OptimizationProcess {
 
@@ -61,5 +61,16 @@ public class OptimizationProcess {
 	public String[] getAlgorithmsManual() {
 		return AlgorithmsForManualProblemType;
 	}
-
+	
+	public ExperimentsDoubleExternalViaJAR getExperimentsDouble() {
+		return experimentsDouble;
+	}
+	
+	public ExperimentsIntegeExternalViaJAR getExperimentsInteger() {
+		return experimentsInteger;
+	}
+	
+	public ExperimentsBinaryExternalViaJAR getExperimentsBinary() {
+		return experimentsBinary;
+	}
 }

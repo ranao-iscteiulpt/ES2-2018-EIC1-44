@@ -4,9 +4,9 @@ import org.uma.jmetal.problem.impl.AbstractIntegerProblem;
 import org.uma.jmetal.solution.IntegerSolution;
 import org.uma.jmetal.util.JMetalException;
 
-import GUITest.OptimizationProcess5;
 import objects.Problem;
 import objects.Variable;
+import process.OptimizationProcess5;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -39,6 +39,7 @@ public class MyProblemIntegerExternalViaJAR extends AbstractIntegerProblem {
 	}
 
 	public MyProblemIntegerExternalViaJAR(Integer numberOfVariables, Problem problem, DefaultTableModel fitnessVariables) throws JMetalException {
+		System.out.println("NUMBEROFVARIABLES " + fitnessVariables.getRowCount());
 		setNumberOfVariables(numberOfVariables);
 		setNumberOfObjectives(fitnessVariables.getRowCount());
 		setName("MyProblemIntegerExternalViaJAR");

@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 import org.uma.jmetal.solution.IntegerSolution;
 import org.uma.jmetal.solution.Solution;
 
-import GUITest.OptimizationProcess5;
 import funcionalities.Form;
 import jMetal.MyProblemIntegerExternalViaJAR;
 import objects.Problem;
 import objects.User;
 import objects.Variable;
+import process.OptimizationProcess5;
 
 class MyProblemIntegerExternalViaJARTest {
 
