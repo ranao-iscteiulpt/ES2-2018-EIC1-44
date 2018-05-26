@@ -72,43 +72,45 @@ public class Email {
 		final String username = userEmail;
 		final String password = userPassword;
 
-		Properties props = new Properties();
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
-		props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		 Properties props = new java.util.Properties();
+		    props.put("mail.smtp.host", "smtp.gmail.com");
+		    props.put("mail.smtp.port", "465");
+		    props.put("mail.smtp.auth", "true");             
+		    props.put("mail.smtp.starttls.enable", "true");
 
-		Session session = Session.getInstance(props,
-				new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		});
 
-		try {
+		    // Session session = Session.getDefaultInstance(props, null);
+		    Session session = Session.getInstance(props,
+		              new javax.mail.Authenticator() {
+		                protected PasswordAuthentication getPasswordAuthentication() {
+		                    return new PasswordAuthentication(username, password);
+		                }
+		              });
 
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(userEmail));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("ricnogueira01@gmail.com"));
-			message.setSubject(subject);
-			message.setText(mailMessage);
-			
-			MimeBodyPart messageBodyPart = new MimeBodyPart();
 
-	        Multipart multipart = new MimeMultipart();
+		    Message msg = new MimeMessage(session);
+		    try {
+		        msg.setFrom(new InternetAddress(username));
+		        msg.setRecipient(Message.RecipientType.TO, new InternetAddress("ricnogueira01@gmail.com"));
+		        msg.setSubject(subject);
 
-	        messageBodyPart = new MimeBodyPart();
-	        String file = filePath;
-	        String fileName = "XML File";
-	        DataSource source = new FileDataSource(file);
-	        messageBodyPart.setDataHandler(new DataHandler(source));
-	        messageBodyPart.setFileName(fileName);
-	        multipart.addBodyPart(messageBodyPart);
+		        Multipart multipart = new MimeMultipart();
 
-	        message.setContent(multipart);
-			Transport.send(message);
+		        MimeBodyPart textBodyPart = new MimeBodyPart();
+		        textBodyPart.setText(mailMessage);
+
+		        MimeBodyPart attachmentBodyPart= new MimeBodyPart();
+		        DataSource source = new FileDataSource(filePath); // ex : "C:\\test.pdf"
+		        attachmentBodyPart.setDataHandler(new DataHandler(source));
+		        attachmentBodyPart.setFileName("file.xml"); // ex : "test.pdf"
+
+		        multipart.addBodyPart(textBodyPart);  // add the text part
+		        multipart.addBodyPart(attachmentBodyPart); // add the attachement part
+
+		        msg.setContent(multipart);
+
+
+		        Transport.send(msg);
 		
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
